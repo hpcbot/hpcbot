@@ -18,3 +18,4 @@ HPC_CHANNEL=
 ````
 
 ## Commands
+`!sortinghat test` - Testing sorting hat functionality
