@@ -1,0 +1,31 @@
+{
+  "name": "hpc-bot",
+  "version": "0.0.1",
+  "description": "Twitch Bot for the Harry Potter Clan",
+  "keywords": [
+    "hpc",
+    "twitch"
+  ],
+  "main": "app.js",
+  "engines": {
+    "node": ">=4.4.0"
+  },
+  "author": "bdickason",
+  "contributors": [
+    {
+      "name": "bdickason",
+      "email": "dickason@gmail.com"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/bdickason/hpc-bot.git"
+  },
+  "dependencies": {
+    "tmi.js": "1.1.2"
+  },
+  "license":"GPL-3.0",
+  "devDependencies": {
+    "mocha": "2.2.5"
+  }
+}
