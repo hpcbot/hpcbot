@@ -7,6 +7,9 @@
     "twitch"
   ],
   "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
   "engines": {
     "node": ">=4.4.0"
   },
@@ -22,7 +25,8 @@
     "url": "git://github.com/bdickason/hpc-bot.git"
   },
   "dependencies": {
-    "tmi.js": "1.1.2"
+    "tmi.js": "1.1.2",
+    "dotenv": "4.0.0"
   },
   "license":"GPL-3.0",
   "devDependencies": {

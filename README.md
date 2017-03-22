@@ -7,4 +7,14 @@ Twitch bot for the Harry Potter Clan
 1. Install packages: `npm install`
 1. Run the bot: `node app.js`
 
+## Config
+Create a file in your root project directory named `.env` *(this file will be automagically .gitignore'd)*
+
+Set the following environment variables:
+````
+HPC_USERNAME=
+HPC_PASSWORD=
+HPC_CHANNEL=
+````
+
 ## Commands
