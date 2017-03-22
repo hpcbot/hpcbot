@@ -8,7 +8,8 @@
   ],
   "main": "app.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "node app.js",
+    "test": "mocha"
   },
   "engines": {
     "node": ">=4.4.0"

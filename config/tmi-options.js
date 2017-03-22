@@ -28,7 +28,8 @@ if(!HPC_PASSWORD.startsWith('oauth')) {
 	process.exit(1);
 }
 
-
+// HPC_CHANNEL - Your Twitch chat channel
+// Example: #harrypotterclan
 var HPC_CHANNEL = process.env.HPC_CHANNEL;
 if(!HPC_CHANNEL) {
 	console.log("ERROR: HPC_CHANNEL is not set in your .env file");
@@ -36,4 +37,10 @@ if(!HPC_CHANNEL) {
 	process.exit(1);
 }
 
-exports.options = {}
+exports.options = {
+	identity: {
+		username: HPC_USERNAME,
+		password: HPC_PASSWORD
+	},
+	channels: [HPC_CHANNEL]
+};
