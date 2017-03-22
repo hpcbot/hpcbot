@@ -17,5 +17,18 @@ HPC_PASSWORD
 HPC_CHANNEL
 ````
 
+## Running the App
+
+To run the app, execute `npm start` from your project root.
+
+
+## Running Tests
+
+You can run tests to verify that everything is working with the command `npm test`. This requires **mocha** to be installed with `npm install -g mocha`.
+
+If you plan to submit pull requests, please ensure that the request includes proper test coverage of your feature.
+
+
 ## Commands
 `!sortinghat test` - Testing sorting hat functionality
+
