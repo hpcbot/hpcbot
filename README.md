@@ -12,9 +12,9 @@ Create a file in your root project directory named `.env` *(this file will be au
 
 Set the following environment variables:
 ````
-HPC_USERNAME=
-HPC_PASSWORD=
-HPC_CHANNEL=
+HPC_USERNAME
+HPC_PASSWORD
+HPC_CHANNEL
 ````
 
 ## Commands
