@@ -12,7 +12,7 @@ var channel = config.options.channels[0];	// We'll need to reference the active 
 client.connect();
 
 client.on('chat', function (channel, userstate, message, self) {
-	chat.command(userstate, message, function(response) {
+	chat.command(userstate, message, self, function(response) {
 		if(response) {
 			client.say(channel, response);	
 		}
