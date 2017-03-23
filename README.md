@@ -30,5 +30,5 @@ If you plan to submit pull requests, please ensure that the request includes pro
 
 
 ## Commands
-`!sortinghat test` - Testing sorting hat functionality
+`!sortinghat` - Testing sorting hat functionality
 

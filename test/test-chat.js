@@ -15,22 +15,39 @@ describe('Chat parser', function() {
 		});
 	});
 
-	describe('!sortinghat', function() {
-		it('Ignores the command by itself', function() {
-			var self=true;
-			var userstate = {};
-			var message ="!sortinghat";
+	it('Ignores case on a command', function() {
+		var userstate = {
+			username: "bdickason"
+		};
+		var message = "!SoRTiNGhaT";
+		var self = false;
 
-			chat.command(userstate, message, self, function(response) {
-				assert.equal(response, null);
-			});
+		var _response = "bdickason is a muggle!";	// Expected Response
+		chat.command(userstate, message, self, function(response) {
+			assert.equal(response, _response);
 		});
+	})
 
-		it('Ignores the command by itself', function() {
+	describe('!sortinghat', function() {
+		it('Accepts the command by itself', function() {
 			var userstate = {
 				username: "bdickason"
 			};
-			var message ="!sortinghat test";
+			var message ="!sortinghat";
+			var self=false;
+
+			var _response = "bdickason is a muggle!";	// Expected Response
+
+			chat.command(userstate, message, self, function(response) {
+				assert.equal(response, _response);
+			});
+		});
+
+		it('Ignores  the command by itself', function() {
+			var userstate = {
+				username: "bdickason"
+			};
+			var message ="!sortinghat test crap!";
 			var self=false;
 
 			var _response = "bdickason is a muggle!";	// Expected Response
