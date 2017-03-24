@@ -19,20 +19,26 @@ describe('Users', function() {
 	});
 	
 	it('Gets a list of all users', function(done) {
-		var _users = ['1'];
+		var _users = ['bdickason'];
 
 		// Find the next available unique identifier
 		db.get().incr('user:uids', function(err, num) {
 			if(!err) {
 				// add user to users hash
-				db.get().hset('user:' + num, 'username', 'bdickason', function(err, data) {
-					// add user to list of users
-					db.get().sadd('users:all', num, function(err, data) {
-						// Check actual function
+				db.get().hset('user:bdickason', 'uid', num, function(err, data) {
+					// add userto list of usernames
+					db.get().hset('users', 'bdickason', num, function(err, data) {
 						Users.all(function(users) {
 							assert.deepEqual(_users, users);
 							done();
 						});
+					// add user to list of users
+						/*
+						// Check actual function
+						Users.all(function(users) {
+							assert.deepEqual(_users, users);
+							done();
+						}); */
 					});
 				});
 			}
