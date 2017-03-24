@@ -82,7 +82,7 @@ describe('Users', function() {
 		var _users = { uid: '1' };
 
 		// Find the next available unique identifier
-		db.get().incrby('user:uids', 1, function(err, num) {
+		db.get().incr('user:uids', function(err, num) {
 			if(!err) {
 				// add user to users hash
 				db.get().hset('user:bdickason', 'uid', num, function(err, data) {
