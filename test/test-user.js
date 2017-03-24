@@ -109,4 +109,34 @@ describe('Users', function() {
 			done();
 		});
 	});
+
+	it('add: New users are muggles by default', function(done) {
+		var _err = null;
+		var _house = 'muggle';
+
+		Users.add('bdickason', function(err, users) {
+			db.get().hgetall('user:bdickason', function (err, data) {
+				assert.equal(err, _err);
+				assert.equal(data.house, _house);
+				done();
+			});
+		});
+	});
+
+	it('sort: Users can apply to be sorted by the sorting hat', function(done) {
+		var userstate = {
+			username: 'bdickason'
+		};	// All twitch userstates are different o_O
+
+		var _err = null;
+		var _house = 'muggle';
+
+		Users.add('bdickason', function(err, users) {
+			Users.sorting(userstate, function(err, house) {
+				assert.equal(err, _err);
+				assert.notEqual(house, _house);
+				done();
+			});
+		});
+	});
 });
