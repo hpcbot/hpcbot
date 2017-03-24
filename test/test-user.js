@@ -52,19 +52,30 @@ describe('Users', function() {
 							assert.deepEqual(_users, users);
 							done();
 						});
-					// add user to list of users
-						/*
-						// Check actual function
-						Users.all(function(users) {
-							assert.deepEqual(_users, users);
-							done();
-						}); */
 					});
 				});
 			}
 		});		
 	});
 
+	it('Gets an individual user id from username', function(done) {
+		var _users = ['5'];
+		// Find an arbitrary unique identifier that is not 1
+		db.get().incrby('user:uids', 5, function(err, num) {
+			if(!err) {
+				// add user to users hash
+				db.get().hset('user:bdickason', 'uid', num, function(err, data) {
+					// add userto list of usernames
+					db.get().hset('users', 'bdickason', num, function(err, data) {
+						Users.ids(function(users) {
+							assert.deepEqual(_users, users);
+							done();
+						});
+					});
+				});
+			}
+		});		
+	});
 });
 					// Get individual user:
 					// db.get().hget('user:' + num, 'username', function(err, data) {
