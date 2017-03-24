@@ -101,7 +101,7 @@ describe('Users', function() {
 
 	it('add: Creates a new user if one doesn\'t exist', function(done) {
 		var _err = null;
-		var _users = 1;
+		var _users = 'bdickason';
 
 		Users.add('bdickason', function(err, users) {	// I wish the other tests were this easy ;()
 			assert.equal(_err, err);
