@@ -21,4 +21,3 @@ client.on('chat', function (channel, userstate, message, self) {
 		}
 	});
 });
-
