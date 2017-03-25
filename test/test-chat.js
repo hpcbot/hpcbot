@@ -69,13 +69,14 @@ describe('Chat parser', function() {
 			var userstate = null;
 			var self = null;
 
-			var _response = strings.rules.overview + strings.general.newline;
-				_response += strings.rules.rule[1] + strings.general.newline;
-				_response += strings.rules.rule[2] + strings.general.newline;
-				_response += strings.rules.rule[3] + strings.general.newline;
+			var _response = [];
+			_response.push(strings.rules.overview);
+			_response.push(strings.rules.rule[1]);
+			_response.push(strings.rules.rule[2]);
+			_response.push(strings.rules.rule[3]);
 
 			chat.command(userstate, message, self, function(response) {
-				assert.equal(response, _response);
+				assert.deepEqual(response, _response);
 			});
 		});
 		it('No parameters: Shows rules 1-3', function() {
@@ -83,13 +84,14 @@ describe('Chat parser', function() {
 			var userstate = null;
 			var self = null;
 
-			var _response = strings.rules.overview + strings.general.newline;
-				_response += strings.rules.rule[1] + strings.general.newline;
-				_response += strings.rules.rule[2] + strings.general.newline;
-				_response += strings.rules.rule[3] + strings.general.newline;
+			var _response = [];
+			_response.push(strings.rules.overview);
+			_response.push(strings.rules.rule[1]);
+			_response.push(strings.rules.rule[2]);
+			_response.push(strings.rules.rule[3]);
 
 			chat.command(userstate, message, self, function(response) {
-				assert.equal(response, _response);
+				assert.deepEqual(response, _response);
 			});
 		});
 

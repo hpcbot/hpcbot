@@ -21,7 +21,10 @@ client.on('chat', function (channel, userstate, message, self) {
 	// Check if chat line was a command
 	Chat.command(userstate, message, self, function(response) {
 		if(response) {
-			client.say(channel, response);	
+			response.forEach(function(line) {
+				// Handle multi-line responses
+				client.say(channel, line);
+			});
 		}
 	});
 });
