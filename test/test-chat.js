@@ -61,7 +61,101 @@ describe('Chat parser', function() {
 				assert.equal(response, _response);
 			});
 		});
-
 	});
+
+	describe('!rules', function() {
+		it('No parameters: Accepts !rule', function() {
+			var message="!rule";
+			var userstate = null;
+			var self = null;
+
+			var _response = strings.rules.overview + strings.general.newline;
+				_response += strings.rules.rule[1] + strings.general.newline;
+				_response += strings.rules.rule[2] + strings.general.newline;
+				_response += strings.rules.rule[3] + strings.general.newline;
+
+			chat.command(userstate, message, self, function(response) {
+				assert.equal(response, _response);
+			});
+		});
+		it('No parameters: Shows rules 1-3', function() {
+			var message="!rules";
+			var userstate = null;
+			var self = null;
+
+			var _response = strings.rules.overview + strings.general.newline;
+				_response += strings.rules.rule[1] + strings.general.newline;
+				_response += strings.rules.rule[2] + strings.general.newline;
+				_response += strings.rules.rule[3] + strings.general.newline;
+
+			chat.command(userstate, message, self, function(response) {
+				assert.equal(response, _response);
+			});
+		});
+
+		it('Rule parameter: Shows specific rule if first number is entered', function() {
+			var message="!rule 0";
+			var userstate = "bdickason";
+			var self=false;
+
+			var _response = strings.rules.rule[0];
+			console.log(_response);
+
+			chat.command(userstate, message, self, function(response) {
+				assert.equal(response, _response);
+			});
+
+		});
+
+		it('Rule parameter: Shows specific rule if last number is entered', function() {
+			var message="!rule 5";
+			var userstate = null;
+			var self = null;
+
+			var _response= strings.rules.rule[5];
+
+			chat.command(userstate, message, self, function(response) {
+				assert.equal(response, _response);
+			});
+
+		});
+
+		it('Rule parameter: Shows specific rule if number and pound sign is entered', function() {
+			var message="!rule #5";
+			var userstate = null;
+			var self = null;
+
+			var _response= strings.rules.rule[5];
+
+			chat.command(userstate, message, self, function(response) {
+				assert.equal(response, _response);
+			});
+		});
+
+		it('Rule parameter: Doesn\'t show anything if number > rule number is entered', function() {
+			var message="!rule 100";
+			var userstate = null;
+			var self = null;
+
+			var _response= null;
+
+			chat.command(userstate, message, self, function(response) {
+				assert.equal(response, _response);
+			});
+		});
+
+		it('Rule parameter: Doesn\'t show anything if text is entered', function() {
+			var message="!rule test";
+			var userstate = null;
+			var self = null;
+
+			var _response= null;
+
+			chat.command(userstate, message, self, function(response) {
+				assert.equal(response, _response);
+			});
+		});
+	});
+
 });
 

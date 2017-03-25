@@ -3,6 +3,16 @@
 		"welcome": "Welcome ",
 		"new_here": " it looks like your new here. Type !sortinghat to get sorted."
 	},
+	"rules": {
+		"overview": "We have 3 rules at the Harry Potter Clan",
+		"rule": [
+		"Rule #0 - Neither Dobby NOR Glue are leaders of the HPC.",
+		"Rule #1 - No Muggles",
+		"Rule #2 - No Mudbloods",
+		"Rule #3 - NO RULES!",
+		"Rule #4 - Two Rax and Bax",
+		"Rule #5 - ALWAYS deny the Aegis"]
+	},
 	"sorting": {
 		"congrats":"Congratulations ",
 		"joined_house":" You have joined House ",
@@ -10,6 +20,7 @@
 		"is_a": " is a "
 	},
 	"general": {
-		"exclamation": "!"
+		"exclamation": "!",
+		"newline": "\n"
 	}
 }
