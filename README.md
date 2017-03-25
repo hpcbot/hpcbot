@@ -1,6 +1,22 @@
 # hpc-bot
 Twitch bot for the Harry Potter Clan
 
+# Usage
+
+## Commands
+`!sortinghat` - Place the sorting hat on your head and find out what House you belong to
+`!rules` - 
+
+
+# Contributing
+## Changing what the bot says (Strings)
+
+You can locate all of the strings the bot uses in `config/strings.json`: https://github.com/bdickason/hpc-bot/blob/master/config/strings.json
+
+You can edit the format here there, just make sure you copy/paste the resulting file here to test it: http://jsonlint.com/
+
+# Setup
+
 ## Installation
 
 1. Download NodeJS: https://nodejs.org/en/
@@ -28,7 +44,4 @@ You can run tests to verify that everything is working with the command `npm tes
 
 If you plan to submit pull requests, please ensure that the request includes proper test coverage of your feature.
 
-
-## Commands
-`!sortinghat` - Testing sorting hat functionality
 
