@@ -16,7 +16,7 @@ var channel = config.options.channels[0];	// We'll need to reference the active 
 db.connect();
 client.connect();
 
-/* User said something tin the channel */
+/* User said something in the channel */
 client.on('chat', function (channel, userstate, message, self) {
 	// Check if chat line was a command
 	Chat.command(userstate, message, self, function(response) {
