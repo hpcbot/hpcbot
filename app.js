@@ -34,7 +34,7 @@ client.on('join', function (channel, userstate, self) {
 		Users.add(username, function(err, username) {
 			if(!err) {
 				// This is a new user
-				var response = "Welcome " + username + " it looks like you're new here. Type !sortinghat to get sorted.";
+				var response = "Welcome " + username + " it looks like your new here. Type !sortinghat to get sorted.";
 				client.say(channel, response);
 			}
 		});

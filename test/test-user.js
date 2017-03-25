@@ -79,15 +79,15 @@ describe('Users', function() {
 
 	it('add: Doesn\'t create a new user if one exists', function(done) {
 		var _err = "User already exists"
-		var _users = { uid: '1' };
+		var _users = null;
 
 		// Find the next available unique identifier
-		db.get().incr('user:uids', function(err, num) {
+		db.get().incr('user:uids', function(err, uid) {
 			if(!err) {
 				// add user to users hash
-				db.get().hset('user:bdickason', 'uid', num, function(err, data) {
+				db.get().hmset('user:' + 'bdickason', 'uid', uid, 'house', 'muggle', function(err, data) {
 					// add userto list of usernames
-					db.get().hset('users', 'bdickason', num, function(err, data) {
+					db.get().hset('users', 'bdickason', uid, function(err, data) {
 						Users.add('bdickason', function(err, users) {
 							assert.equal(_err, err);
 							assert.deepEqual(_users, users);
@@ -103,7 +103,7 @@ describe('Users', function() {
 		var _err = null;
 		var _users = 'bdickason';
 
-		Users.add('bdickason', function(err, users) {	// I wish the other tests were this easy ;()
+		Users.add('bdickason', function(err, users) {
 			assert.equal(_err, err);
 			assert.deepEqual(_users, users);
 			done();
