@@ -3,6 +3,7 @@
 var assert = require('assert');
 
 var chat = require('../lib/chat.js');
+var strings = require('../config/strings.json');
 
 describe('Chat parser', function() {
 	it('Ignores an empty command', function() {
@@ -22,7 +23,9 @@ describe('Chat parser', function() {
 		var message = "!SoRTiNGhaT";
 		var self = false;
 
-		var _response = "bdickason is a muggle!";	// Expected Response
+		var _house = "muggle";
+		var _response = userstate.username + strings.general.is_a + _house;	// Expected Response
+
 		chat.command(userstate, message, self, function(response) {
 			assert.equal(response, _response);
 		});
@@ -36,21 +39,23 @@ describe('Chat parser', function() {
 			var message ="!sortinghat";
 			var self=false;
 
-			var _response = "bdickason is a muggle!";	// Expected Response
+			var _house = "muggle";
+			var _response = userstate.username + strings.general.is_a + _house + strings.general.exclamation;	// Expected Response
 
 			chat.command(userstate, message, self, function(response) {
 				assert.equal(response, _response);
 			});
 		});
 
-		it('Ignores  the command by itself', function() {
+		it('Ignores additional text on the command', function() {
 			var userstate = {
 				username: "bdickason"
 			};
 			var message ="!sortinghat test crap!";
 			var self=false;
 
-			var _response = "bdickason is a muggle!";	// Expected Response
+			var _house = "muggle";
+			var _response = userstate.username + strings.general.is_a + _house + strings.general.exclamation;	// Expected Response
 
 			chat.command(userstate, message, self, function(response) {
 				assert.equal(response, _response);

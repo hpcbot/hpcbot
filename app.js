@@ -8,6 +8,7 @@ var config = require("./config/tmi-options.js");
 var Chat = require('./lib/chat.js');
 var Users = require('./lib/user.js');
 var db = require('./lib/db.js');
+var strings = require('./config/strings.json');
 
 var client = new tmi.client(config.options);
 var channel = config.options.channels[0];	// We'll need to reference the active channel
@@ -15,11 +16,22 @@ var channel = config.options.channels[0];	// We'll need to reference the active 
 db.connect();
 client.connect();
 
+/* User said something tin the channel */
 client.on('chat', function (channel, userstate, message, self) {
 	// Check if chat line was a command
 	Chat.command(userstate, message, self, function(response) {
 		if(response) {
 			client.say(channel, response);	
+		}
+	});
+});
+
+/* User sent a private message */
+client.on('whisper', function (from, userstate, message, self) {
+	// Check if message was a command
+	Chat.command(userstate, message, self, function(response) {
+		if(response) {
+			client.whisper(from, response);	
 		}
 	});
 });
@@ -34,7 +46,7 @@ client.on('join', function (channel, userstate, self) {
 		Users.add(username, function(err, username) {
 			if(!err) {
 				// This is a new user
-				var response = "Welcome " + username + " it looks like your new here. Type !sortinghat to get sorted.";
+				var response = strings.join.welcome + username + strings.join.new_here;
 				client.say(channel, response);
 			}
 		});

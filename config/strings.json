@@ -1,0 +1,15 @@
+{
+	"join": {
+		"welcome": "Welcome ",
+		"new_here": " it looks like your new here. Type !sortinghat to get sorted."
+	},
+	"sorting": {
+		"congrats":"Congratulations ",
+		"joined_house":" You have joined House ",
+		"user_already_sorted": "You've already been sorted! Are you trying to dishonour you're house?!",
+		"is_a": " is a "
+	},
+	"general": {
+		"exclamation": "!"
+	}
+}
