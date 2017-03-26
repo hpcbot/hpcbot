@@ -21,6 +21,11 @@
 		"user_already_sorted": "You've already been sorted! Are you trying to dishonour you're house?!",
 		"is_a": " is a "
 	},
+	"house": {
+		"proud_member_of":" is a proud member of House ",
+		"muggle":" is a muggle! How IMBARASSING",
+		"cannot_find": "I\'m sorry, I can't find "
+	},
 	"general": {
 		"exclamation": "!",
 		"newline": "                                        "
