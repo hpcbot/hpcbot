@@ -4,8 +4,31 @@ var assert = require('assert');
 
 var chat = require('../lib/chat.js');
 var strings = require('../config/strings.json');
+var Users = require('../lib/user.js');
 
-describe('Chat parser', function() {
+var db = require('../lib/db.js');
+db.connect('mode_staging');
+
+describe('Chat parser', function() {	
+	beforeEach(function(done) {
+		// Wipe database before running tests. Note: Make _SURE_ you are on staging
+		db.get().flushdb(function(err) {
+			if(!err) {
+				Users.add('bdickason', function(err, username) {
+					// Create a dummy user to test
+					if(!err) {
+						done();	
+					}
+					else {
+						console.log(err);
+						done();
+					}
+					
+				});
+			}
+		});
+	});
+
 	it('Ignores an empty command', function() {
 		var userstate = {};
 		var message = "";
@@ -16,49 +39,58 @@ describe('Chat parser', function() {
 		});
 	});
 
-	it('Ignores case on a command', function() {
+	it('Ignores case on a command', function(done) {
 		var userstate = {
 			username: "bdickason"
 		};
 		var message = "!SoRTiNGhaT";
 		var self = false;
 
-		var _house = "muggle";
-		var _response = userstate.username + strings.general.is_a + _house;	// Expected Response
+		var _response = [];
+		_response.push(strings.congratulations + userstate.username + strings.general.exclamation + strings.sorting.joined);	// Expected Response
 
 		chat.command(userstate, message, self, function(response) {
-			assert.equal(response, _response);
+			// Because we have an annoying dependency on Users for now, check that the string starts the same
+			response[0] = response[0].substr(0, _response[0].length);
+			assert.deepEqual(response, _response);
+			done();
 		});
 	})
 
 	describe('!sortinghat', function() {
-		it('Accepts the command by itself', function() {
+		it('Accepts the command by itself', function(done) {
 			var userstate = {
 				username: "bdickason"
 			};
 			var message ="!sortinghat";
 			var self=false;
 
-			var _house = "muggle";
-			var _response = userstate.username + strings.general.is_a + _house + strings.general.exclamation;	// Expected Response
+			var _response = [];
+			_response.push(strings.congratulations + userstate.username + strings.general.exclamation + strings.sorting.joined);	// Expected Response
 
 			chat.command(userstate, message, self, function(response) {
-				assert.equal(response, _response);
+				// Because we have an annoying dependency on Users for now, check that the string starts the same
+				response[0] = response[0].substr(0, _response[0].length);
+				assert.deepEqual(response, _response);
+				done();
 			});
 		});
 
-		it('Ignores additional text on the command', function() {
+		it('Ignores additional text on the command', function(done) {
 			var userstate = {
 				username: "bdickason"
 			};
 			var message ="!sortinghat test crap!";
 			var self=false;
 
-			var _house = "muggle";
-			var _response = userstate.username + strings.general.is_a + _house + strings.general.exclamation;	// Expected Response
+			var _response = [];
+			_response.push(strings.congratulations + userstate.username + strings.general.exclamation + strings.sorting.joined);	// Expected Response
 
 			chat.command(userstate, message, self, function(response) {
-				assert.equal(response, _response);
+				// Because we have an annoying dependency on Users for now, check that the string starts the same
+				response[0] = response[0].substr(0, _response[0].length);
+				assert.deepEqual(response, _response);
+				done();
 			});
 		});
 	});
@@ -101,7 +133,6 @@ describe('Chat parser', function() {
 			var self=false;
 
 			var _response = strings.rules.rule[0];
-			console.log(_response);
 
 			chat.command(userstate, message, self, function(response) {
 				assert.equal(response, _response);
@@ -159,5 +190,53 @@ describe('Chat parser', function() {
 		});
 	});
 
+	describe('!house', function(done) {
+		it('No parameters: Accepts !house', function() {
+			var message="!house";
+			var userstate = {
+				username: "bdickason"
+			};
+			var self = null;
+
+			var _response = [];
+			_response.push(userstate.username + strings.house.proud_member_of);
+
+			Users.sorting(userstate, function(err, house) {
+				console.log(err);
+				console.log(house);
+				chat.command(userstate, message, self, function(response) {
+					// Because we have an annoying dependency on Users for now, check that the string starts the same
+					response[0] = response[0].substr(0, _response[0].length);
+					assert.deepEqual(response, _response);
+					done();
+				});
+			});
+		});
+
+		it('Single user parameter: Accepts !house <name>', function(done) {	
+			var message="!house bdickason";
+			var userstate = {
+				username: "dumbledore"
+			};
+			var userstate_to_sort = {
+				username: "bdickason"
+			}
+			var self = null;
+
+			var _response = [];
+			_response.push(userstate_to_sort.username + strings.house.proud_member_of);
+
+			Users.sorting(userstate_to_sort, function(err, house) {
+				console.log(err);
+				console.log(house);
+				chat.command(userstate, message, self, function(response) {
+					// Because we have an annoying dependency on Users for now, check that the string starts the same
+					response[0] = response[0].substr(0, _response[0].length);
+					assert.deepEqual(response, _response);
+					done();
+				});
+			});
+		});
+	});
 });
 

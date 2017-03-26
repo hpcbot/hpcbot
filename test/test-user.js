@@ -139,4 +139,34 @@ describe('Users', function() {
 			});
 		});
 	});
+
+	it('house: Users can check the house of a user that exists', function(done) {
+		var username = "bdickason";
+
+		var _err = null;
+		var _house = 'muggle';
+
+		Users.add('bdickason', function(err, users) {
+			Users.house(username, function(err, house) {
+				assert.equal(err, _err);
+				assert.equal(house, _house);
+				done();
+			});
+		});
+	});
+
+	it('house: Responds with an error when a user doesn\'t exist', function(done) {
+		var username = "bdonkason"
+
+		var _err = "User not found";
+		var _house = null;
+
+		Users.add('bdickason', function(err, users) {
+			Users.house(username, function(err, house) {
+				assert.equal(err, _err);
+				assert.equal(house, _house);
+				done();
+			});
+		});
+	});
 });
