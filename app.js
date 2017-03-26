@@ -7,9 +7,9 @@ var tmi = require("tmi.js");
 var config = require("./config/tmi-options.js");
 var strings = require('./config/strings.json');
 
-var Chat = require('./lib/chat/chat.js');
-var Users = require('./lib/user/user.js');
-var db = require('./lib/db/db.js');
+var Chat = require('./lib/chat');
+var Users = require('./lib/user');
+var db = require('./lib/db');
 
 
 var client = new tmi.client(config.options);
