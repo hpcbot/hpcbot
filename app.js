@@ -5,10 +5,12 @@ require('dotenv').config();	// Load environment variables from .env
 var tmi = require("tmi.js");
 
 var config = require("./config/tmi-options.js");
-var Chat = require('./lib/chat.js');
-var Users = require('./lib/user.js');
-var db = require('./lib/db.js');
 var strings = require('./config/strings.json');
+
+var Chat = require('./lib/chat/chat.js');
+var Users = require('./lib/user/user.js');
+var db = require('./lib/db/db.js');
+
 
 var client = new tmi.client(config.options);
 var channel = config.options.channels[0];	// We'll need to reference the active channel

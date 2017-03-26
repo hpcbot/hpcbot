@@ -7,7 +7,7 @@ var fs = require('fs');	// Used to check if file exists
 
 // Dependencies
 require('dotenv').config();	// Load environment variables from .env
-var config = require("../config/tmi-options.js");
+var config = require("./tmi-options.js");
 
 describe('.env file which stores config info', function() {
 	it('exists', function() {
@@ -21,15 +21,7 @@ describe('options variable', function() {
 	});
 });
 
-/* options variable (from tmi.js docs):
-var options = {
-    identity: {
-        username: "Schmoopiie",
-        password: "oauth:a29b68aede41e25179a66c5978b21437"
-    },
-    channels: ["#schmoopiie"]
-};
-*/
+
 describe('Twitch Username', function() {
 	var username = config.options.identity.username;
 
