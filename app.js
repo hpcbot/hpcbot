@@ -14,6 +14,13 @@ var chat = Chat.start();
 var Commands = require ('./lib/commands');
 var commands = Commands.start();
 
+var db = require('./lib/db');
+db.connect();
+
+var User = require ('./lib/user');
+var user = User.start(db);
+
+
 eventbus.on('commands:sortinghat', function(username) {
 
 });
