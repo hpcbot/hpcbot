@@ -11,7 +11,10 @@ var twitch = Twitch.start();
 var Chat = require ('./lib/chat');
 var chat = Chat.start();
 
-
+eventbus.on('chat:command', function(username, command, parameters) {
+	console.log(command);
+	console.log(parameters);
+});
 
 
 // var strings = require('./config/strings.json');
