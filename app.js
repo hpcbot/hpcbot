@@ -9,11 +9,10 @@ var Twitch = require('./lib/twitch');
 var twitch = Twitch.start();
 
 var Chat = require ('./lib/chat');
+var chat = Chat.start();
 
 
-eventbus.on('twitch:chat', function(channel, userstate, message, self) {
-	console.log(message);
-});
+
 
 // var strings = require('./config/strings.json');
 
