@@ -20,9 +20,6 @@ db.connect();
 var User = require ('./lib/user');
 var user = User.start(db);
 
-
-eventbus.on('commands:sortinghat', function(username) {
-
 });
 
 
