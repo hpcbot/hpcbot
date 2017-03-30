@@ -38,3 +38,6 @@ jspm_packages
 
 # dotenv config file
 .env
+
+# Redis db
+dump.rdb

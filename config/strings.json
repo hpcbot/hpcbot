@@ -17,7 +17,7 @@
 	},
 	"sorting": {
 		"congrats":"Congratulations ",
-		"joined_house":" You have joined House ",
+		"joined_house":". You have joined House ",
 		"user_already_sorted": "You've already been sorted! Are you trying to dishonour you're house?!",
 		"is_a": " is a "
 	},
