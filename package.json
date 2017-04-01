@@ -32,6 +32,7 @@
   },
   "license":"GPL-3.0",
   "devDependencies": {
-    "mocha": "2.2.5"
+    "mocha": "*",
+    "chai": "*"
   }
 }
