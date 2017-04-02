@@ -3,10 +3,10 @@ node_js:
  - "6"
 services:
  - redis-server
- addons:
-    apt:
-        packages:
-            - sshpass
+addons:
+  apt:
+    packages:
+      - sshpass
 after_success:
  - test $TRAVIS_PULL_REQUEST == "false" && test $TRAVIS_BRANCH == "travis-ci" && export SSHPASS=$DEPLOY_P
  - test $TRAVIS_PULL_REQUEST == "false" && test $TRAVIS_BRANCH == "travis-ci" && sshpass -e ssh $DEPLOY_USER@$DEPLOY_HOST cd /srv/hpc-bot; git status
