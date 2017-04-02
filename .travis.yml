@@ -8,5 +8,5 @@ addons:
     packages:
       - sshpass
 after_success:
- - test $TRAVIS_PULL_REQUEST == "false" && test $TRAVIS_BRANCH == "travis-ci" && export SSHPASS=$DEPLOY_P
- - test $TRAVIS_PULL_REQUEST == "false" && test $TRAVIS_BRANCH == "travis-ci" && sshpass -e ssh $DEPLOY_USER@$DEPLOY_HOST cd /srv/hpc-bot; git status
+ - export SSHPASS=$DEPLOY_P
+ - sshpass -e ssh $DEPLOY_USER@$DEPLOY_HOST /srv/hpc-bot git status
