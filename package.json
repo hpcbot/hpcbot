@@ -33,6 +33,7 @@
   "license":"GPL-3.0",
   "devDependencies": {
     "mocha": "*",
-    "chai": "*"
+    "chai": "*",
+    "sinon": "*"
   }
 }
