@@ -3,10 +3,3 @@ node_js:
  - "6"
 services:
  - redis-server
-addons:
-  apt:
-    packages:
-      - sshpass
-after_success:
- - export SSHPASS=$DEPLOY_P
- - sshpass -e ssh $DEPLOY_USER@$DEPLOY_HOST /srv/hpc-bot git status
