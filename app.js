@@ -24,6 +24,3 @@ db.connect();
 
 var User = require ('./lib/user');
 var user = User.start(db);
-
-var Channel = require ('./lib/channel');
-var channel = Channel.start(db);
