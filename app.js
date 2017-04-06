@@ -6,7 +6,7 @@ var eventbus = require('./lib/eventbus'); // Global event bus that modules can p
 
 // Initialize Twitch connection
 var tmi = require("tmi.js");	// Initialize tmi.js here so we can inject it during testing
-var config = require(".lib/twitch/config/tmi-options.js");
+var config = require("./lib/twitch/config/tmi-options.js");
 var twitchClient = new tmi.client(config.options);
 twitchClient.connect();
 

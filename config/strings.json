@@ -25,6 +25,10 @@
 		"muggle":" is a muggle! How IMBARASSING",
 		"cannot_find": "I'm sorry, I can't find a house for "
 	},
+	"commends": {
+		"user_has":" has ",
+		"commends": " commends! Are you jealus?"
+	},
 	"general": {
 		"exclamation": "!",
 		"newline": "                                        "
