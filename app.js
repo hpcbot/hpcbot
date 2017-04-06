@@ -22,5 +22,10 @@ var commands = Commands.start();
 var db = require('./lib/db');
 db.connect();
 
-var User = require ('./lib/user');
+var User = require('./lib/models/user');
 var user = User.start(db);
+
+
+// Load Commands
+var Rules = require('./lib/commands/rules');
+var rules = Rules.start();
