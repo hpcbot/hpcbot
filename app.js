@@ -19,6 +19,7 @@ var chat = Chat.start(eventbus);
 var Commands = require ('./lib/commands');
 var commands = Commands.start(eventbus);
 
+// Load Models
 var db = require('./lib/db');
 db.connect();
 
@@ -26,7 +27,7 @@ var User = require('./lib/models/user');
 var user = User.start(eventbus, db);
 
 
-// Load Commands
+// Load Command Modules
 var Rules = require('./lib/commands/rules');
 var rules = Rules.start(eventbus);
 
