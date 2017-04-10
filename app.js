@@ -23,7 +23,7 @@ var db = require('./lib/db');
 db.connect();
 
 var User = require('./lib/models/user');
-var user = User.start(db);
+var user = User.start(eventbus, db);
 
 
 // Load Commands
@@ -31,4 +31,4 @@ var Rules = require('./lib/commands/rules');
 var rules = Rules.start(eventbus);
 
 var House = require('./lib/commands/house');
-var house = House.start(db);
+var house = House.start(eventbus, db);
