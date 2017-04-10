@@ -28,7 +28,7 @@ var user = User.start(db);
 
 // Load Commands
 var Rules = require('./lib/commands/rules');
-var rules = Rules.start();
+var rules = Rules.start(eventbus);
 
 var House = require('./lib/commands/house');
 var house = House.start(db);
