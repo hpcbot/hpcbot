@@ -11,7 +11,7 @@ var twitchClient = new tmi.client(config.options);
 twitchClient.connect();
 
 var Twitch = require('./lib/twitch');
-var twitch = Twitch.start(twitchClient, config.options.channels[0]);
+var twitch = Twitch.start(eventbus, twitchClient, config.options.channels[0]);
 
 var Chat = require ('./lib/chat');
 var chat = Chat.start(eventbus);
