@@ -14,7 +14,7 @@ var Twitch = require('./lib/twitch');
 var twitch = Twitch.start(twitchClient, config.options.channels[0]);
 
 var Chat = require ('./lib/chat');
-var chat = Chat.start();
+var chat = Chat.start(eventbus);
 
 var Commands = require ('./lib/commands');
 var commands = Commands.start();
@@ -29,3 +29,6 @@ var user = User.start(db);
 // Load Commands
 var Rules = require('./lib/commands/rules');
 var rules = Rules.start();
+
+var House = require('./lib/commands/house');
+var house = House.start(db);
