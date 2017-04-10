@@ -33,3 +33,9 @@ var rules = Rules.start(eventbus);
 
 var House = require('./lib/commands/house');
 var house = House.start(eventbus, db);
+
+var Join = require('./lib/commands/join');
+var join = Join.start(eventbus, db);
+
+var Commends = require('./lib/commands/commends');
+var commends = Commends.start(eventbus, db);

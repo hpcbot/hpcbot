@@ -27,10 +27,11 @@
 	},
 	"commends": {
 		"user_has":" has ",
-		"commends": " commends! Are you jealus?"
+		"commends": " commends!",
+		"jealous": " Are you jealus?",
+		"cant_find": "I'm sorry, I can't find "
 	},
 	"general": {
-		"exclamation": "!",
-		"newline": "                                        "
+		"exclamation": "!"
 	}
 }
