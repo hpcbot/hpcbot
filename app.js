@@ -17,7 +17,7 @@ var Chat = require ('./lib/chat');
 var chat = Chat.start(eventbus);
 
 var Commands = require ('./lib/commands');
-var commands = Commands.start();
+var commands = Commands.start(eventbus);
 
 var db = require('./lib/db');
 db.connect();
