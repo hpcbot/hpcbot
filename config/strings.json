@@ -27,13 +27,13 @@
 	},
 	"commends": {
 		"user_has":" has ",
-		"commends": " commends!",
+		"commends": " commends. What a player!",
 		"jealous": " Are you jealus?",
 		"cant_find": "I'm sorry, I can't find ",
 		"saved": "Your commends are saved: ",
 		"error": "Error saving commends: ",
 		"non_number": "please make sure to use a number",
-		"no_parameter": "please supply the number of cmomends !setcommends <number>"
+		"no_parameter": "please supply the number of commends !setcommends <number>"
 	},
 	"general": {
 		"exclamation": "!"

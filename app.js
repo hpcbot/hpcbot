@@ -16,9 +16,6 @@ var twitch = Twitch.start(eventbus, twitchClient, config.options.channels[0]);
 var Chat = require ('./lib/chat');
 var chat = Chat.start(eventbus);
 
-var Commands = require ('./lib/commands');
-var commands = Commands.start(eventbus);
-
 // Load Models
 var db = require('./lib/db');
 db.connect();
