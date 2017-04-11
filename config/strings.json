@@ -29,7 +29,11 @@
 		"user_has":" has ",
 		"commends": " commends!",
 		"jealous": " Are you jealus?",
-		"cant_find": "I'm sorry, I can't find "
+		"cant_find": "I'm sorry, I can't find ",
+		"saved": "Your commends are saved: ",
+		"error": "Error saving commends: ",
+		"non_number": "please make sure to use a number",
+		"no_parameter": "please supply the number of cmomends !setcommends <number>"
 	},
 	"general": {
 		"exclamation": "!"
