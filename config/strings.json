@@ -33,7 +33,8 @@
 		"saved": "Your commends are saved: ",
 		"error": "Error saving commends: ",
 		"non_number": "please make sure to use a number",
-		"no_parameter": "please supply the number of commends !setcommends <number>"
+		"no_parameter": "please supply the number of commends !setcommends <number>",
+		"no_commends": " has no commends :("
 	},
 	"general": {
 		"exclamation": "!"
