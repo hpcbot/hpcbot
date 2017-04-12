@@ -36,6 +36,12 @@
 		"no_parameter": "please supply the number of commends !setcommends <number>",
 		"no_commends": " has no commends :("
 	},
+	"status": {
+		"overview": "Status for ",
+		"house": "House: ",
+		"commends": "Commends: ",
+		"cant_find": "I'm sorry, I can't find status for "
+	},
 	"general": {
 		"exclamation": "!"
 	}

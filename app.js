@@ -46,3 +46,6 @@ Join.start(eventbus, User);
 
 var Commends = require('./lib/commands/commends');
 Commends.start(eventbus, User);
+
+var Status = require('./lib/commands/status');
+Status.start(eventbus, User);
