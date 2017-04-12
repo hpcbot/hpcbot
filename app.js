@@ -35,4 +35,4 @@ var Join = require('./lib/commands/join');
 Join.start(eventbus, User);
 
 var Commends = require('./lib/commands/commends');
-Commends.start(eventbus, db);
+Commends.start(eventbus, User);
