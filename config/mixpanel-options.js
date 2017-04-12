@@ -4,7 +4,7 @@
 // Example: bdickason
 var MIXPANEL = process.env.MIXPANEL;
 
-if(!HPC_USERNAME) {
+if(!MIXPANEL) {
 	console.log("Warning: MIXPANEL is not set in your .env file");
 	console.log("Please add your mixpanel key if you want to log events and errors");
 }
