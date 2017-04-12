@@ -11,28 +11,28 @@ var twitchClient = new tmi.client(config.options);
 twitchClient.connect();
 
 var Twitch = require('./lib/twitch');
-var twitch = Twitch.start(eventbus, twitchClient, config.options.channels[0]);
+Twitch.start(eventbus, twitchClient, config.options.channels[0]);
 
 var Chat = require ('./lib/chat');
-var chat = Chat.start(eventbus);
+Chat.start(eventbus);
 
 // Load Models
 var db = require('./lib/db');
 db.connect();
 
 var User = require('./lib/models/user');
-var user = User.start(eventbus, db);
+User.start(db);
 
 
 // Load Command Modules
 var Rules = require('./lib/commands/rules');
-var rules = Rules.start(eventbus);
+Rules.start(eventbus);
 
 var House = require('./lib/commands/house');
-var house = House.start(eventbus, db);
+House.start(eventbus, User);
 
 var Join = require('./lib/commands/join');
-var join = Join.start(eventbus, db);
+Join.start(eventbus, User);
 
 var Commends = require('./lib/commands/commends');
-var commends = Commends.start(eventbus, db);
+Commends.start(eventbus, User);
