@@ -1,4 +1,13 @@
 doctype html
 html(lang="en")
-	body
-		h1 #{user} is a proud member of #{house} !
+	body(bgcolor=transparent)
+		div.sortinghat
+			span#username
+				| 
+			|
+			| is a proud member of 
+			span#house_text
+				| 
+			|!
+
+			img(src=house_image)
