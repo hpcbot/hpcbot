@@ -29,8 +29,9 @@
     "dotenv": "4.0.0",
     "express": "4.15.2",
     "ioredis": "2.5.0",
-    "pug": "*",
     "mixpanel": "0.7.0",
+    "pug": "*",
+    "socket.io": "1.7.3",
     "tmi.js": "1.1.2"
   },
   "license":"GPL-3.0",
