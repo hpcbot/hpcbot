@@ -1,6 +1,11 @@
 doctype html
 html(lang="en")
+	head
+		script(src='/js/jquery-3.2.1.min.js')
+		script(src='/js/overlays.js')
+		link(rel='stylesheet' href='/css/style.css')
 	body(bgcolor=transparent)
+		button#clickme
 		div.sortinghat
 			span#username
 				| 
@@ -10,4 +15,5 @@ html(lang="en")
 				| 
 			|!
 
-			img(src=house_image)
+			img(src=house_image)#house_logo
+
