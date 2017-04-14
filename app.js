@@ -49,3 +49,8 @@ Commends.start(eventbus, User);
 
 var Status = require('./lib/commands/status');
 Status.start(eventbus, User);
+
+
+// Load Server
+var Server = require('./lib/server');
+Server.start(eventbus);
