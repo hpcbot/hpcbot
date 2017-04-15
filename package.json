@@ -9,8 +9,8 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "test": "mocha './lib/**/*.spec.js'",
-    "testclient": "export PHANTOMJS_EXECUTABLE='./node_modules/.bin/phantomjs'; ./node_modules/casperjs/bin/casperjs test ./lib/server/static/js/overlays.test.js || true"
+    "test": "./node_modules/.bin/gulp test",
+    "mocha": "./node_modules/.bin/gulp mocha"
   },
   "engines": {
     "node": ">=4.4.0"

@@ -14,6 +14,11 @@ gulp.task('testclient', ['server', 'casper'], function() {
 	process.exit(1);
 });
 
+gulp.task('watch', function() {
+	// Run server-side tests whenever a server-side test changes
+	gulp.watch(['lib/**/*.js', '!*.test.js', '!lib/server/static/*.js'], ['mocha']);
+});
+
 gulp.task('mocha', function() {
 	// Run server-side tests
 	return gulp
