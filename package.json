@@ -10,7 +10,7 @@
   "scripts": {
     "start": "node app.js",
     "test": "mocha './lib/**/*.spec.js'",
-    "testclient": "./node_modules/.bin/phantomjs ./node_modules/mocha-phantomjs-core/mocha-phantomjs-core.js ./lib/server/server.spec.html || true"
+    "testclient": "export PHANTOMJS_EXECUTABLE='./node_modules/.bin/phantomjs'; ./node_modules/casperjs/bin/casperjs test ./lib/server/static/js/overlays.spec.js || true"
   },
   "engines": {
     "node": ">=4.4.0"
@@ -41,6 +41,6 @@
     "chai": "*",
     "sinon": "*",
     "phantomjs": "*",
-    "mocha-phantomjs-core": "*"
+    "casperjs": "*"
   }
 }
