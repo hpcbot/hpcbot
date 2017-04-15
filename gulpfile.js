@@ -4,23 +4,32 @@ var nodemon = require('gulp-nodemon');
 var mocha = require('gulp-mocha');
 var casper = require('gulp-casperjs-local').default;
 
-gulp.task('test', function() {
-	return gulp
-		.src(['lib/**/*.spec.js'])
-		.pipe(mocha());
+/* Tests */
+gulp.task('test', ['mocha'], function() {
+	gulp.run('testclient');
+	// process.exit(1);
 });
 
 gulp.task('testclient', ['server', 'casper'], function() {
 	process.exit(1);
 });
 
+gulp.task('mocha', function() {
+	// Run server-side tests
+	return gulp
+		.src(['lib/**/*.spec.js'])
+		.pipe(mocha());
+});
+
 gulp.task('casper', function() {
+	// Run client-side tests
 	return gulp
 		.src(['lib/**/*.test.js'])
 		.pipe(casper());
 });
 
-gulp.task('app', function() {
+/* Launch the app or parts of it */
+gulp.task('start', function() {
   // Start the app
   nodemon({
   	script: 'app.js'
