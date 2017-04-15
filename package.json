@@ -9,8 +9,7 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "test": "./node_modules/.bin/gulp test",
-    "mocha": "./node_modules/.bin/gulp mocha"
+    "test": "./node_modules/.bin/gulp test"
   },
   "engines": {
     "node": ">=4.4.0"
