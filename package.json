@@ -43,6 +43,7 @@
     "phantomjs": "*",
     "casperjs": "*",
     "gulp": "*",
-    "gulp-nodemon": "*"
+    "gulp-nodemon": "*",
+    "gulp-mocha": "*"
   }
 }
