@@ -10,7 +10,7 @@
   "scripts": {
     "start": "node app.js",
     "test": "mocha './lib/**/*.spec.js'",
-    "testclient": "export PHANTOMJS_EXECUTABLE='./node_modules/.bin/phantomjs'; ./node_modules/casperjs/bin/casperjs test ./lib/server/static/js/overlays.spec.js || true"
+    "testclient": "export PHANTOMJS_EXECUTABLE='./node_modules/.bin/phantomjs'; ./node_modules/casperjs/bin/casperjs test ./lib/server/static/js/overlays.test.js || true"
   },
   "engines": {
     "node": ">=4.4.0"
@@ -44,6 +44,7 @@
     "casperjs": "*",
     "gulp": "*",
     "gulp-nodemon": "*",
-    "gulp-mocha": "*"
+    "gulp-mocha": "*",
+    "gulp-casperjs-local": "*"
   }
 }
