@@ -9,7 +9,7 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "test": "mocha './lib/**/*.spec.js'"
+    "test": "./node_modules/.bin/gulp test"
   },
   "engines": {
     "node": ">=4.4.0"
@@ -30,7 +30,7 @@
     "express": "4.15.2",
     "ioredis": "2.5.0",
     "mixpanel": "0.7.0",
-    "pug": "*",
+    "pug": "2.0.0-beta11",
     "socket.io": "1.7.3",
     "tmi.js": "1.1.2"
   },
@@ -38,6 +38,12 @@
   "devDependencies": {
     "mocha": "*",
     "chai": "*",
-    "sinon": "*"
+    "sinon": "*",
+    "phantomjs": "*",
+    "casperjs": "*",
+    "gulp": "*",
+    "gulp-nodemon": "*",
+    "gulp-mocha": "*",
+    "gulp-casperjs-local": "*"
   }
 }
