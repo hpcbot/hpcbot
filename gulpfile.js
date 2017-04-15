@@ -37,7 +37,9 @@ gulp.task('casper', function() {
 	// Run client-side testrunner (needs server)
 	return gulp
 		.src(['lib/**/*.test.js'])
-		.pipe(casper());
+		.pipe(casper({
+			verbose: true
+		})); 
 });
 
 /* Launch the app or parts of it */
