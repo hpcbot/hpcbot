@@ -13,7 +13,7 @@ gulp.task('test', ['mocha'], function() {
 
 gulp.task('testclient', ['server', 'casper'], function() {
 	// Run client side tests once
-	process.exit(1);
+	process.exit(0);
 });
 
 gulp.task('watch', function() {
