@@ -41,6 +41,8 @@
     "chai": "*",
     "sinon": "*",
     "phantomjs": "*",
-    "casperjs": "*"
+    "casperjs": "*",
+    "gulp": "*",
+    "gulp-nodemon": "*"
   }
 }
