@@ -51,6 +51,13 @@ var Status = require('./lib/commands/status');
 Status.start(eventbus, User);
 
 
-// Load Server
-var Server = require('./lib/server');
-Server.start(eventbus);
+// Configure overlay server
+var options = { 
+    events: eventbus // Pass in our eventbus so we can call events directly
+};
+
+var Overlays = require('../twitch-overlay');
+Overlays.start(options);
+
+// Initialize individual overlays
+Overlays.add(House.overlay);
