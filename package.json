@@ -39,6 +39,7 @@
     "sinon": "*",
     "gulp": "*",
     "gulp-nodemon": "*",
-    "gulp-mocha": "*"
+    "gulp-mocha": "*",
+    "gulp-casperjs-local": "*"
   }
 }
