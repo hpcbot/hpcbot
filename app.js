@@ -52,11 +52,11 @@ Status.start(eventbus, User);
 
 
 // Configure overlay server
-var options = { 
+var options = {
     events: eventbus // Pass in our eventbus so we can call events directly
 };
 
-var Overlays = require('../twitch-overlay');
+var Overlays = require('twitch-overlay');
 Overlays.start(options);
 
 // Initialize individual overlays
