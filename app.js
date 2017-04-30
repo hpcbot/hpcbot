@@ -11,7 +11,7 @@ var twitchClient = new tmi.client(twitchConfig.options);
 twitchClient.connect();
 
 // Initialize Mixpanel for logging
-var Mixpanel = require('mixpanel');
+var Mixpanel = require('mixpanel'); 
 var mixpanelConfig = require('./config/mixpanel-options.js');
 
 var mixpanel;
