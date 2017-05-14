@@ -31,7 +31,7 @@
     "mixpanel": "0.7.0",
     "pug": "2.0.0-beta11",
     "tmi.js": "1.1.2",
-    "twitch-overlay": "*"
+    "twitch-overlay": "0.0.4"
   },
   "license":"GPL-3.0",
   "devDependencies": {
