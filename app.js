@@ -53,6 +53,9 @@ Status.start(eventbus, User);
 var Powermove = require('./lib/commands/powermove');
 Powermove.start(eventbus);
 
+var TwoRax = require('./lib/commands/tworax');
+TwoRax.start(eventbus);
+
 
 // Configure overlay server
 var options = {
@@ -66,3 +69,4 @@ Overlays.start(options);
 // Initialize individual overlays
 Overlays.add(House.overlay);
 Overlays.add(Powermove.overlay);
+Overlays.add(TwoRax.overlay);
