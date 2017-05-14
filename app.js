@@ -11,7 +11,7 @@ var twitchClient = new tmi.client(twitchConfig.options);
 twitchClient.connect();
 
 // Initialize Mixpanel for logging
-var Mixpanel = require('mixpanel'); 
+var Mixpanel = require('mixpanel');
 var mixpanelConfig = require('./config/mixpanel-options.js');
 
 var mixpanel;
@@ -50,6 +50,9 @@ Commends.start(eventbus, User);
 var Status = require('./lib/commands/status');
 Status.start(eventbus, User);
 
+var Powermove = require('./lib/commands/powermove');
+Powermove.start(eventbus);
+
 
 // Configure overlay server
 var options = {
@@ -57,7 +60,9 @@ var options = {
 };
 
 var Overlays = require('twitch-overlay');
+// var Overlays = require('../twitch-overlay');
 Overlays.start(options);
 
 // Initialize individual overlays
 Overlays.add(House.overlay);
+Overlays.add(Powermove.overlay);
