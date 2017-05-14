@@ -53,16 +53,20 @@ Status.start(eventbus, User);
 var Powermove = require('./lib/commands/powermove');
 Powermove.start(eventbus);
 
+var TwoRax = require('./lib/commands/tworax');
+TwoRax.start(eventbus);
+
 
 // Configure overlay server
 var options = {
     events: eventbus // Pass in our eventbus so we can call events directly
 };
 
-var Overlays = require('twitch-overlay');
-// var Overlays = require('../twitch-overlay');
+// var Overlays = require('twitch-overlay');
+var Overlays = require('../twitch-overlay');
 Overlays.start(options);
 
 // Initialize individual overlays
 Overlays.add(House.overlay);
 Overlays.add(Powermove.overlay);
+Overlays.add(TwoRax.overlay);
