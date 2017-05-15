@@ -60,14 +60,16 @@ TwoRax.start(eventbus);
 var Text = require('./lib/commands/text');
 Text.start(eventbus);
 
+var Hpcwins = require('./lib/commands/hpcwins');
+Hpcwins.start(eventbus);
 
 // Configure overlay server
 var options = {
     events: eventbus // Pass in our eventbus so we can call events directly
 };
 
-// var Overlays = require('twitch-overlay');
-var Overlays = require('../twitch-overlay');
+var Overlays = require('twitch-overlay');
+// var Overlays = require('../twitch-overlay');
 Overlays.start(options);
 
 // Initialize individual overlays
@@ -75,3 +77,4 @@ Overlays.add(House.overlay);
 Overlays.add(Powermove.overlay);
 Overlays.add(TwoRax.overlay);
 Overlays.add(Text.overlay);
+Overlays.add(Hpcwins.overlay);
