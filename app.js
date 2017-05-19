@@ -63,6 +63,9 @@ Text.start(eventbus);
 var Hpcwins = require('./lib/commands/hpcwins');
 Hpcwins.start(eventbus);
 
+var gift = require('./lib/commands/gift');
+gift.start(eventbus);
+
 // Configure overlay server
 var options = {
     events: eventbus // Pass in our eventbus so we can call events directly
@@ -78,3 +81,4 @@ Overlays.add(Powermove.overlay);
 Overlays.add(TwoRax.overlay);
 Overlays.add(Text.overlay);
 Overlays.add(Hpcwins.overlay);
+Overlays.add(gift.overlay);
