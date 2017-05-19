@@ -9,7 +9,8 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "test": "./node_modules/.bin/gulp test"
+    "test": "./node_modules/.bin/gulp test",
+    "watch": "./node_modules/bin/gulp watch"
   },
   "engines": {
     "node": ">=4.4.0"
