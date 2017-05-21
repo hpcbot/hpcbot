@@ -45,5 +45,17 @@
 	},
 	"general": {
 		"exclamation": "!"
+	},
+	"dice": {
+		"rolling": "Rolling the dice with a ",
+		"sides": " sided die...",
+		"error": "I'm sorry, I can't find a die that fits ",
+		"result": "The result is: "
+	},
+	"coin": {
+		"flipping": "Flipping a coin made of goblin gold...",
+		"result": "The result is: ",
+		"heads": "Heads!",
+		"tails": "Tails!"
 	}
 }
