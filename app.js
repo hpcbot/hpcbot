@@ -35,8 +35,8 @@ User.start(db, mixpanel);
 var Chat = require ('./lib/chat');
 Chat.start(eventbus, mixpanel);
 
-// var Overlays = require('twitch-overlay');
-var Overlays = require('../twitch-overlay');
+var Overlays = require('twitch-overlay');
+// var Overlays = require('../twitch-overlay');
 Overlays.start({events: eventbus});
 
 /* Setup Bot Commands */
@@ -97,6 +97,7 @@ commands.push(Hpcwins);
 
 // !text (External module)
 var Text = require('twitch-overlay-text');
+// var Text = require('../twitch-overlay-text');
 Text.start(eventbus);
 commands.push(Text);
 
