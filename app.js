@@ -77,15 +77,16 @@ var TwoRax = require('./lib/commands/tworax');
 TwoRax.start(eventbus);
 commands.push(TwoRax);
 
-// !text
-var Text = require('twitch-overlay-text');
-Text.start(eventbus);
-commands.push(Text);
-
 // !hpcwins
 var Hpcwins = require('./lib/commands/hpcwins');
 Hpcwins.start(eventbus);
 commands.push(Hpcwins);
+
+// !text (External module)
+var Text = require('twitch-overlay-text');
+Text.start(eventbus);
+commands.push(Text);
+
 
 /* Load chat triggers and stream overlays */
 commands.forEach(function(command) {
