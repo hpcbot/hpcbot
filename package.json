@@ -32,6 +32,7 @@
     "mixpanel": "0.7.0",
     "pug": "2.0.0-beta11",
     "tmi.js": "1.1.2",
+    "chance": "1.0.8",
     "twitch-overlay": "0.2.2",
     "twitch-overlay-text": "0.0.3",
     "twitch-overlay-video": "0.0.3"
