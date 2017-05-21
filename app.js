@@ -35,8 +35,8 @@ User.start(db, mixpanel);
 var Chat = require ('./lib/chat');
 Chat.start(eventbus, mixpanel);
 
-var Overlays = require('twitch-overlay');
-// var Overlays = require('../twitch-overlay');
+// var Overlays = require('twitch-overlay');
+var Overlays = require('../twitch-overlay');
 Overlays.start({events: eventbus});
 
 /* Setup Bot Commands */
@@ -69,7 +69,8 @@ commands.push(Status);
 
 
 // Add video overlay commands
-var videoOverlay = require('twitch-overlay-video');
+// var videoOverlay = require('twitch-overlay-video');
+var videoOverlay = require('../twitch-overlay-video');
 
 // !powermove
 var Powermove = new videoOverlay({
