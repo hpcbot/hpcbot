@@ -67,6 +67,11 @@ var Status = require('./lib/commands/status');
 Status.start(eventbus, User);
 commands.push(Status);
 
+// !dice / !coin
+var Random = require('./lib/commands/random');
+Random.start(eventbus);
+commands.push(Random);
+
 
 // Add video overlay commands
 var videoOverlay = require('twitch-overlay-video');
