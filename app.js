@@ -96,6 +96,14 @@ var Hpcwins = new videoOverlay({
 });
 commands.push(Hpcwins);
 
+// !gift
+var Gift = new videoOverlay({
+	trigger: "gift",
+	eventbus: eventbus,
+	video: "lib/commands/gift/static/video/gift.mp4"
+});
+commands.push(Gift);
+
 // !text (External module)
 var Text = require('twitch-overlay-text');
 // var Text = require('../twitch-overlay-text');
