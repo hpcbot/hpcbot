@@ -24,9 +24,6 @@ mixpanel.channel = twitchConfig.options.channels[0];
 var Twitch = require('./lib/twitch');
 Twitch.start(eventbus, twitchClient, twitchConfig.options.channels[0]);
 
-var Chat = require ('./lib/chat');
-Chat.start(eventbus, mixpanel);
-
 // Load Models
 var db = require('./lib/db');
 db.connect();
@@ -34,51 +31,95 @@ db.connect();
 var User = require('./lib/models/user');
 User.start(db, mixpanel);
 
-
-// Load Command Modules
-var Rules = require('./lib/commands/rules');
-Rules.start(eventbus);
-
-var House = require('./lib/commands/house');
-House.start(eventbus, User);
-
-var Join = require('./lib/commands/join');
-Join.start(eventbus, User);
-
-var Commends = require('./lib/commands/commends');
-Commends.start(eventbus, User);
-
-var Status = require('./lib/commands/status');
-Status.start(eventbus, User);
-
-var Powermove = require('./lib/commands/powermove');
-Powermove.start(eventbus);
-
-var TwoRax = require('./lib/commands/tworax');
-TwoRax.start(eventbus);
-
-var Text = require('./lib/commands/text');
-Text.start(eventbus);
-
-var Hpcwins = require('./lib/commands/hpcwins');
-Hpcwins.start(eventbus);
-
-var gift = require('./lib/commands/gift');
-gift.start(eventbus);
-
-// Configure overlay server
-var options = {
-    events: eventbus // Pass in our eventbus so we can call events directly
-};
+// Bot modules
+var Chat = require ('./lib/chat');
+Chat.start(eventbus, mixpanel);
 
 var Overlays = require('twitch-overlay');
 // var Overlays = require('../twitch-overlay');
-Overlays.start(options);
+Overlays.start({events: eventbus});
 
-// Initialize individual overlays
-Overlays.add(House.overlay);
-Overlays.add(Powermove.overlay);
-Overlays.add(TwoRax.overlay);
-Overlays.add(Text.overlay);
-Overlays.add(Hpcwins.overlay);
-Overlays.add(gift.overlay);
+/* Setup Bot Commands */
+var commands = [];
+
+// Message on Join
+var Join = require('./lib/commands/join');
+Join.start(eventbus, User);
+commands.push(Join);
+
+// !setcommends / !commends
+var Commends = require('./lib/commands/commends');
+Commends.start(eventbus, User);
+commands.push(Commends);
+
+// !rules
+var Rules = require('./lib/commands/rules');
+Rules.start(eventbus);
+commands.push(Rules);
+
+// !house / !sortinghat
+var House = require('./lib/commands/house');
+House.start(eventbus, User);
+commands.push(House);
+
+// !status
+var Status = require('./lib/commands/status');
+Status.start(eventbus, User);
+commands.push(Status);
+
+
+// Add video overlay commands
+var videoOverlay = require('twitch-overlay-video');
+// var videoOverlay = require('../twitch-overlay-video');
+
+// !powermove
+var Powermove = new videoOverlay({
+	trigger: "powermove",
+	eventbus: eventbus,
+	video: "lib/commands/powermove/static/video/powermove.mp4"
+});
+commands.push(Powermove);
+
+// !2rnb
+var Tworax = new videoOverlay({
+	trigger: "tworax",
+	eventbus: eventbus,
+	video: "lib/commands/tworax/static/video/tworax.mp4"
+});
+commands.push(Tworax);
+
+// !hpcwins
+var Hpcwins = new videoOverlay({
+	trigger: "hpcwins",
+	eventbus: eventbus,
+	video: "lib/commands/hpcwins/static/video/hpcwins.mp4"
+});
+commands.push(Hpcwins);
+
+// !gift
+var Gift = new videoOverlay({
+	trigger: "gift",
+	eventbus: eventbus,
+	video: "lib/commands/gift/static/video/gift.mp4"
+});
+commands.push(Gift);
+
+// !text (External module)
+var Text = require('twitch-overlay-text');
+// var Text = require('../twitch-overlay-text');
+Text.start(eventbus);
+commands.push(Text);
+
+/* Load chat triggers and stream overlays */
+commands.forEach(function(command) {
+	// Start listening for chat triggers
+
+	if(command.triggers && (command.triggers.length > 0)) {
+		Chat.addTriggers(command.triggers);
+	}
+
+	// Initialize individual overlays
+	if(command.overlay) {
+		Overlays.add(command.overlay);
+	}
+});
