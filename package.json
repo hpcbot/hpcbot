@@ -32,7 +32,8 @@
     "pug": "2.0.0-beta11",
     "tmi.js": "1.1.2",
     "twitch-overlay": "0.1.0",
-    "twitch-overlay-text": "0.0.1"
+    "twitch-overlay-text": "0.0.1",
+    "twitch-overlay-video": "0.0.2"
   },
   "license":"GPL-3.0",
   "devDependencies": {

@@ -35,8 +35,8 @@ User.start(db, mixpanel);
 var Chat = require ('./lib/chat');
 Chat.start(eventbus, mixpanel);
 
-var Overlays = require('twitch-overlay');
-// // var Overlays = require('../twitch-overlay');
+// var Overlays = require('twitch-overlay');
+var Overlays = require('../twitch-overlay');
 Overlays.start({events: eventbus});
 
 /* Setup Bot Commands */
@@ -67,26 +67,38 @@ var Status = require('./lib/commands/status');
 Status.start(eventbus, User);
 commands.push(Status);
 
+
+// Add video overlay commands
+var videoOverlay = require('twitch-overlay-video');
+
 // !powermove
-var Powermove = require('./lib/commands/powermove');
-Powermove.start(eventbus);
+var Powermove = new videoOverlay({
+	trigger: "powermove",
+	eventbus: eventbus,
+	video: "lib/commands/powermove/static/video/powermove.mp4"
+});
 commands.push(Powermove);
 
 // !2rnb
-var TwoRax = require('./lib/commands/tworax');
-TwoRax.start(eventbus);
-commands.push(TwoRax);
+var Tworax = new videoOverlay({
+	trigger: "tworax",
+	eventbus: eventbus,
+	video: "lib/commands/tworax/static/video/tworax.mp4"
+});
+commands.push(Tworax);
 
 // !hpcwins
-var Hpcwins = require('./lib/commands/hpcwins');
-Hpcwins.start(eventbus);
+var Hpcwins = new videoOverlay({
+	trigger: "hpcwins",
+	eventbus: eventbus,
+	video: "lib/commands/hpcwins/static/video/hpcwins.mp4"
+});
 commands.push(Hpcwins);
 
 // !text (External module)
 var Text = require('twitch-overlay-text');
 Text.start(eventbus);
 commands.push(Text);
-
 
 /* Load chat triggers and stream overlays */
 commands.forEach(function(command) {
@@ -101,23 +113,3 @@ commands.forEach(function(command) {
 		Overlays.add(command.overlay);
 	}
 });
-
-
-
-//
-// var _options = {
-// 	"name": "powermove",
-// 	"event": "stream:powermove",
-// 	"type": "video",
-// 	"video": "commands/powermove/static/video/powermove.mp4",
-// 	"view": "video.pug"	// Optional - inferred from type: video
-// }
-// var Powermove = new Overlays.overlay(_options);
-// Overlays.add(Powermove);
-
-//
-// Overlays.add(House.overlay);
-// Overlays.add(Powermove.overlay);
-// Overlays.add(TwoRax.overlay);
-// Overlays.add(Text.overlay);
-// Overlays.add(Hpcwins.overlay);
