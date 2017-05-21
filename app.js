@@ -78,7 +78,7 @@ TwoRax.start(eventbus);
 commands.push(TwoRax);
 
 // !text
-var Text = require('./lib/commands/text');
+var Text = require('twitch-overlay-text');
 Text.start(eventbus);
 commands.push(Text);
 
