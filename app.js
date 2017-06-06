@@ -31,6 +31,9 @@ db.connect();
 var User = require('./lib/models/user');
 User.start(db, mixpanel);
 
+var Channel = require('./lib/models/channel');
+Channel.start(db, eventbus);
+
 // Bot modules
 var Chat = require ('./lib/chat');
 Chat.start(eventbus, mixpanel);
