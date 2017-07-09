@@ -109,6 +109,14 @@ var Gift = new videoOverlay({
 });
 commands.push(Gift);
 
+// !cheese
+var Cheese = new videoOverlay({
+	trigger: "cheese",
+	eventbus: eventbus,
+	video: "lib/commands/cheese/static/video/cheese.mp4"
+});
+commands.push(Cheese);
+
 // !text (External module)
 var Text = require('twitch-overlay-text');
 // var Text = require('../twitch-overlay-text');
