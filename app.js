@@ -120,6 +120,38 @@ var Cheese = new videoOverlay({
 });
 commands.push(Cheese);
 
+// !smoke
+var Smoke = new videoOverlay({
+	trigger: "smoke",
+	eventbus: eventbus,
+	video: "lib/commands/smoke/static/video/smokegank.mp4"
+});
+commands.push(Smoke);
+
+// !kia
+var Kia = new videoOverlay({
+	trigger: "kia",
+	eventbus: eventbus,
+	video: "lib/commands/kia/static/video/kia.mp4"
+});
+commands.push(Kia);
+
+// !monster
+var Monster = new videoOverlay({
+	trigger: "monster",
+	eventbus: eventbus,
+	video: "lib/commands/smoke/monster/video/monster.mp4"
+});
+commands.push(Monster);
+
+// !muggle
+var Muggle = new videoOverlay({
+	trigger: "muggle",
+	eventbus: eventbus,
+	video: "lib/commands/muggle/static/video/muggle.mp4"
+});
+commands.push(Muggle);
+
 // !text (External module)
 var Text = require('twitch-overlay-text');
 // var Text = require('../twitch-overlay-text');
