@@ -140,7 +140,7 @@ commands.push(Kia);
 var Monster = new videoOverlay({
 	trigger: "monster",
 	eventbus: eventbus,
-	video: "lib/commands/smoke/monster/video/monster.mp4"
+	video: "lib/commands/monster/static/video/monster.mp4"
 });
 commands.push(Monster);
 
