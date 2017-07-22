@@ -10,7 +10,7 @@
   "scripts": {
     "start": "node app.js",
     "test": "./node_modules/.bin/gulp test",
-    "watch": "./node_modules/bin/gulp watch"
+    "watch": "./node_modules/.bin/gulp watch"
   },
   "engines": {
     "node": ">=4.4.0"
@@ -37,7 +37,7 @@
     "twitch-overlay-text": "0.0.3",
     "twitch-overlay-video": "0.0.4"
   },
-  "license":"GPL-3.0",
+  "license": "GPL-3.0",
   "devDependencies": {
     "mocha": "*",
     "chai": "*",
