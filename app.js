@@ -180,3 +180,8 @@ commands.forEach(function(command) {
 		Overlays.add(command.overlay);
 	}
 });
+
+// Sound board - Trigger overlays from a web-based UI
+
+var soundboard = require('./lib/twitch-soundboard');
+soundboard.start({events: eventbus});
