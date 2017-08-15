@@ -152,6 +152,15 @@ var Muggle = new videoOverlay({
 });
 commands.push(Muggle);
 
+// !sac
+var Sacrifice = new videoOverlay({
+	trigger: "sac",
+	eventbus: eventbus,
+	video: "lib/commands/sacrifice/static/video/sacrifice.mp4"
+});
+commands.push(Sacrifice);
+
+
 // !text (External module)
 var Text = require('twitch-overlay-text');
 // var Text = require('../twitch-overlay-text');
