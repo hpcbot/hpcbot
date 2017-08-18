@@ -158,6 +158,15 @@ var Monster = new videoOverlay({
 commands.push(Monster);
 
 
+// !sac
+var Sacrifice = new videoOverlay({
+	trigger: "sac",
+	eventbus: eventbus,
+	video: "lib/commands/sacrifice/static/video/sacrifice.mp4"
+});
+commands.push(Sacrifice);
+
+
 // !text (External module)
 var Text = require('twitch-overlay-text');
 // var Text = require('../twitch-overlay-text');
@@ -177,3 +186,8 @@ commands.forEach(function(command) {
 		Overlays.add(command.overlay);
 	}
 });
+
+// Sound board - Trigger overlays from a web-based UI
+
+var soundboard = require('./lib/twitch-soundboard');
+soundboard.start({events: eventbus});
