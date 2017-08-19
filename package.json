@@ -39,12 +39,12 @@
   },
   "license": "GPL-3.0",
   "devDependencies": {
-    "mocha": "*",
     "chai": "*",
-    "sinon": "*",
     "gulp": "*",
+    "gulp-casperjs-local": "*",
+    "gulp-mocha": "^4.3.1",
     "gulp-nodemon": "*",
-    "gulp-mocha": "*",
-    "gulp-casperjs-local": "*"
+    "mocha": "*",
+    "sinon": "*"
   }
 }
