@@ -57,5 +57,9 @@
 		"result": "The result is: ",
 		"heads": "Heads!",
 		"tails": "Tails!"
+	},
+	"cup": {
+		"standings": "House Cup Standings:",
+		"spacer": ": "
 	}
 }
