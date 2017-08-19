@@ -60,6 +60,7 @@
 	},
 	"cup": {
 		"standings": "House Cup Standings:",
-		"spacer": ": "
+		"spacer": ": ",
+		"not_started": "It looks like the house cup hasn't started yet."
 	}
 }
