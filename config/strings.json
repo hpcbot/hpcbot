@@ -62,6 +62,12 @@
 		"standings": "House Cup Standings:",
 		"spacer": ": ",
 		"not_started": "It looks like the house cup hasn't started yet.",
-		"reset": "The house cup has been reset. May the odds be forever in your favor"
+		"reset": "The house cup has been reset. May the odds be forever in your favor",
+		"added": "Added ",
+		"points_to": " points to ",
+		"error_no_params": "Usage: !add h 5",
+		"error_no_points": "Usage: !add h 5",
+		"error_bad_points": "You can only award 5 or 10 points at a time.",
+		"error_bad_house": "Please enter the first letter of a house (g/h/r/s)."
 	}
 }
