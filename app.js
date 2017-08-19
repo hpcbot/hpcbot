@@ -135,7 +135,7 @@ commands.push(Smoke);
 var Muggle = new videoOverlay({
 	trigger: "muggle",
 	eventbus: eventbus,
-	video: "lib/overlays/events/video/muggle.mp4"
+	video: "lib/overlays/events/muggle.mp4"
 });
 commands.push(Muggle);
 
