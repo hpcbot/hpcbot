@@ -34,6 +34,9 @@ User.start(db, mixpanel);
 var Channel = require('./lib/models/channel');
 Channel.start(db, eventbus);
 
+var Team = require('./lib/models/team');
+Team.start(db, mixpanel);
+
 // Bot modules
 var Chat = require ('./lib/chat');
 Chat.start(eventbus, mixpanel);
@@ -74,6 +77,11 @@ commands.push(Status);
 var Random = require('./lib/commands/random');
 Random.start(eventbus);
 commands.push(Random);
+
+// !cup
+var Housecup = require('./lib/commands/housecup');
+Housecup.start(eventbus, Team);
+commands.push(Housecup);
 
 
 // Add video overlay commands
