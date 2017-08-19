@@ -86,7 +86,7 @@ var videoOverlay = require('twitch-overlay-video');
 var Powermove = new videoOverlay({
 	trigger: "powermove",
 	eventbus: eventbus,
-	video: "overlays/events/powermove.mp4"
+	video: "lib/overlays/events/powermove.mp4"
 });
 commands.push(Powermove);
 
@@ -94,7 +94,7 @@ commands.push(Powermove);
 var Tworax = new videoOverlay({
 	trigger: "tworax",
 	eventbus: eventbus,
-	video: "overlays/events/tworax.mp4"
+	video: "lib/overlays/events/tworax.mp4"
 });
 commands.push(Tworax);
 
@@ -102,7 +102,7 @@ commands.push(Tworax);
 var Hpcwins = new videoOverlay({
 	trigger: "hpcwins",
 	eventbus: eventbus,
-	video: "overlays/events/hpcwins.mp4"
+	video: "lib/overlays/events/hpcwins.mp4"
 });
 commands.push(Hpcwins);
 
@@ -110,7 +110,7 @@ commands.push(Hpcwins);
 var Gift = new videoOverlay({
 	trigger: "gift",
 	eventbus: eventbus,
-	video: "overlays/events/gift.mp4"
+	video: "lib/overlays/events/gift.mp4"
 });
 commands.push(Gift);
 
@@ -118,7 +118,7 @@ commands.push(Gift);
 var Cheese = new videoOverlay({
 	trigger: "cheese",
 	eventbus: eventbus,
-	video: "overlays/events/cheese.mp4"
+	video: "lib/overlays/events/cheese.mp4"
 });
 commands.push(Cheese);
 
@@ -126,7 +126,7 @@ commands.push(Cheese);
 var Smoke = new videoOverlay({
 	trigger: "smoke",
 	eventbus: eventbus,
-	video: "overlays/events/smokegank.mp4"
+	video: "lib/overlays/events/smokegank.mp4"
 });
 commands.push(Smoke);
 
@@ -135,7 +135,7 @@ commands.push(Smoke);
 var Muggle = new videoOverlay({
 	trigger: "muggle",
 	eventbus: eventbus,
-	video: "overlays/events/video/muggle.mp4"
+	video: "lib/overlays/events/muggle.mp4"
 });
 commands.push(Muggle);
 
@@ -145,7 +145,7 @@ commands.push(Muggle);
 var Kia = new videoOverlay({
 	trigger: "kia",
 	eventbus: eventbus,
-	video: "overlays/ads/kia.mp4"
+	video: "lib/overlays/ads/kia.mp4"
 });
 commands.push(Kia);
 
@@ -153,7 +153,7 @@ commands.push(Kia);
 var Monster = new videoOverlay({
 	trigger: "monster",
 	eventbus: eventbus,
-	video: "overlays/ads/monster.mp4"
+	video: "lib/overlays/ads/monster.mp4"
 });
 commands.push(Monster);
 
@@ -162,7 +162,7 @@ commands.push(Monster);
 var Sacrifice = new videoOverlay({
 	trigger: "sac",
 	eventbus: eventbus,
-	video: "lib/commands/sacrifice/static/video/sacrifice.mp4"
+	video: "lib/overlays/events/sacrifice.mp4"
 });
 commands.push(Sacrifice);
 
