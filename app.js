@@ -147,9 +147,53 @@ var Muggle = new videoOverlay({
 });
 commands.push(Muggle);
 
+// !sac
+var Sacrifice = new videoOverlay({
+	trigger: "sac",
+	eventbus: eventbus,
+	video: "lib/overlays/events/sacrifice.mp4"
+});
+commands.push(Sacrifice);
+
+// !first
+var Firstblood = new videoOverlay({
+	trigger: "first",
+	eventbus: eventbus,
+	video: "lib/overlays/events/Firstblood.mp4"
+});
+commands.push(Firstblood);
+
+// !Buyback
+var Buyback = new videoOverlay({
+	trigger: "buyback",
+	eventbus: eventbus,
+	video: "lib/overlays/events/Buyback.mp4"
+});
+commands.push(Buyback);
+
+// !open
+// should be fullscreen
+var Opening = new videoOverlay({
+	trigger: "open",
+	eventbus: eventbus,
+	video: "lib/overlays/events/Opening.mp4"
+});
+commands.push(Opening);
+
+// !close
+// should be fullscreen
+var Closing = new videoOverlay({
+	trigger: "close",
+	eventbus: eventbus,
+	video: "lib/overlays/events/Closing.mp4"
+});
+commands.push(Closing);
+
+
 /* Fake Ads */
 
 // !kia
+// should be fullscreen
 var Kia = new videoOverlay({
 	trigger: "kia",
 	eventbus: eventbus,
@@ -158,6 +202,7 @@ var Kia = new videoOverlay({
 commands.push(Kia);
 
 // !monster
+// should be fullscreen
 var Monster = new videoOverlay({
 	trigger: "monster",
 	eventbus: eventbus,
@@ -165,14 +210,14 @@ var Monster = new videoOverlay({
 });
 commands.push(Monster);
 
-
-// !sac
-var Sacrifice = new videoOverlay({
-	trigger: "sac",
+// !polo
+// should be fullscreen
+var Polo = new videoOverlay({
+	trigger: "polo",
 	eventbus: eventbus,
-	video: "lib/overlays/events/sacrifice.mp4"
+	video: "lib/overlays/ads/Polo.mp4"
 });
-commands.push(Sacrifice);
+commands.push(Polo);
 
 
 // !text (External module)
