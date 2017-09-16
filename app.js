@@ -219,6 +219,69 @@ var Polo = new videoOverlay({
 });
 commands.push(Polo);
 
+/********************************** House Cup *********************************/
+var Ag5 = new videoOverlay({
+	trigger: "ag5",
+	eventbus: eventbus,
+	video: "lib/overlays/events/05PointsGryffindor.mp4"
+});
+commands.push(Ag5);
+
+var Ag10 = new videoOverlay({
+	trigger: "ag10",
+	eventbus: eventbus,
+	video: "lib/overlays/events/10PointsGryffindor.mp4"
+});
+commands.push(Ag10);
+
+var Ah5 = new videoOverlay({
+	trigger: "ah5",
+	eventbus: eventbus,
+	video: "lib/overlays/events/05PointsHufflepuff.mp4"
+});
+commands.push(Ah5);
+
+var Ah10 = new videoOverlay({
+	trigger: "ah10",
+	eventbus: eventbus,
+	video: "lib/overlays/events/10PointsHufflepuff.mp4"
+});
+commands.push(Ah10);
+
+var Ar5 = new videoOverlay({
+	trigger: "ar5",
+	eventbus: eventbus,
+	video: "lib/overlays/events/05PointsRavenclaw.mp4"
+});
+commands.push(Ar5);
+
+var Ar10 = new videoOverlay({
+	trigger: "ar10",
+	eventbus: eventbus,
+	video: "lib/overlays/events/10PointsRavenclaw.mp4"
+});
+commands.push(Ar10);
+
+var As5 = new videoOverlay({
+	trigger: "as5",
+	eventbus: eventbus,
+	video: "lib/overlays/events/05PointsSlytherin.mp4"
+});
+commands.push(As5);
+
+var As10 = new videoOverlay({
+	trigger: "as10",
+	eventbus: eventbus,
+	video: "lib/overlays/events/10PointsSlytherin.mp4"
+});
+commands.push(As10);
+
+var Minuspoints = new videoOverlay({
+	trigger: "minuspoints",
+	eventbus: eventbus,
+	video: "lib/overlays/events/MinusPoints.mp4"
+});
+commands.push(Minuspoints);
 
 // !text (External module)
 var Text = require('twitch-overlay-text');
