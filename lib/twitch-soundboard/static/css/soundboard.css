@@ -1,6 +1,6 @@
 .border {
   float: left;
-  width: 15%;
+  width: 20%;
   margin: 1em;
   border: solid black 10px;
 }
@@ -9,12 +9,93 @@
   height: 40px;
   font-size: 30px;
   color: blue;
+  padding: 0px 5px;
+  font-weight: bold;
+}
+
+.subtitle {
+  text-align: center;
+  height: 30px;
+  font-size: 20px;
+  color: black;
+  padding-top: 20px;
+  font-weight: bold;
 }
 
 button {
   background-color: blue;
   color: white;
   width: 100%;
+  padding: 15px 5px;
+  font-size: 24px;
+  /*/font-weight: bold;*/
+}
+
+.addgbutton {
+  background-color: crimson;
+  color: white;
+  width: 50%;
   padding: 15px 10px;
   font-size: 24px;
+  }
+
+.subgbutton {
+  background-color: crimson;
+  color: white;
+  width: 50%;
+  padding: 15px 10px;
+  font-size: 24px;
+  opacity: 0.6;
+}
+
+.addhbutton {
+  background-color: yellow;
+  color: black;
+  width: 50%;
+  padding: 15px 10px;
+  font-size: 24px;
+}
+
+.subhbutton {
+  background-color: yellow;
+  color: black;
+  width: 50%;
+  padding: 15px 10px;
+  font-size: 24px;
+  opacity: 0.6;
+}
+
+
+.addrbutton {
+  background-color: blue;
+  color: white;
+  width: 50%;
+  padding: 15px 10px;
+  font-size: 24px;
+}
+
+.subrbutton {
+  background-color: blue;
+  color: white;
+  width: 50%;
+  padding: 15px 10px;
+  font-size: 24px;
+  opacity: 0.6;
+}
+
+.addsbutton {
+  background-color: green;
+  color: black;
+  width: 50%;
+  padding: 15px 10px;
+  font-size: 24px;
+}
+
+.subsbutton {
+  background-color: green;
+  color: black;
+  width: 50%;
+  padding: 15px 10px;
+  font-size: 24px;
+  opacity: 0.6;
 }
