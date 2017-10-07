@@ -83,6 +83,11 @@ var Housecup = require('./lib/commands/housecup');
 Housecup.start(eventbus, Team);
 commands.push(Housecup);
 
+// !hween
+var Halloween = require('./lib/commands/halloween');
+Halloween.start(eventbus, Team);
+commands.push(Halloween);
+
 
 // Add video overlay commands
 var videoOverlay = require('twitch-overlay-video');
@@ -218,6 +223,63 @@ var Polo = new videoOverlay({
 	video: "lib/overlays/ads/Polo.mp4"
 });
 commands.push(Polo);
+/********************************* Halloween **********************************/
+
+var HweenGWin = new videoOverlay({
+	trigger: "hweengwin",
+	eventbus: eventbus,
+	video: "lib/overlays/events/HweenGWin.mp4"
+});
+commands.push(HweenGWin);
+
+var HweenGLose = new videoOverlay({
+	trigger: "hweenglose",
+	eventbus: eventbus,
+	video: "lib/overlays/events/HweenGLose.mp4"
+});
+commands.push(HweenGLose);
+
+var HweenHWin = new videoOverlay({
+	trigger: "hweenhwin",
+	eventbus: eventbus,
+	video: "lib/overlays/events/HweenHWin.mp4"
+});
+commands.push(HweenHWin);
+
+var HweenHLose = new videoOverlay({
+	trigger: "hweenhlose",
+	eventbus: eventbus,
+	video: "lib/overlays/events/HweenHLose.mp4"
+});
+commands.push(HweenHLose);
+
+var HweenRWin = new videoOverlay({
+	trigger: "hweenrwin",
+	eventbus: eventbus,
+	video: "lib/overlays/events/HweenRWin.mp4"
+});
+commands.push(HweenRWin);
+
+var HweenRLose = new videoOverlay({
+	trigger: "hweenrlose",
+	eventbus: eventbus,
+	video: "lib/overlays/events/HweenRLose.mp4"
+});
+commands.push(HweenRLose);
+
+var HweenSWin = new videoOverlay({
+	trigger: "hweenswin",
+	eventbus: eventbus,
+	video: "lib/overlays/events/HweenSWin.mp4"
+});
+commands.push(HweenSWin);
+
+var HweenSLose = new videoOverlay({
+	trigger: "hweenslose",
+	eventbus: eventbus,
+	video: "lib/overlays/events/HweenSLose.mp4"
+});
+commands.push(HweenSLose);
 
 /********************************** House Cup *********************************/
 var Ag5 = new videoOverlay({
@@ -282,6 +344,34 @@ var Minuspoints = new videoOverlay({
 	video: "lib/overlays/events/MinusPoints.mp4"
 });
 commands.push(Minuspoints);
+
+var Cupgwins = new videoOverlay({
+	trigger: "cupgwins",
+	eventbus: eventbus,
+	video: "lib/overlays/events/GryffindorWins.mp4"
+});
+commands.push(Cupgwins);
+
+var Cuphwins = new videoOverlay({
+	trigger: "cuphwins",
+	eventbus: eventbus,
+	video: "lib/overlays/events/HufflepuffWins.mp4"
+});
+commands.push(Cuphwins);
+
+var Cuprwins = new videoOverlay({
+	trigger: "cuprwins",
+	eventbus: eventbus,
+	video: "lib/overlays/events/RavenclawWins.mp4"
+});
+commands.push(Cuprwins);
+
+var Cupswins = new videoOverlay({
+	trigger: "cupswins",
+	eventbus: eventbus,
+	video: "lib/overlays/events/SlytherinWins.mp4"
+});
+commands.push(Cupswins);
 
 // !text (External module)
 var Text = require('twitch-overlay-text');
