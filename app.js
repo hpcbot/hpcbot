@@ -32,10 +32,13 @@ var User = require('./lib/models/user');
 User.start(db, mixpanel);
 
 var Channel = require('./lib/models/channel');
-Channel.start(db, eventbus);
+Channel.start(db, twitchConfig.options.identity.username, eventbus);
 
 var Team = require('./lib/models/team');
 Team.start(db, mixpanel);
+
+var Resource = require('./lib/models/resource');
+Resource.start(db, mixpanel);
 
 // Bot modules
 var Chat = require ('./lib/chat');
@@ -52,6 +55,11 @@ var commands = [];
 var Join = require('./lib/commands/join');
 Join.start(eventbus, User);
 commands.push(Join);
+
+// Goblin Gold
+var Gold = require('./lib/commands/gold');
+Gold.start(eventbus, Resource, Channel);
+commands.push(Gold);
 
 // !setcommends / !commends
 var Commends = require('./lib/commands/commends');
