@@ -75,8 +75,8 @@
 		"error_bad_house": "Please enter the first letter of a house (g/h/r/s)."
 	},
 	"gold": {
-		"gave": "Gave ",
-		"to_channel": " gold to the channel.",
+		"gave": "You have accrued ",
+		"to_channel": " gold in interest from Gringotts Wizarding Bank.",
 		"error_no_params": "Please specificy an amount of gold to give.",
 		"error_greater_than_zero": "Gold must be greater than zero"
 	}
