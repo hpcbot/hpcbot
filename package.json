@@ -36,7 +36,7 @@
     "tmi.js": "1.1.2",
     "twitch-overlay": "0.2.2",
     "twitch-overlay-text": "0.0.3",
-    "twitch-overlay-video": "0.0.4"
+    "twitch-overlay-video": "0.0.5"
   },
   "license": "GPL-3.0",
   "devDependencies": {
@@ -46,6 +46,6 @@
     "gulp-mocha": "^4.3.1",
     "gulp-nodemon": "*",
     "mocha": "^4.0.1",
-    "sinon": "^4.0.1"
+    "sinon": "^4.0.2"
   }
 }
