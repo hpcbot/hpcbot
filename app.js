@@ -98,8 +98,8 @@ commands.push(Halloween);
 
 
 // Add video overlay commands
-var videoOverlay = require('twitch-overlay-video');
-// var videoOverlay = require('../twitch-overlay-video');
+// var videoOverlay = require('twitch-overlay-video');
+var videoOverlay = require('../twitch-overlay-video');
 
 /* Events */
 
@@ -380,6 +380,13 @@ var Cupswins = new videoOverlay({
 	video: "lib/overlays/events/SlytherinWins.mp4"
 });
 commands.push(Cupswins);
+
+var GoldOverlay = new videoOverlay({
+	trigger: "gold",
+	eventbus: eventbus,
+	video: "lib/overlays/events/gold.mp4"
+});
+commands.push(GoldOverlay);
 
 
 // !text (External module)
