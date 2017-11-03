@@ -22,7 +22,7 @@ if(mixpanelConfig.options) {
 mixpanel.channel = twitchConfig.options.channels[0];
 
 var Twitch = require('./lib/twitch');
-Twitch.start(eventbus, twitchClient, twitchConfig.options.channels[0]);
+Twitch.start(eventbus, twitchClient, twitchConfig.options.channels[0], twitchConfig.options.clientID);
 
 // Load Models
 var db = require('./lib/db');
@@ -32,7 +32,7 @@ var User = require('./lib/models/user');
 User.start(db, mixpanel);
 
 var Channel = require('./lib/models/channel');
-Channel.start(db, twitchConfig.options.identity.username, eventbus);
+Channel.start(db, twitchConfig.options.identity.username, eventbus, Twitch);
 
 var Team = require('./lib/models/team');
 Team.start(db, mixpanel);
