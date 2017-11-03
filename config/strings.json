@@ -41,6 +41,7 @@
 		"overview": "Status for ",
 		"house": "House: ",
 		"commends": "Commends: ",
+		"gold": "Goblin Gold: ",
 		"cant_find": "I'm sorry, I can't find status for "
 	},
 	"general": {
@@ -72,5 +73,11 @@
 		"error_no_points": "Usage: !add h 5",
 		"error_bad_points": "You can only award 5 or 10 points at a time.",
 		"error_bad_house": "Please enter the first letter of a house (g/h/r/s)."
+	},
+	"gold": {
+		"gave": "You have accrued ",
+		"to_channel": " gold in interest from Gringotts Wizarding Bank.",
+		"error_no_params": "Please specificy an amount of gold to give.",
+		"error_greater_than_zero": "Gold must be greater than zero"
 	}
 }
