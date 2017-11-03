@@ -22,7 +22,7 @@ if(mixpanelConfig.options) {
 mixpanel.channel = twitchConfig.options.channels[0];
 
 var Twitch = require('./lib/twitch');
-Twitch.start(eventbus, twitchClient, twitchConfig.options.channels[0]);
+Twitch.start(eventbus, twitchClient, twitchConfig.options.channels[0], twitchConfig.options.clientID);
 
 // Load Models
 var db = require('./lib/db');
@@ -32,10 +32,13 @@ var User = require('./lib/models/user');
 User.start(db, mixpanel);
 
 var Channel = require('./lib/models/channel');
-Channel.start(db, eventbus);
+Channel.start(db, twitchConfig.options.identity.username, eventbus, Twitch);
 
 var Team = require('./lib/models/team');
 Team.start(db, mixpanel);
+
+var Resource = require('./lib/models/resource');
+Resource.start(db, mixpanel);
 
 // Bot modules
 var Chat = require ('./lib/chat');
@@ -52,6 +55,11 @@ var commands = [];
 var Join = require('./lib/commands/join');
 Join.start(eventbus, User);
 commands.push(Join);
+
+// Goblin Gold
+var Gold = require('./lib/commands/gold');
+Gold.start(eventbus, Resource, Channel);
+commands.push(Gold);
 
 // !setcommends / !commends
 var Commends = require('./lib/commands/commends');
@@ -372,6 +380,13 @@ var Cupswins = new videoOverlay({
 	video: "lib/overlays/events/SlytherinWins.mp4"
 });
 commands.push(Cupswins);
+
+var GoldOverlay = new videoOverlay({
+	trigger: "gold",
+	eventbus: eventbus,
+	video: "lib/overlays/events/gold.mp4"
+});
+commands.push(GoldOverlay);
 
 
 // !text (External module)
