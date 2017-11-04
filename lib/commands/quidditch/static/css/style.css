@@ -1,0 +1,8 @@
+.canvas {
+	display:none;
+	color: white;
+}
+
+.wintext strong {
+	font-size: 40px;
+}
