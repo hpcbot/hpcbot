@@ -98,15 +98,15 @@ commands.push(Halloween);
 
 
 // Add video overlay commands
-var videoOverlay = require('twitch-overlay-video');
-// var videoOverlay = require('../twitch-overlay-video');
-
+// var videoOverlay = require('twitch-overlay-video');
+var videoOverlay = require('../twitch-overlay-video');
+videoOverlay.eventbus = eventbus;
 /* Events */
 
 // !powermove
 var Powermove = new videoOverlay({
 	trigger: "powermove",
-	eventbus: eventbus,
+	// eventbus: eventbus,
 	video: "lib/overlays/events/powermove.mp4"
 });
 commands.push(Powermove);
