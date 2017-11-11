@@ -105,252 +105,215 @@ videoOverlay.eventbus = eventbus;
 
 /* Events */
 // !powermove
-var Powermove = new videoOverlay({
+commands.push(new videoOverlay({
 	trigger: "powermove",
 	video: "lib/overlays/events/powermove.mp4"
-});
-commands.push(Powermove);
+}));
 
 // !2rnb
-var Tworax = new videoOverlay({
+commands.push(new videoOverlay({
 	trigger: "tworax",
 	video: "lib/overlays/events/tworax.mp4"
-});
-commands.push(Tworax);
+}));
 
 // !hpcwins
-var Hpcwins = new videoOverlay({
+commands.push(new videoOverlay({
 	trigger: "hpcwins",
 	video: "lib/overlays/events/hpcwins.mp4"
-});
-commands.push(Hpcwins);
+}));
 
 // !gift
-var Gift = new videoOverlay({
+commands.push(new videoOverlay({
 	trigger: "gift",
 	video: "lib/overlays/events/gift.mp4"
-});
-commands.push(Gift);
+}));
 
 // !cheese
-var Cheese = new videoOverlay({
+commands.push(new videoOverlay({
 	trigger: "cheese",
 	video: "lib/overlays/events/cheese.mp4"
-});
-commands.push(Cheese);
+}));
 
 // !smoke
-var Smoke = new videoOverlay({
+commands.push(new videoOverlay({
 	trigger: "smoke",
 	video: "lib/overlays/events/smokegank.mp4"
-});
-commands.push(Smoke);
+}));
 
 
 // !muggle
-var Muggle = new videoOverlay({
+commands.push(new videoOverlay({
 	trigger: "muggle",
 	video: "lib/overlays/events/muggle.mp4"
-});
-commands.push(Muggle);
+}));
 
 // !sac
-var Sacrifice = new videoOverlay({
+commands.push(new videoOverlay({
 	trigger: "sac",
 	video: "lib/overlays/events/sacrifice.mp4"
-});
-commands.push(Sacrifice);
+}));
 
 // !first
-var Firstblood = new videoOverlay({
+commands.push(new videoOverlay({
 	trigger: "first",
 	video: "lib/overlays/events/Firstblood.mp4"
-});
-commands.push(Firstblood);
+}));
 
 // !Buyback
-var Buyback = new videoOverlay({
+commands.push(new videoOverlay({
 	trigger: "buyback",
 	video: "lib/overlays/events/Buyback.mp4"
-});
-commands.push(Buyback);
+}));
 
 // !open
 // should be fullscreen
-var Opening = new videoOverlay({
+commands.push(new videoOverlay({
 	trigger: "open",
 	video: "lib/overlays/events/Opening.mp4"
-});
-commands.push(Opening);
+}));
 
 // !close
 // should be fullscreen
-var Closing = new videoOverlay({
+commands.push(new videoOverlay({
 	trigger: "close",
 	video: "lib/overlays/events/Closing.mp4"
-});
-commands.push(Closing);
+}));
 
 
 /* Fake Ads */
 
 // !kia
 // should be fullscreen
-var Kia = new videoOverlay({
+commands.push(new videoOverlay({
 	trigger: "kia",
 	video: "lib/overlays/ads/kia.mp4"
-});
-commands.push(Kia);
+}));
 
 // !monster
 // should be fullscreen
-var Monster = new videoOverlay({
+commands.push(new videoOverlay({
 	trigger: "monster",
 	video: "lib/overlays/ads/monster.mp4"
-});
-commands.push(Monster);
+}));
 
 // !polo
 // should be fullscreen
-var Polo = new videoOverlay({
+commands.push(new videoOverlay({
 	trigger: "polo",
 	video: "lib/overlays/ads/Polo.mp4"
-});
-commands.push(Polo);
+}));
 /********************************* Halloween **********************************/
 
-var HweenGWin = new videoOverlay({
+commands.push(new videoOverlay({
 	trigger: "hweengwin",
 	video: "lib/overlays/events/HweenGWin.mp4"
-});
-commands.push(HweenGWin);
+}));
 
-var HweenGLose = new videoOverlay({
+commands.push(new videoOverlay({
 	trigger: "hweenglose",
 	video: "lib/overlays/events/HweenGLose.mp4"
-});
-commands.push(HweenGLose);
+}));
 
-var HweenHWin = new videoOverlay({
+commands.push(new videoOverlay({
 	trigger: "hweenhwin",
 	video: "lib/overlays/events/HweenHWin.mp4"
-});
-commands.push(HweenHWin);
+}));
 
-var HweenHLose = new videoOverlay({
+commands.push(new videoOverlay({
 	trigger: "hweenhlose",
 	video: "lib/overlays/events/HweenHLose.mp4"
-});
-commands.push(HweenHLose);
+}));
 
-var HweenRWin = new videoOverlay({
+commands.push(new videoOverlay({
 	trigger: "hweenrwin",
 	video: "lib/overlays/events/HweenRWin.mp4"
-});
-commands.push(HweenRWin);
+}));
 
-var HweenRLose = new videoOverlay({
+commands.push(new videoOverlay({
 	trigger: "hweenrlose",
 	video: "lib/overlays/events/HweenRLose.mp4"
-});
-commands.push(HweenRLose);
+}));
 
-var HweenSWin = new videoOverlay({
+commands.push(new videoOverlay({
 	trigger: "hweenswin",
 	video: "lib/overlays/events/HweenSWin.mp4"
-});
-commands.push(HweenSWin);
+}));
 
-var HweenSLose = new videoOverlay({
+commands.push(new videoOverlay({
 	trigger: "hweenslose",
 	video: "lib/overlays/events/HweenSLose.mp4"
-});
-commands.push(HweenSLose);
+}));
 
 /********************************** House Cup *********************************/
-var Ag5 = new videoOverlay({
+commands.push(new videoOverlay({
 	trigger: "ag5",
 	video: "lib/overlays/events/05PointsGryffindor.mp4"
-});
-commands.push(Ag5);
+}));
 
-var Ag10 = new videoOverlay({
+commands.push(new videoOverlay({
 	trigger: "ag10",
 	video: "lib/overlays/events/10PointsGryffindor.mp4"
-});
-commands.push(Ag10);
+}));
 
-var Ah5 = new videoOverlay({
+commands.push(new videoOverlay({
 	trigger: "ah5",
 	video: "lib/overlays/events/05PointsHufflepuff.mp4"
-});
-commands.push(Ah5);
+}));
 
-var Ah10 = new videoOverlay({
+commands.push(new videoOverlay({
 	trigger: "ah10",
 	video: "lib/overlays/events/10PointsHufflepuff.mp4"
-});
-commands.push(Ah10);
+}));
 
-var Ar5 = new videoOverlay({
+commands.push(new videoOverlay({
 	trigger: "ar5",
 	video: "lib/overlays/events/05PointsRavenclaw.mp4"
-});
-commands.push(Ar5);
+}));
 
-var Ar10 = new videoOverlay({
+commands.push(new videoOverlay({
 	trigger: "ar10",
 	video: "lib/overlays/events/10PointsRavenclaw.mp4"
-});
-commands.push(Ar10);
+}));
 
-var As5 = new videoOverlay({
+commands.push(new videoOverlay({
 	trigger: "as5",
 	video: "lib/overlays/events/05PointsSlytherin.mp4"
-});
-commands.push(As5);
+}));
 
-var As10 = new videoOverlay({
+commands.push(new videoOverlay({
 	trigger: "as10",
 	video: "lib/overlays/events/10PointsSlytherin.mp4"
-});
-commands.push(As10);
+}));
 
-var Minuspoints = new videoOverlay({
+commands.push(new videoOverlay({
 	trigger: "minuspoints",
 	video: "lib/overlays/events/MinusPoints.mp4"
-});
-commands.push(Minuspoints);
+}));
 
-var Cupgwins = new videoOverlay({
+commands.push(new videoOverlay({
 	trigger: "cupgwins",
 	video: "lib/overlays/events/GryffindorWins.mp4"
-});
-commands.push(Cupgwins);
+}));
 
-var Cuphwins = new videoOverlay({
+commands.push(new videoOverlay({
 	trigger: "cuphwins",
 	video: "lib/overlays/events/HufflepuffWins.mp4"
-});
-commands.push(Cuphwins);
+}));
 
-var Cuprwins = new videoOverlay({
+commands.push(new videoOverlay({
 	trigger: "cuprwins",
 	video: "lib/overlays/events/RavenclawWins.mp4"
-});
-commands.push(Cuprwins);
+}));
 
-var Cupswins = new videoOverlay({
+commands.push(new videoOverlay({
 	trigger: "cupswins",
 	video: "lib/overlays/events/SlytherinWins.mp4"
-});
-commands.push(Cupswins);
+}));
 
-var GoldOverlay = new videoOverlay({
+commands.push(new videoOverlay({
 	trigger: "gold",
 	video: "lib/overlays/events/gold.mp4"
-});
-commands.push(GoldOverlay);
+}));
 
 
 // !text (External module)
