@@ -98,8 +98,8 @@ commands.push(Halloween);
 
 
 // Add video overlay commands
-// var videoOverlay = require('twitch-overlay-video');
-var videoOverlay = require('../twitch-overlay-video');
+var videoOverlay = require('twitch-overlay-video');
+// var videoOverlay = require('../twitch-overlay-video');
 videoOverlay.eventbus = eventbus;
 
 
