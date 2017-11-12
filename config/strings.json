@@ -79,5 +79,8 @@
 		"to_channel": " gold in interest from Gringotts Wizarding Bank.",
 		"error_no_params": "Please specificy an amount of gold to give.",
 		"error_greater_than_zero": "Gold must be greater than zero"
+	},
+	"subscribe": {
+		"has_subscribed": " has subscribed!!"
 	}
 }
