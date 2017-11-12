@@ -44,8 +44,8 @@ Resource.start(db, mixpanel);
 var Chat = require ('./lib/chat');
 Chat.start(eventbus, mixpanel);
 
-var Overlays = require('twitch-overlay');
-// var Overlays = require('../twitch-overlay');
+// var Overlays = require('twitch-overlay');
+var Overlays = require('../twitch-overlay');
 Overlays.start({events: eventbus});
 
 /* Setup Bot Commands */
@@ -100,6 +100,11 @@ commands.push(Halloween);
 var Subscribe = require('./lib/commands/subscribe');
 Subscribe.start(eventbus);
 commands.push(Subscribe);
+
+// Quidditch
+var Quidditch = require('./lib/commands/quidditch');
+Quidditch.start(eventbus, Team);
+commands.push(Quidditch);
 
 // Add video overlay commands
 var videoOverlay = require('twitch-overlay-video');
@@ -319,6 +324,30 @@ commands.push(new videoOverlay({
 	video: "lib/overlays/events/gold.mp4"
 }));
 
+/* Quidditch Videos */
+// Gryffindor Wins
+commands.push(new videoOverlay({
+	trigger: "qgw",
+	video: "lib/overlays/events/QuidditchGryffindorWin.mp4"
+}));
+
+// Hufflepuff Wins
+commands.push(new videoOverlay({
+	trigger: "qhw",
+	video: "lib/overlays/events/QuidditchHufflepuffWin.mp4"
+}));
+
+// Ravenclaw Wins
+commands.push(new videoOverlay({
+	trigger: "qrw",
+	video: "lib/overlays/events/QuidditchRavenclawWin.mp4"
+}));
+
+// Slytherin Wins
+commands.push(new videoOverlay({
+	trigger: "qsw",
+	video: "lib/overlays/events/QuidditchSlytherinWin.mp4"
+}));
 
 // !text (External module)
 var Text = require('twitch-overlay-text');
