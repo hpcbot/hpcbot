@@ -27,15 +27,16 @@
     "url": "git://github.com/bdickason/hpc-bot.git"
   },
   "dependencies": {
+    "chance": "1.0.8",
     "dotenv": "4.0.0",
     "ioredis": "2.5.0",
+    "later": "^1.2.0",
     "mixpanel": "0.7.0",
     "pug": "2.0.0-beta11",
     "tmi.js": "1.1.2",
-    "chance": "1.0.8",
     "twitch-overlay": "0.2.2",
     "twitch-overlay-text": "0.0.3",
-    "twitch-overlay-video": "0.0.4"
+    "twitch-overlay-video": "0.0.8"
   },
   "license": "GPL-3.0",
   "devDependencies": {
@@ -45,6 +46,6 @@
     "gulp-mocha": "^4.3.1",
     "gulp-nodemon": "*",
     "mocha": "^4.0.1",
-    "sinon": "^4.0.1"
+    "sinon": "^4.0.2"
   }
 }
