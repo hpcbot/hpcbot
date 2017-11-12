@@ -16,7 +16,7 @@ gulp.task('mocha', function() {
 	// Run server-side tests once
 	return gulp
 		.src(['lib/**/*.spec.js'])
-		.pipe(mocha());
+		.pipe(mocha({ exit: true }));
 });
 
 /* Launch the app or parts of it */
