@@ -103,7 +103,7 @@ commands.push(Subscribe);
 
 // Quidditch
 var Quidditch = require('./lib/commands/quidditch');
-Quidditch.start(eventbus);
+Quidditch.start(eventbus, Team);
 commands.push(Quidditch);
 
 // Add video overlay commands
