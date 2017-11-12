@@ -44,8 +44,8 @@ Resource.start(db, mixpanel);
 var Chat = require ('./lib/chat');
 Chat.start(eventbus, mixpanel);
 
-var Overlays = require('twitch-overlay');
-// var Overlays = require('../twitch-overlay');
+// var Overlays = require('twitch-overlay');
+var Overlays = require('../twitch-overlay');
 Overlays.start({events: eventbus});
 
 /* Setup Bot Commands */
@@ -100,6 +100,11 @@ commands.push(Halloween);
 var Subscribe = require('./lib/commands/subscribe');
 Subscribe.start(eventbus);
 commands.push(Subscribe);
+
+// Quidditch
+var Quidditch = require('./lib/commands/quidditch');
+Quidditch.start(eventbus);
+commands.push(Quidditch);
 
 // Add video overlay commands
 var videoOverlay = require('twitch-overlay-video');
