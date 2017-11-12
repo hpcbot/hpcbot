@@ -324,6 +324,30 @@ commands.push(new videoOverlay({
 	video: "lib/overlays/events/gold.mp4"
 }));
 
+/* Quidditch Videos */
+// Gryffindor Wins
+commands.push(new videoOverlay({
+	trigger: "qgw",
+	video: "lib/overlays/events/QuidditchGryffindorWin.mp4"
+}));
+
+// Hufflepuff Wins
+commands.push(new videoOverlay({
+	trigger: "qhw",
+	video: "lib/overlays/events/QuidditchHufflepuffWin.mp4"
+}));
+
+// Ravenclaw Wins
+commands.push(new videoOverlay({
+	trigger: "qrw",
+	video: "lib/overlays/events/QuidditchRavenclawWin.mp4"
+}));
+
+// Slytherin Wins
+commands.push(new videoOverlay({
+	trigger: "qsw",
+	video: "lib/overlays/events/QuidditchSlytherinWin.mp4"
+}));
 
 // !text (External module)
 var Text = require('twitch-overlay-text');
