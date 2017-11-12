@@ -44,8 +44,8 @@ Resource.start(db, mixpanel);
 var Chat = require ('./lib/chat');
 Chat.start(eventbus, mixpanel);
 
-// var Overlays = require('twitch-overlay');
-var Overlays = require('../twitch-overlay');
+var Overlays = require('twitch-overlay');
+// var Overlays = require('../twitch-overlay');
 Overlays.start({events: eventbus});
 
 /* Setup Bot Commands */
