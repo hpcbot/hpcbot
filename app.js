@@ -96,6 +96,10 @@ var Halloween = require('./lib/commands/halloween');
 Halloween.start(eventbus, Team);
 commands.push(Halloween);
 
+// Subscribers
+var Subscribe = require('./lib/commands/subscribe');
+Subscribe.start(eventbus);
+commands.push(Subscribe);
 
 // Add video overlay commands
 var videoOverlay = require('twitch-overlay-video');
