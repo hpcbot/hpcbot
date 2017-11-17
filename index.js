@@ -1,30 +1,33 @@
 #!/usr/bin/env node
-/* App.js - Main app file for hpc-bot */
+/* index.js - Main app file for hpc-bot */
 
-module.exports = function() {
+module.exports = function(options) {
+	// options.username -- Your twitch username
+	// options.password -- Your twitch oauth hash from http://twitchapps.com/tmi/
+	// options.channel 	-- Your twitch channel
+	// options.clientID	-- Your twitch clientID from https://www.twitch.tv/settings/connections
+	// options.mixpanel -- (optional) Pass in your mixpanel ID to send analytics to mixpanel
+	var config = require('./config/options.js');
+	options = config.validate(options);
 
-	require('dotenv').config();	// Load environment variables from .env
 
 	var eventbus = require('./lib/eventbus'); // Global event bus that modules can pub/sub to
 
 	// Initialize Twitch connection
 	var tmi = require("tmi.js");	// Initialize tmi.js here so we can inject it during testing
-	var twitchConfig = require("./lib/twitch/config/tmi-options.js");
-	var twitchClient = new tmi.client(twitchConfig.options);
+	var twitchClient = new tmi.client(options);
 	twitchClient.connect();
 
 	// Initialize Mixpanel for logging
 	var Mixpanel = require('mixpanel');
-	var mixpanelConfig = require('./config/mixpanel-options.js');
-
 	var mixpanel;
-	if(mixpanelConfig.options) {
-		mixpanel = Mixpanel.init(mixpanelConfig.options);
+	if(options.mixpanel) {
+		mixpanel = Mixpanel.init(options.mixpanel);
+		mixpanel.channel = options.channels[0];
 	}
-	mixpanel.channel = twitchConfig.options.channels[0];
 
 	var Twitch = require('./lib/twitch');
-	Twitch.start(eventbus, twitchClient, twitchConfig.options.channels[0], twitchConfig.options.clientID);
+	Twitch.start(eventbus, twitchClient, options.channels[0], options.clientID);
 
 	// Load Models
 	var db = require('./lib/db');
@@ -34,7 +37,7 @@ module.exports = function() {
 	User.start(db, mixpanel);
 
 	var Channel = require('./lib/models/channel');
-	Channel.start(db, twitchConfig.options.identity.username, eventbus, Twitch);
+	Channel.start(db, options.identity.username, eventbus, Twitch);
 
 	var Team = require('./lib/models/team');
 	Team.start(db, mixpanel);
@@ -375,5 +378,4 @@ module.exports = function() {
 
 	var soundboard = require('./lib/twitch-soundboard');
 	soundboard.start({events: eventbus});
-
 }
