@@ -2,6 +2,7 @@
 /* index.js - Main app file for hpc-bot */
 
 module.exports = function(options) {
+	var path = require('path');
 	// options.username -- Your twitch username
 	// options.password -- Your twitch oauth hash from http://twitchapps.com/tmi/
 	// options.channel 	-- Your twitch channel
@@ -119,78 +120,79 @@ module.exports = function(options) {
 
 	/* Events */
 	// !powermove
+	// commands.push(_overlay);
 	commands.push(new videoOverlay({
 		trigger: "powermove",
-		video: "lib/overlays/events/powermove.mp4"
+		video: path.join(__dirname, "lib/overlays/events/powermove.mp4")
 	}));
 
 	// !2rnb
 	commands.push(new videoOverlay({
 		trigger: "tworax",
-		video: "lib/overlays/events/tworax.mp4"
+		video: path.join(__dirname, "lib/overlays/events/tworax.mp4")
 	}));
 
 	// !hpcwins
 	commands.push(new videoOverlay({
 		trigger: "hpcwins",
-		video: "lib/overlays/events/hpcwins.mp4"
+		video: path.join(__dirname, "lib/overlays/events/hpcwins.mp4")
 	}));
 
 	// !gift
 	commands.push(new videoOverlay({
 		trigger: "gift",
-		video: "lib/overlays/events/gift.mp4"
+		video: path.join(__dirname, "lib/overlays/events/gift.mp4")
 	}));
 
 	// !cheese
 	commands.push(new videoOverlay({
 		trigger: "cheese",
-		video: "lib/overlays/events/cheese.mp4"
+		video: path.join(__dirname, "lib/overlays/events/cheese.mp4")
 	}));
 
 	// !smoke
 	commands.push(new videoOverlay({
 		trigger: "smoke",
-		video: "lib/overlays/events/smokegank.mp4"
+		video: path.join(__dirname, "lib/overlays/events/smokegank.mp4")
 	}));
 
 
 	// !muggle
 	commands.push(new videoOverlay({
 		trigger: "muggle",
-		video: "lib/overlays/events/muggle.mp4"
+		video: path.join(__dirname, "lib/overlays/events/muggle.mp4")
 	}));
 
 	// !sac
 	commands.push(new videoOverlay({
 		trigger: "sac",
-		video: "lib/overlays/events/sacrifice.mp4"
+		video: path.join(__dirname, "lib/overlays/events/sacrifice.mp4")
 	}));
 
 	// !first
 	commands.push(new videoOverlay({
 		trigger: "first",
-		video: "lib/overlays/events/Firstblood.mp4"
+		video: path.join(__dirname, "lib/overlays/events/Firstblood.mp4")
 	}));
 
 	// !Buyback
 	commands.push(new videoOverlay({
 		trigger: "buyback",
-		video: "lib/overlays/events/Buyback.mp4"
+		video: path.join(__dirname, "lib/overlays/events/Buyback.mp4")
 	}));
 
 	// !open
 	// should be fullscreen
 	commands.push(new videoOverlay({
 		trigger: "open",
-		video: "lib/overlays/events/Opening.mp4"
+		video: path.join(__dirname, "lib/overlays/events/Opening.mp4")
 	}));
 
 	// !close
 	// should be fullscreen
 	commands.push(new videoOverlay({
 		trigger: "close",
-		video: "lib/overlays/events/Closing.mp4"
+		video: path.join(__dirname, "lib/overlays/events/Closing.mp4")
 	}));
 
 
@@ -200,158 +202,158 @@ module.exports = function(options) {
 	// should be fullscreen
 	commands.push(new videoOverlay({
 		trigger: "kia",
-		video: "lib/overlays/ads/kia.mp4"
+		video: path.join(__dirname, "lib/overlays/ads/kia.mp4")
 	}));
 
 	// !monster
 	// should be fullscreen
 	commands.push(new videoOverlay({
 		trigger: "monster",
-		video: "lib/overlays/ads/monster.mp4"
+		video: path.join(__dirname, "lib/overlays/ads/monster.mp4")
 	}));
 
 	// !polo
 	// should be fullscreen
 	commands.push(new videoOverlay({
 		trigger: "polo",
-		video: "lib/overlays/ads/Polo.mp4"
+		video: path.join(__dirname, "lib/overlays/ads/Polo.mp4")
 	}));
 	/********************************* Halloween **********************************/
 
 	commands.push(new videoOverlay({
 		trigger: "hweengwin",
-		video: "lib/overlays/events/HweenGWin.mp4"
+		video: path.join(__dirname, "lib/overlays/events/HweenGWin.mp4")
 	}));
 
 	commands.push(new videoOverlay({
 		trigger: "hweenglose",
-		video: "lib/overlays/events/HweenGLose.mp4"
+		video: path.join(__dirname, "lib/overlays/events/HweenGLose.mp4")
 	}));
 
 	commands.push(new videoOverlay({
 		trigger: "hweenhwin",
-		video: "lib/overlays/events/HweenHWin.mp4"
+		video: path.join(__dirname, "lib/overlays/events/HweenHWin.mp4")
 	}));
 
 	commands.push(new videoOverlay({
 		trigger: "hweenhlose",
-		video: "lib/overlays/events/HweenHLose.mp4"
+		video: path.join(__dirname, "lib/overlays/events/HweenHLose.mp4")
 	}));
 
 	commands.push(new videoOverlay({
 		trigger: "hweenrwin",
-		video: "lib/overlays/events/HweenRWin.mp4"
+		video: path.join(__dirname, "lib/overlays/events/HweenRWin.mp4")
 	}));
 
 	commands.push(new videoOverlay({
 		trigger: "hweenrlose",
-		video: "lib/overlays/events/HweenRLose.mp4"
+		video: path.join(__dirname, "lib/overlays/events/HweenRLose.mp4")
 	}));
 
 	commands.push(new videoOverlay({
 		trigger: "hweenswin",
-		video: "lib/overlays/events/HweenSWin.mp4"
+		video: path.join(__dirname, "lib/overlays/events/HweenSWin.mp4")
 	}));
 
 	commands.push(new videoOverlay({
 		trigger: "hweenslose",
-		video: "lib/overlays/events/HweenSLose.mp4"
+		video: path.join(__dirname, "lib/overlays/events/HweenSLose.mp4")
 	}));
 
 	/********************************** House Cup *********************************/
 	commands.push(new videoOverlay({
 		trigger: "ag5",
-		video: "lib/overlays/events/05PointsGryffindor.mp4"
+		video: path.join(__dirname, "lib/overlays/events/05PointsGryffindor.mp4")
 	}));
 
 	commands.push(new videoOverlay({
 		trigger: "ag10",
-		video: "lib/overlays/events/10PointsGryffindor.mp4"
+		video: path.join(__dirname, "lib/overlays/events/10PointsGryffindor.mp4")
 	}));
 
 	commands.push(new videoOverlay({
 		trigger: "ah5",
-		video: "lib/overlays/events/05PointsHufflepuff.mp4"
+		video: path.join(__dirname, "lib/overlays/events/05PointsHufflepuff.mp4")
 	}));
 
 	commands.push(new videoOverlay({
 		trigger: "ah10",
-		video: "lib/overlays/events/10PointsHufflepuff.mp4"
+		video: path.join(__dirname, "lib/overlays/events/10PointsHufflepuff.mp4")
 	}));
 
 	commands.push(new videoOverlay({
 		trigger: "ar5",
-		video: "lib/overlays/events/05PointsRavenclaw.mp4"
+		video: path.join(__dirname, "lib/overlays/events/05PointsRavenclaw.mp4")
 	}));
 
 	commands.push(new videoOverlay({
 		trigger: "ar10",
-		video: "lib/overlays/events/10PointsRavenclaw.mp4"
+		video: path.join(__dirname, "lib/overlays/events/10PointsRavenclaw.mp4")
 	}));
 
 	commands.push(new videoOverlay({
 		trigger: "as5",
-		video: "lib/overlays/events/05PointsSlytherin.mp4"
+		video: path.join(__dirname, "lib/overlays/events/05PointsSlytherin.mp4")
 	}));
 
 	commands.push(new videoOverlay({
 		trigger: "as10",
-		video: "lib/overlays/events/10PointsSlytherin.mp4"
+		video: path.join(__dirname, "lib/overlays/events/10PointsSlytherin.mp4")
 	}));
 
 	commands.push(new videoOverlay({
 		trigger: "minuspoints",
-		video: "lib/overlays/events/MinusPoints.mp4"
+		video: path.join(__dirname, "lib/overlays/events/MinusPoints.mp4")
 	}));
 
 	commands.push(new videoOverlay({
 		trigger: "cupgwins",
-		video: "lib/overlays/events/GryffindorWins.mp4"
+		video: path.join(__dirname, "lib/overlays/events/GryffindorWins.mp4")
 	}));
 
 	commands.push(new videoOverlay({
 		trigger: "cuphwins",
-		video: "lib/overlays/events/HufflepuffWins.mp4"
+		video: path.join(__dirname, "lib/overlays/events/HufflepuffWins.mp4")
 	}));
 
 	commands.push(new videoOverlay({
 		trigger: "cuprwins",
-		video: "lib/overlays/events/RavenclawWins.mp4"
+		video: path.join(__dirname, "lib/overlays/events/RavenclawWins.mp4")
 	}));
 
 	commands.push(new videoOverlay({
 		trigger: "cupswins",
-		video: "lib/overlays/events/SlytherinWins.mp4"
+		video: path.join(__dirname, "lib/overlays/events/SlytherinWins.mp4")
 	}));
 
 	commands.push(new videoOverlay({
 		trigger: "gold",
-		video: "lib/overlays/events/gold.mp4"
+		video: path.join(__dirname, "lib/overlays/events/gold.mp4")
 	}));
 
 	/* Quidditch Videos */
 	// Gryffindor Wins
 	commands.push(new videoOverlay({
 		trigger: "qgw",
-		video: "lib/overlays/events/QuidditchGryffindorWin.mp4"
+		video: path.join(__dirname, "lib/overlays/events/QuidditchGryffindorWin.mp4")
 	}));
 
 	// Hufflepuff Wins
 	commands.push(new videoOverlay({
 		trigger: "qhw",
-		video: "lib/overlays/events/QuidditchHufflepuffWin.mp4"
+		video: path.join(__dirname, "lib/overlays/events/QuidditchHufflepuffWin.mp4")
 	}));
 
 	// Ravenclaw Wins
 	commands.push(new videoOverlay({
 		trigger: "qrw",
-		video: "lib/overlays/events/QuidditchRavenclawWin.mp4"
+		video: path.join(__dirname, "lib/overlays/events/QuidditchRavenclawWin.mp4")
 	}));
 
 	// Slytherin Wins
 	commands.push(new videoOverlay({
 		trigger: "qsw",
-		video: "lib/overlays/events/QuidditchSlytherinWin.mp4"
+		video: path.join(__dirname, "lib/overlays/events/QuidditchSlytherinWin.mp4")
 	}));
 
 	// !text (External module)
