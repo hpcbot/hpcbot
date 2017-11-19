@@ -56,6 +56,11 @@ function validate(options) {
     _options.mixpanel = options.mixpanel;
   }
 
+  if(options.eventbus) {
+    // Optional variable
+    _options.eventbus = options.eventbus;
+  }
+
   return(_options);
 }
 
