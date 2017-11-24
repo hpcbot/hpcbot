@@ -6,9 +6,9 @@
     "hpc",
     "twitch"
   ],
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
-    "start": "node app.js",
+    "start": "node index.js",
     "test": "./node_modules/.bin/gulp test",
     "watch": "./node_modules/.bin/gulp watch"
   },
@@ -34,9 +34,7 @@
     "mixpanel": "0.7.0",
     "pug": "2.0.0-beta11",
     "tmi.js": "1.1.2",
-    "twitch-overlay": "0.3.0",
-    "twitch-overlay-text": "0.0.4",
-    "twitch-overlay-video": "0.0.8"
+    "twitch-overlay": "1.0.2"
   },
   "license": "GPL-3.0",
   "devDependencies": {

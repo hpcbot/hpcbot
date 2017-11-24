@@ -23,6 +23,6 @@ gulp.task('mocha', function() {
 gulp.task('start', function() {
   // Start the app
   nodemon({
-  	script: 'app.js'
+  	script: 'index.js'
   });
 });
