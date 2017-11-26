@@ -61,6 +61,11 @@ function validate(options) {
     _options.eventbus = options.eventbus;
   }
 
+  if(options.whitelist) {
+    // Optional variable
+    _options.whitelist = options.whitelist;
+  }
+
   return(_options);
 }
 
