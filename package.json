@@ -9,7 +9,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "./node_modules/.bin/gulp test",
+    "test": "./node_modules/.bin/gulp test --silent",
     "watch": "./node_modules/.bin/gulp watch"
   },
   "engines": {
