@@ -3,7 +3,7 @@
 var assert = require('chai').assert;
 var sinon = require('sinon');
 
-var db = require('../../db');
+var db = require('../../lib/db');
 db.connect('mode_staging');	// Do not remove this or you will wipe your data
 
 var EventEmitter = require('events');

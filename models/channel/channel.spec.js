@@ -6,7 +6,7 @@ var sinon = require('sinon');
 var EventEmitter = require('events');
 var eventbus = new EventEmitter;	// Temporary event bus to prevent events firing across files
 
-var db = require('../../db');
+var db = require('../../lib/db');
 db.connect('mode_staging');	// Do not remove this or you will wipe your data
 
 var Channel = require('.');

@@ -9,13 +9,13 @@ gulp.task('test', ['mocha']);
 
 gulp.task('watch', function() {
 	// Run server-side tests whenever a server-side test changes
-	gulp.watch(['lib/**/*.js', '!lib/**/*.test.js'], ['mocha']);
+	gulp.watch(['lib/**/*.js', 'models/**/*.js'], ['mocha']);
 });
 
 gulp.task('mocha', function() {
 	// Run server-side tests once
 	return gulp
-		.src(['lib/**/*.spec.js'])
+		.src(['lib/**/*.spec.js', 'models/**/*.spec.js'])
 		.pipe(mocha({ exit: true }));
 });
 
