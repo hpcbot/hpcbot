@@ -18,7 +18,10 @@ var getHouse = function getHouse(username, callback) {
 	// Returns a user's house
 	// Input: username
 	// Output: error, 'Gryffindor'
+
 	if(username) {
+		username = sanitize(username);
+
 		db.get().hget('user:' + username, 'house', function(err, house) {
 			callback(err, house);
 		});
@@ -32,7 +35,9 @@ var setHouse = function setHouse(username, callback) {
 	// Logic to actually Sort user into a specific house
 	// Input: username
 	// Output: err, 'Gryffindor'
+
 	if(username) {
+		username = sanitize(username);
 
 		var house = generateHouse();
 
@@ -71,7 +76,10 @@ var exists = function exists(username, callback) {
 	// Returns whether or not a user exists already
 	// Input: username
 	// Output: error, true
+
 	if(username) {
+		username = sanitize(username);
+
 		db.get().hget('user:' + username, 'uid', function(err, uid) {
 			var exists = false;
 
@@ -92,7 +100,9 @@ var create = function create(username, callback) {
 	// userAdd - Adds a user to the db
 	// Input: username
 	// Output: err, username
+
 	if(username) {
+		username = sanitize(username);
 		// Make extra sure the user doesn't exist
 		exists(username, function(err, exist) {
 			if(!exist) {
@@ -144,7 +154,9 @@ var create = function create(username, callback) {
 };
 
 var getCommends = function getCommends(username, callback) {
+
 	if(username) {
+		username = sanitize(username);
 		exists(username, function(err, exists) {
 			if(exists) {
 				db.get().hget('user:' + username, 'commends', function(err, commends) {
@@ -175,21 +187,28 @@ var getCommends = function getCommends(username, callback) {
 };
 
 var setCommends = function setCommends(username, commends, callback) {
+
 	if(commends) {
 		if(!isNaN(commends)) {
 			var commends = parseInt(commends);
+			if(username) {
 
-			db.get().hset('user:' + username, 'commends', commends, function(err, data) {
-				if(!err) {
-					eventbus.emit('mixpanel:track', 'commends:set', {
-						distinct_id: username,
-						commends: commends
-					});
-					eventbus.emit('mixpanel:people:set', username, {'commends': commends});
+				username = sanitize(username);
 
-					callback(err, commends);
-				}
-			});
+				db.get().hset('user:' + username, 'commends', commends, function(err, data) {
+					if(!err) {
+						eventbus.emit('mixpanel:track', 'commends:set', {
+							distinct_id: username,
+							commends: commends
+						});
+						eventbus.emit('mixpanel:people:set', username, {'commends': commends});
+
+						callback(err, commends);
+					}
+				});
+			} else {
+				callback('user not found', null);
+			}
 		} else {
 			callback('commends not a number', null);
 		}
@@ -203,6 +222,7 @@ var setCommends = function setCommends(username, commends, callback) {
 
 var getAll = function getAll(username, callback) {
 	if(username) {
+		username = sanitize(username);
 		exists(username, function(err, exists) {
 			if(exists) {
 				db.get().hgetall('user:' + username, function(err, data) {
@@ -247,6 +267,12 @@ var generateHouse = function generateHouse() {
 		return(house);
 }
 
+var sanitize = function sanitize(username) {
+	// Remove any maliscious characters from the string
+	username = username.replace(':', '');	// : can be used to manipulate redis DB
+	return(username);
+}
+
 module.exports = {
 	start: start,
 	getHouse: getHouse,
@@ -256,5 +282,6 @@ module.exports = {
 	getCommends: getCommends,
 	setCommends: setCommends,
 	getAll: getAll,
-	generateHouse: generateHouse
+	generateHouse: generateHouse,
+	sanitize: sanitize
 };

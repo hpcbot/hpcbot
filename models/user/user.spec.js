@@ -3,7 +3,7 @@
 var assert = require('chai').assert;
 var sinon = require('sinon');
 
-var db = require('../../db');
+var db = require('../../lib/db');
 db.connect('mode_staging');	// Do not remove this or you will wipe your data
 
 var EventEmitter = require('events');
@@ -237,6 +237,19 @@ describe('Users', function() {
 		});
 	});
 	describe('setCommends', function() {
+		it('No user passed: Returns error', function(done) {
+			var username = null;
+
+			var _err = 'no user provided';
+			var _commends = null;
+
+			User.getCommends(username, function(err, commends) {
+				assert.equal(err, _err);
+				assert.equal(commends, _commends);
+				done();
+			});
+		});
+
 		it('User not found: Returns error', function(done) {
 			var username = 'blah';
 
@@ -373,5 +386,35 @@ describe('Users', function() {
 
 			});
 		});
+		describe('sanitize() - Sanitize Username', function() {
+			it('letters - Keeps it in', function() {
+				var username = 'bdickason';
+
+				var _result = 'bdickason';
+
+				var result = User.sanitize(username);
+
+				assert.equal(result, _result);
+			});
+			it('_ - Keeps it in', function() {
+				var username = 'larry_manalo';
+
+				var _result = 'larry_manalo';
+
+				var result = User.sanitize(username);
+
+				assert.equal(result, _result);
+
+			});
+			it(': - Strips it out', function() {
+				var username = 'b:dickason';
+
+				var _result = 'bdickason';
+
+				var result = User.sanitize(username);
+
+				assert.equal(result, _result);
+			})
+		})
 	});
 });

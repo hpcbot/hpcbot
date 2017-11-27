@@ -43,6 +43,10 @@ var take = function(username, amount, callback) {
 };
 
 var get = function(username, callback) {
+	// Check the user's current resource amount
+	// Input: username
+	// Output: error, amount user has to spend
+	
 	if(username) {
 		db.get().hget('user:' + username, 'resource', function(err, data) {
 			if(err || data) {
