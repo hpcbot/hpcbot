@@ -1,0 +1,18 @@
+doctype html
+html(lang="en")
+	head
+		script(src='/js/jquery-3.2.1.min.js')
+		script(src='/socket.io/socket.io.js')
+		script(src='/js/music.js')
+		link(href='/css/music.css' rel='stylesheet' type='text/css')
+	body(bgcolor=transparent)
+		h1 Now Playing: blah
+		p Progress: 32%
+		p Time: 3:05
+		.controls
+			#play ▶
+			#next >|
+		ul.queue
+			#first 1
+			#second 2
+		#player
