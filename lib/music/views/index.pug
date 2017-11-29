@@ -3,12 +3,13 @@ html(lang="en")
 	head
 		script(src='/js/jquery-3.2.1.min.js')
 		script(src='/socket.io/socket.io.js')
-		script(src='/js/music.js')
+		script(src='/js/music-client.js')
 		link(href='/css/music.css' rel='stylesheet' type='text/css')
 	body(bgcolor=transparent)
-		h1 Now Playing: blah
-		p Progress: 32%
-		p Time: 3:05
+		strong Now Playing:
+		h2#title
+		p#time Time:
+		#progress
 		.controls
 			#play ▶
 			#next >|
