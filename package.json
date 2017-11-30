@@ -8,9 +8,9 @@
   ],
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "test": "./node_modules/.bin/gulp test --silent",
-    "watch": "./node_modules/.bin/gulp watch"
+    "start": "./node_modules/.bin/webpack -d",
+    "test": "mocha lib/**/*.spec.js",
+    "watch": "mocha -w lib/**/*.spec.js"
   },
   "engines": {
     "node": ">=4.4.0"
@@ -27,22 +27,27 @@
     "url": "git://github.com/bdickason/hpc-bot.git"
   },
   "dependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
     "chance": "1.0.8",
     "dotenv": "4.0.0",
+    "extend": "^3.0.1",
     "ioredis": "2.5.0",
     "later": "^1.2.0",
     "mixpanel": "0.7.0",
     "pug": "2.0.0-beta11",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
     "tmi.js": "1.1.2",
-    "twitch-overlay": "1.0.2"
+    "twitch-overlay": "1.0.2",
+    "vinyl-source-stream": "^1.1.0",
+    "webpack": "^3.8.1"
   },
   "license": "GPL-3.0",
   "devDependencies": {
     "chai": "^4.1.2",
-    "gulp": "*",
-    "gulp-casperjs-local": "*",
-    "gulp-mocha": "^4.3.1",
-    "gulp-nodemon": "*",
     "mocha": "^4.0.1",
     "sinon": "^4.0.2"
   }

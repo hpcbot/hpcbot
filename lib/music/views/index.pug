@@ -3,9 +3,9 @@ html(lang="en")
 	head
 		script(src='/js/jquery-3.2.1.min.js')
 		script(src='/socket.io/socket.io.js')
-		script(src='/js/music-client.js')
 		link(href='/css/music.css' rel='stylesheet' type='text/css')
 	body(bgcolor=transparent)
+		#music
 		strong Now Playing:
 		h2#title
 		p#time Time:
@@ -19,3 +19,6 @@ html(lang="en")
 		#player
 		hr
 		#playlist
+
+		// Load react client-side app
+		script(src='/js/bundle.js')
