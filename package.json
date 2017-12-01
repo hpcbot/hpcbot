@@ -1,6 +1,6 @@
 {
   "name": "hpc-bot",
-  "version": "0.6.4",
+  "version": "0.6.5",
   "description": "Twitch Bot for the Harry Potter Clan",
   "keywords": [
     "hpc",
@@ -27,7 +27,7 @@
     "url": "git://github.com/bdickason/hpc-bot.git"
   },
   "dependencies": {
-    "chance": "1.0.8",
+    "chance": "^1.0.8",
     "dotenv": "4.0.0",
     "ioredis": "2.5.0",
     "later": "^1.2.0",
