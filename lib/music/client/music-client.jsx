@@ -28,7 +28,7 @@ class MusicPlayer extends React.Component {
     return( <div>
               <Player videoId={this.state.videoId} playing={this.state.playing} onToggle={() => this.toggle()}/>
               <PlayButton playing={this.state.playing} onToggle={() => this.toggle()}/>
-              <Playlist playing={this.state.playing} videoId={this.state.videoId} onTrackChange={(song) => this.trackChange(song)} />
+              <Playlist playing={this.state.playing} currentVideo={this.state.videoId} onTrackChange={(song) => this.trackChange(song)} />
             </div>);
   }
 

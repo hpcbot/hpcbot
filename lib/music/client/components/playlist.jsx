@@ -3,6 +3,8 @@
 import React from 'react';
 import {render} from 'react-dom';
 
+import Song from './song.jsx';
+
 class Playlist extends React.Component {
   constructor(props) {
     super(props);
@@ -12,16 +14,13 @@ class Playlist extends React.Component {
       '8GBlK8gbu6U',
       'cAMLa5ZC-B4']
     };
-
-    // this.trackChange.bind(this);
   }
 
   render() {
     // Parse the array of songs and generate list items
     this.songlist = this.state.songs.map((song) =>
-    <li key={song.toString()}>
-      <a href="#" onClick={() => this.props.onTrackChange(song)}>{song}</a>
-    </li>);
+      <Song key={song} song={song} selected={song == this.props.currentVideo} onTrackChange={() => this.props.onTrackChange(song)} />
+    );
 
     return(<ul id='playlist'>
               {this.songlist}
