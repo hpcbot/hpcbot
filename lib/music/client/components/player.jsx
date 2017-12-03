@@ -6,8 +6,13 @@ import {render} from 'react-dom';
 import YouTube from 'react-youtube'
 
 class Player extends React.Component {
+  // constructor(props) {
+  //   super(props);
+  //   this.props.videoId = 'A2h2YrfcJ4Y';
+  // };
 
   render() {
+
     const options = {
   			width: '320',
         height: '195',
@@ -24,7 +29,7 @@ class Player extends React.Component {
 
     return(
       <YouTube
-          videoId='A2h2YrfcJ4Y'
+          videoId={this.props.videoId}
           opts={options}
           onReady={this._onReady}
         />

@@ -14,7 +14,7 @@ class MusicPlayer extends React.Component {
     // Playlist
     // * Tracks
 
-    return <Player/>;
+    return <Player videoId='A2h2YrfcJ4Y' playing='false'/>;
   }
 }
 

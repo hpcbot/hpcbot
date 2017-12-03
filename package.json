@@ -8,7 +8,8 @@
   ],
   "main": "index.js",
   "scripts": {
-    "start": "./node_modules/.bin/webpack -d",
+    "start": "node .",
+    "build": "./node_modules/.bin/webpack -d",
     "test": "mocha lib/**/*.spec.js",
     "watch": "mocha -w lib/**/*.spec.js"
   },
