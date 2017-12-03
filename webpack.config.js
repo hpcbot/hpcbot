@@ -5,6 +5,7 @@ var BUILD_DIR = path.resolve(__dirname, 'lib/music/static/js');
 var APP_DIR = path.resolve(__dirname, 'lib/music/client');
 
 var config = {
+  devtool: 'source-map',
   entry: APP_DIR + '/music-client.jsx',
   output: {
     path: BUILD_DIR,
@@ -18,7 +19,8 @@ var config = {
         loader: 'babel-loader'
       }
     ]
-  }
+  },
+  watch: true
 };
 
 module.exports = config;

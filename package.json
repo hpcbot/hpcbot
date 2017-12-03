@@ -40,6 +40,7 @@
     "pug": "2.0.0-beta11",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
+    "react-youtube": "^7.5.0",
     "tmi.js": "1.1.2",
     "twitch-overlay": "1.0.2",
     "vinyl-source-stream": "^1.1.0",

@@ -1,10 +1,21 @@
 import React from 'react';
 import {render} from 'react-dom';
 
-class App extends React.Component {
+// Components
+import Player from './components/player.jsx'
+
+class MusicPlayer extends React.Component {
   render () {
-    return <p> Hello React project</p>;
+    // Controls
+    //   Play/pause button
+    //   Skip button
+    // Youtube video
+    // Track metadata
+    // Playlist
+    // * Tracks
+
+    return <Player/>;
   }
 }
 
-render(<App/>, document.getElementById('music'));
+render(<MusicPlayer/>, document.getElementById('music'));
