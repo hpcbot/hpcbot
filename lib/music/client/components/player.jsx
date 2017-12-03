@@ -38,14 +38,12 @@ class Player extends React.Component {
     };
 
     // Handle play/pause changes from parent
-    if(this.props.playing) {
-      if(this.state.player) {
-        this.state.player.playVideo();
-      }
-    } else {
-      if(this.state.player) {
-        this.state.player.pauseVideo();
-      }
+    if(this.state.player) {
+      if(this.props.playing) {
+         this.state.player.playVideo();
+       } else {
+         this.state.player.pauseVideo();
+       }
     }
 
     return(<div id='player'>
