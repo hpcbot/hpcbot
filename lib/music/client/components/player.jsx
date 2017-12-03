@@ -17,31 +17,34 @@ class Player extends React.Component {
         progress: null
     };
 
+    this.options = {  // Options to initialize the youtube player
+      			width: '320',
+            height: '195',
+            playerVars: {
+              controls: 0,
+              disablekb: 1,
+              enablejsapi: 1,
+              iv_load_policy: 3,
+              modestbranding: 1,
+              rel: 0,
+              showinfo: 0
+            }
+        };
+
+
     this._onReady = this._onReady.bind(this);
     this._onChangeVideo = this._onChangeVideo.bind(this);
     this.updateMetadata = this.updateMetadata.bind(this);
   }
 
   render() {
-    const options = {
-  			width: '320',
-        height: '195',
-        playerVars: {
-          controls: 0,
-          disablekb: 1,
-          enablejsapi: 1,
-          iv_load_policy: 3,
-          modestbranding: 1,
-          rel: 0,
-          showinfo: 0
-        }
-    };
 
     // Handle play/pause changes from parent
     if(this.state.player) {
       if(this.props.playing) {
-         this.state.player.playVideo();
-       } else {
+        this.options.playerVars.autoplay = 1;  // Needed for when we change tracks via playlist
+        this.state.player.playVideo();
+      } else {
          this.state.player.pauseVideo();
        }
     }
@@ -49,7 +52,7 @@ class Player extends React.Component {
     return(<div id='player'>
               <YouTube
                 videoId={this.props.videoId}
-                opts={options}
+                opts={this.options}
                 onReady={this._onReady}
                 onChangeVideo={this._onChangeVideo}
               />
@@ -63,6 +66,7 @@ class Player extends React.Component {
       player: event.target,   // Keep track of the player so we can access it
     });
 
+    console.log('ready');
     // Set a timer to poll the api for metadata changes
     setInterval(this.updateMetadata, 60);
   }
@@ -71,6 +75,7 @@ class Player extends React.Component {
     this.setState({
       title: this.state.player.getVideoData().title
     });
+    this.state.player.playvideo();
   }
 
   _onEnd(event) {
@@ -80,13 +85,19 @@ class Player extends React.Component {
   }
 
   updateMetadata() {
-    this.setState({
-      title: this.state.player.getVideoData().title,
-      duration: this.state.player.getVideoData().duration,
-      minutes: this.parseMinutes(this.state.player.getCurrentTime()),
-      seconds: this.parseSeconds(this.state.player.getCurrentTime()),
-      progress: this.parsePercentage(this.state.player.getCurrentTime(), this.state.player.getDuration())
-    })
+    let data = this.state.player.getVideoData();
+    let time = this.state.player.getCurrentTime();
+    let duration = this.state.player.getDuration();
+
+    if(data && time && duration) {
+      this.setState({
+        title: data.title,
+        duration: data.duration,
+        minutes: this.parseMinutes(time),
+        seconds: this.parseSeconds(time),
+        progress: this.parsePercentage(time, duration)
+      })
+    }
   }
   /* Metadata utility functions */
 
