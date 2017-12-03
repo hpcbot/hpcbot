@@ -6,13 +6,16 @@ import {render} from 'react-dom';
 import YouTube from 'react-youtube'
 
 class Player extends React.Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.props.videoId = 'A2h2YrfcJ4Y';
-  // };
+  constructor(props) {
+    super(props);
+    this.state = {
+        player: null
+    };
+    // this.play = this.play.bind(this);
+    this._onReady = this._onReady.bind(this);
+  }
 
   render() {
-
     const options = {
   			width: '320',
         height: '195',
@@ -27,17 +30,33 @@ class Player extends React.Component {
         }
     };
 
-    return(
-      <YouTube
-          videoId={this.props.videoId}
-          opts={options}
-          onReady={this._onReady}
-        />
-    );
-  };
+    // Handle play/pause changes from parent
+    if(this.props.playing) {
+      if(this.state.player) {
+        this.state.player.playVideo();
+      }
+    } else {
+      if(this.state.player) {
+        this.state.player.pauseVideo();
+      }
+    }
+
+    return(<YouTube
+        videoId={this.props.videoId}
+        opts={options}
+        onReady={this._onReady}
+      />);
+  }
+
   _onReady(event) {
     // access to player in all event handlers via event.target
-    event.target.pauseVideo();
+    this.setState({player: event.target});
+  }
+
+  _onEnd(event) {
+    // Notify parent when the song ends
+    console.log('end');
+    // this.props.onToggle();
   }
 }
 

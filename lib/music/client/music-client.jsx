@@ -3,8 +3,20 @@ import {render} from 'react-dom';
 
 // Components
 import Player from './components/player.jsx'
+import PlayButton from './components/playbutton.jsx'
 
 class MusicPlayer extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+        playing: false
+    };
+
+    this.toggle = this.toggle.bind(this);
+  }
+  // OnPlay: () => this.refs.player.play()
+
+  // OnPAuse: () => this.refs.player.pause()
   render () {
     // Controls
     //   Play/pause button
@@ -13,8 +25,14 @@ class MusicPlayer extends React.Component {
     // Track metadata
     // Playlist
     // * Tracks
+    return( <div>
+              <Player videoId='A2h2YrfcJ4Y' playing={this.state.playing} onToggle={() => this.toggle()}/>
+              <PlayButton playing={this.state.playing} onToggle={() => this.toggle()}/>
+            </div>);
+  }
 
-    return <Player videoId='A2h2YrfcJ4Y' playing='false'/>;
+  toggle() {
+    this.setState({playing: !this.state.playing});
   }
 }
 
