@@ -4,7 +4,9 @@ import {render} from 'react-dom';
 // Components
 import Player from './components/player.jsx'
 import PlayButton from './components/playbutton.jsx'
+import AddButton from './components/addbutton.jsx'
 import Playlist from './components/playlist.jsx'
+
 
 class MusicPlayer extends React.Component {
   constructor(props) {
@@ -20,6 +22,7 @@ class MusicPlayer extends React.Component {
 
     this.toggle = this.toggle.bind(this);
     this.trackChange = this.trackChange.bind(this);
+    this.add = this.add.bind(this);
   }
 
   render () {
@@ -30,10 +33,11 @@ class MusicPlayer extends React.Component {
     // Playlist
     // * Tracks
     return( <div>
-              <Player videoId={this.state.videoId} playing={this.state.playing} onToggle={() => this.toggle()}/>
-              <PlayButton playing={this.state.playing} onToggle={() => this.toggle()}/>
+              <Player videoId={this.state.videoId} playing={this.state.playing} onToggle={() => this.toggle()} />
+              <PlayButton playing={this.state.playing} onToggle={() => this.toggle()} />
               <button onClick={() => this.skip()}>▶❚</button>
-              <Playlist playing={this.state.playing} currentVideo={this.state.videoId} songs = {this.state.songs} onTrackChange={(song) => this.trackChange(song)} />
+              <AddButton onAdd={(song) => this.add(song)} />
+              <Playlist playing={this.state.playing} currentVideo={this.state.videoId} songs={this.state.songs} onTrackChange={(song) => this.trackChange(song)} />
             </div>);
   }
 
@@ -53,7 +57,6 @@ class MusicPlayer extends React.Component {
 
     if (index >= 0 && index < this.state.songs.length - 1) {
       nextVideo = this.state.songs[index + 1];
-      console.log('got here');
     } else {
       nextVideo  = this.state.songs[0];
     }
@@ -61,6 +64,18 @@ class MusicPlayer extends React.Component {
     this.setState({
       videoId: nextVideo
     });
+  }
+
+  add(song) {
+    if(song) {
+      // Workaround because just pushing the array leads to an improper output
+      let _songs = this.state.songs;
+      _songs.push(song);
+
+      this.setState({
+        songs: _songs
+      });
+    }
   }
 }
 

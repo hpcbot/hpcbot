@@ -66,7 +66,6 @@ class Player extends React.Component {
       player: event.target,   // Keep track of the player so we can access it
     });
 
-    console.log('ready');
     // Set a timer to poll the api for metadata changes
     setInterval(this.updateMetadata, 60);
   }
