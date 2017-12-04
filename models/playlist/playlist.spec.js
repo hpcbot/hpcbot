@@ -228,5 +228,23 @@ describe('Playlist', function() {
 				});
 			});
 		});
+		describe('validateInput', function() {
+			it('passes a song ID through', function() {
+				var song = 'A2h2YrfcJ4Y'
+				var _song = 'A2h2YrfcJ4Y'
+
+				song = Playlist.validateInput(song);
+
+				assert.equal(song, _song);
+			});
+			it('removes the youtube URL from the start', function() {
+				var song = 'https://www.youtube.com/watch?v=VT2W3U8wYQg'
+				var _song = 'VT2W3U8wYQg'
+
+				song = Playlist.validateInput(song);
+
+				assert.equal(song, _song);
+			})
+		})
 	});
 });

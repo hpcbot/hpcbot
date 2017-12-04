@@ -40,6 +40,7 @@ var add = function(song, callback) {
 	// Output: error, success
 
 	if(song) {
+  	song = validateInput(song);
 
 		// Check if song is already in the playlist
 		get(function(err, playlist) {
@@ -143,6 +144,17 @@ var skip = function(callback) {
 	});
 }
 
+var validateInput = function(song) {
+	const ytString = 'https://www.youtube.com/watch?v=';
+
+	// Parse
+	if(song.indexOf(ytString) == 0) {
+		song = song.slice(ytString.length);
+	}
+
+	return(song);
+}
+
 module.exports = {
 	start: start,
 	add: add,
@@ -150,5 +162,6 @@ module.exports = {
 	get: get,
 	play: play,
 	state: state,
-	skip: skip
+	skip: skip,
+	validateInput: validateInput
 };

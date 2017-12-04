@@ -49,23 +49,13 @@ class AddButton extends React.Component {
     event.preventDefault();
     // Add song to playlist
 
-    let song = this.validateInput(this.state.song);
-    this.props.onAdd(song)
+    this.props.onAdd(this.state.song)
 
     // Hide dialog and clear text field
     this.setState({
       adding: false,
       song: ''
     });
-  }
-
-  validateInput(song) {
-    let ytString = 'https://www.youtube.com/watch?v=';
-    if(song.startsWith(ytString)) {
-      song = song.slice(ytString.length);
-    }
-
-    return(song);
   }
 }
 
