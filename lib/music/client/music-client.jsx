@@ -1,11 +1,13 @@
 import React from 'react';
 import {render} from 'react-dom';
 
+// Libraries
+import openSocket from 'socket.io-client';
+const socket = openSocket('http://localhost:5000'); // Connect to the server to get client updates
+
 // Components
 import Player from './components/player.jsx'
 import Controls from './components/controls/controls.jsx'
-// import PlayButton from './components/playbutton.jsx'
-// import AddButton from './components/addbutton.jsx'
 import Playlist from './components/playlist.jsx'
 
 
@@ -14,17 +16,16 @@ class MusicPlayer extends React.Component {
     super(props);
     this.state = {
         playing: false,
-        videoId: 'A2h2YrfcJ4Y',
-        songs: [
-        'A2h2YrfcJ4Y',
-        '8GBlK8gbu6U',
-        'cAMLa5ZC-B4']
+        videoId: null,
+        songs: []
     };
 
     this.playPause = this.playPause.bind(this);
     this.trackChange = this.trackChange.bind(this);
     this.skip = this.skip.bind(this);
     this.add = this.add.bind(this);
+    this.updateState = this.updateState.bind(this);
+    socket.on('state', this.updateState); // Receive state updates from server
   }
 
   render () {
@@ -41,40 +42,30 @@ class MusicPlayer extends React.Component {
             </div>);
   }
 
+  updateState(state) {
+    console.log(state);
+    this.setState(state);
+  }
+
   playPause() {
     this.setState({playing: !this.state.playing});
   }
 
   trackChange(song) {
+    socket.emit('playSong', song);  // Tell the server to update the current song
+
     this.setState({
-      playing: true,
-      videoId: song});
+      playing: true
+    });
   }
 
   skip() {
-    let nextVideo;
-    let index = this.state.songs.indexOf(this.state.videoId);
-
-    if (index >= 0 && index < this.state.songs.length - 1) {
-      nextVideo = this.state.songs[index + 1];
-    } else {
-      nextVideo  = this.state.songs[0];
-    }
-
-    this.setState({
-      videoId: nextVideo
-    });
+    socket.emit('skipSong');
   }
 
   add(song) {
     if(song) {
-      // Workaround because just pushing the array leads to an improper output
-      let _songs = this.state.songs;
-      _songs.push(song);
-
-      this.setState({
-        songs: _songs
-      });
+      socket.emit('addSong', song);
     }
   }
 }
