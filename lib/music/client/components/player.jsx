@@ -26,7 +26,7 @@ class Player extends React.Component {
               enablejsapi: 1,
               iv_load_policy: 3,
               modestbranding: 1,
-              rel: 0,
+              rel: 1,
               showinfo: 0
             }
         };
@@ -71,6 +71,7 @@ class Player extends React.Component {
   }
 
   _onChangeVideo(event) {
+    console.log('changing video');
     this.setState({
       title: this.state.player.getVideoData().title
     });
@@ -80,7 +81,6 @@ class Player extends React.Component {
   _onEnd(event) {
     // Notify parent when the song ends
     console.log('end');
-    // this.props.onToggle();
   }
 
   updateMetadata() {

@@ -61,7 +61,9 @@ class MusicPlayer extends React.Component {
   }
 
   playPause() {
-    this.setState({playing: !this.state.playing});
+    var playing = this.state.playing;
+    socket.emit('playing', !playing);
+    // this.setState({playing: !this.state.playing});
   }
 
   trackChange(song) {
