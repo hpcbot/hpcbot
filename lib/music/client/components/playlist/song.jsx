@@ -10,8 +10,8 @@ class Song extends React.Component {
 
   render() {
     return(<li>
-             {this.props.active && <b><a href="#" onClick={(song) => this.props.onTrackChange(song)}>{this.props.song}</a></b>}
-             {!this.props.active && <a href="#" onClick={(song) => this.props.onTrackChange(song)}>{this.props.song}</a>}
+             {this.props.selected && <b><a href="#" onClick={(song) => this.props.onTrackChange(song)}>{this.props.song}</a></b>}
+             {!this.props.selected && <a href="#" onClick={(song) => this.props.onTrackChange(song)}>{this.props.song}</a>}
             &nbsp;<a href="#" onClick={(song) => this.props.onRemove(song)}>✖</a>
            </li>
          );

@@ -56,7 +56,7 @@ class Player extends React.Component {
                 onReady={this._onReady}
                 onChangeVideo={this._onChangeVideo}
               />
-              <p>{this.state.title}</p>
+              <p>Title: {this.state.title}</p>
               <p>Time: {this.state.minutes}:{this.state.seconds} ({this.state.progress})</p>
           </div>);
   }

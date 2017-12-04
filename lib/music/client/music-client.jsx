@@ -8,7 +8,7 @@ const socket = openSocket('http://localhost:5000'); // Connect to the server to 
 // Components
 import Player from './components/player.jsx'
 import Controls from './components/controls/controls.jsx'
-import Playlist from './components/playlist.jsx'
+import Playlist from './components/playlist/playlist.jsx'
 
 
 class MusicPlayer extends React.Component {
