@@ -40,13 +40,22 @@ var add = function(song, callback) {
 	// Output: error, success
 
 	if(song) {
-		// push song onto list
-		db.get().rpush('playlist', song, function(err, success) {
-			if(!err) {
-				// Successfully added the song
-				callback(null, true);
+
+		// Check if song is already in the playlist
+		get(function(err, playlist) {
+			if(!playlist.includes(song)) {
+				// push song onto list
+				db.get().rpush('playlist', song, function(err, success) {
+					if(!err) {
+						// Successfully added the song
+						callback(null, true);
+					}	else {
+						callback(err, null);
+					}
+				});
 			}	else {
-				callback(err, null);
+				// Song already exists in Playlist
+				callback('Song already exists', null);
 			}
 		});
 	}

@@ -61,6 +61,28 @@ describe('Playlist', function() {
 					})
 				});
 			});
+			it('does not add a duplicate song to the list', function(done) {
+				var song = 'kajdsklfja';
+
+				var _amount = 3;
+
+				var _playlist = ['kajdsklfja', 'aksdljfklajf', 'jaksdjfklaj']
+
+				db.get().rpush('playlist', _playlist, function(err, data) {
+					Playlist.add(song, function(err, success) {
+						// Should return an error that item already exists
+						assert.equal(err, 'Song already exists');
+						assert.equal(success, null);
+						// Make sure list was not modified
+						db.get().lrange('playlist', '0', '-1', function(err, data) {
+							assert.equal(err, null);
+							assert.equal(data.length, _amount);
+							assert.deepEqual(data, _playlist)
+							done();
+						});
+					})
+				});
+			});
 		});
 		describe('get', function() {
 			it('returns a list with a few items', function(done) {
