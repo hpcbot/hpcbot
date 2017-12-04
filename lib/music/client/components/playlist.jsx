@@ -17,9 +17,9 @@ class Playlist extends React.Component {
       <Song key={song} song={song} selected={song == this.props.currentVideo} onTrackChange={() => this.props.onTrackChange(song)} />
     );
 
-    return(<ul id='playlist'>
+    return(<ol id='playlist'>
               {this.songlist}
-          </ul>);
+          </ol>);
   }
 }
 
