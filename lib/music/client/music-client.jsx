@@ -40,7 +40,7 @@ class MusicPlayer extends React.Component {
               <Player
                 videoId={this.state.videoId}
                 playing={this.state.playing}
-                onToggle={this.toggle} />
+                onToggle={this.playPause} />
               <Controls
                 playing={this.state.playing}
                 onPlayPause={() => this.playPause()}
