@@ -24,6 +24,7 @@ class MusicPlayer extends React.Component {
     this.trackChange = this.trackChange.bind(this);
     this.skip = this.skip.bind(this);
     this.add = this.add.bind(this);
+    this.remove = this.remove.bind(this);
     this.updateState = this.updateState.bind(this);
     socket.on('state', this.updateState); // Receive state updates from server
   }
@@ -36,9 +37,21 @@ class MusicPlayer extends React.Component {
     // Playlist
     // * Tracks
     return( <div>
-              <Player videoId={this.state.videoId} playing={this.state.playing} onToggle={this.toggle} />
-              <Controls playing={this.state.playing} onPlayPause={() => this.playPause()} onSkip = {this.skip} onAdd={(song) => this.add(song)} />
-              <Playlist playing={this.state.playing} currentVideo={this.state.videoId} songs={this.state.songs} onTrackChange={(song) => this.trackChange(song)} />
+              <Player
+                videoId={this.state.videoId}
+                playing={this.state.playing}
+                onToggle={this.toggle} />
+              <Controls
+                playing={this.state.playing}
+                onPlayPause={() => this.playPause()}
+                onSkip = {this.skip}
+                onAdd={(song) => this.add(song)} />
+              <Playlist
+                playing={this.state.playing}
+                currentVideo={this.state.videoId}
+                songs={this.state.songs}
+                onTrackChange={(song) => this.trackChange(song)}
+                onRemove={(song) => this.remove(song)} />
             </div>);
   }
 
@@ -67,6 +80,11 @@ class MusicPlayer extends React.Component {
     if(song) {
       socket.emit('addSong', song);
     }
+  }
+
+  remove(song) {
+    console.log('got here' + song);
+    socket.emit('removeSong', song);
   }
 }
 

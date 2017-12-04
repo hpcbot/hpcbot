@@ -14,7 +14,13 @@ class Playlist extends React.Component {
   render() {
     // Parse the array of songs and generate list items
     this.songlist = this.props.songs.map((song) =>
-      <Song key={song} song={song} selected={song == this.props.currentVideo} onTrackChange={() => this.props.onTrackChange(song)} />
+      <Song
+        key={song}
+        song={song}
+        selected={song == this.props.currentVideo}
+        onTrackChange={() => this.props.onTrackChange(song)}
+        onRemove={() => this.props.onRemove(song)}
+      />
     );
 
     return(<ol id='playlist'>
