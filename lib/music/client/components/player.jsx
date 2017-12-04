@@ -41,13 +41,23 @@ class Player extends React.Component {
 
     // Handle play/pause changes from parent
     if(this.state.player) {
+      // Play/pause
       if(this.props.playing) {
         this.options.playerVars.autoplay = 1;  // Needed for when we change tracks via playlist
         this.state.player.playVideo();
       } else {
          this.state.player.pauseVideo();
        }
+
+       // Mute/unmute
+       if(this.props.muted) {
+         this.state.player.mute();
+       } else {
+         this.state.player.unMute();
+       }
     }
+
+
 
     return(<div id='player'>
               <YouTube

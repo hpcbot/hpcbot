@@ -10,9 +10,9 @@ class PlayButton extends React.Component {
 
   render() {
     if(!this.props.playing) {
-      return <button onClick={this.props.onToggle}>▶</button>
+      return <button onClick={this.props.onTogglePlay}>▶</button>
     } else {
-      return <button onClick={this.props.onToggle}>❚❚</button>
+      return <button onClick={this.props.onTogglePlay}>❚❚</button>
     }
   }
 }

@@ -17,10 +17,12 @@ class MusicPlayer extends React.Component {
     this.state = {
         playing: false,
         videoId: null,
-        songs: []
+        songs: [],
+        muted: false
     };
 
     this.playPause = this.playPause.bind(this);
+    this.muteUnmute = this.muteUnmute.bind(this);
     this.trackChange = this.trackChange.bind(this);
     this.skip = this.skip.bind(this);
     this.add = this.add.bind(this);
@@ -40,12 +42,15 @@ class MusicPlayer extends React.Component {
               <Player
                 videoId={this.state.videoId}
                 playing={this.state.playing}
+                muted={this.state.muted}
               />
               <Controls
                 playing={this.state.playing}
-                onPlayPause={() => this.playPause()}
+                onPlayPause={this.playPause}
                 onSkip = {this.skip}
-                onAdd={(song) => this.add(song)} />
+                onAdd={(song) => this.add(song)}
+                muted={this.state.muted}
+                onMuteUnmute={this.muteUnmute}/>
               <Playlist
                 playing={this.state.playing}
                 currentVideo={this.state.videoId}
@@ -61,9 +66,14 @@ class MusicPlayer extends React.Component {
   }
 
   playPause() {
-    var playing = this.state.playing;
+    console.log('got here');
+    let playing = this.state.playing;
     socket.emit('playing', !playing);
-    // this.setState({playing: !this.state.playing});
+  }
+
+  muteUnmute() {
+    let muted = this.state.muted;
+    this.setState({muted: !muted});
   }
 
   trackChange(song) {
