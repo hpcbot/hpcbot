@@ -12,7 +12,7 @@
 				lpush playlist 'WqPnZ4I9IdU'
 			Current:
 				hget current videoId 'WqPnZ4I9IdU'
-				// hget current timestamp '0m32s'
+				// hget current timestamp '0m32s' (for syncing across network)
 */
 
 
@@ -112,6 +112,36 @@ var remove = function(song, callback) {
 	}
 }
 // skip
+var skip = function(callback) {
+	// Skip the currently playing song
+	// Input: (none)
+	// Output: error, success
+
+	// Get the currently playing track and playlist
+	state(function(err, state) {
+		// Determine position in the list
+		let current = state.videoId;
+		let songs = state.songs;
+
+		let index = songs.indexOf(current);
+
+		let nextvideo;
+
+		if (index >= 0 && index < songs.length - 1) {
+			// We're somewhere besides the end of the list
+			nextVideo = songs[index + 1];
+		} else {
+			// We're at the end of the list
+			nextVideo = songs[0];
+		}
+
+		play(nextVideo, function(err, success) {
+			if(!err) {
+				callback(null, true);
+			}
+		});
+	});
+}
 
 module.exports = {
 	start: start,
@@ -119,5 +149,6 @@ module.exports = {
 	remove: remove,
 	get: get,
 	play: play,
-	state: state
+	state: state,
+	skip: skip
 };

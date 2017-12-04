@@ -134,26 +134,6 @@ describe('Playlist', function() {
 				});
 			});
 		});
-		describe('play', function() {
-			it('sets the currently playing song', function(done) {
-				var song = 'asdf3adc';
-
-				var _songs = ['A2h2YrfcJ4Y', 'asdf3adc', 'kAJD342mkamc'];
-
-				var _success = true;
-
-				db.get().rpush('playlist', _songs, function(err, data) {
-					Playlist.play(song, function(err, success) {
-						assert.equal(err, null);
-						assert.equal(success, _success);
-						db.get().hget('current', 'song', function(err, data) {
-							assert.equal(song, data);
-							done();
-						});
-					});
-				});
-			});
-		});
 		describe('state', function() {
 			it('returns all expected variables', function(done) {
 				var videoId = 'asdf3adc';
@@ -191,6 +171,60 @@ describe('Playlist', function() {
 							done();
 						});
 					});
+				});
+			});
+		});
+		describe('skip', function() {
+			it('not at end: skips to next song', function(done) {
+				var song = 'asdf3adc';
+
+				var _songs = ['A2h2YrfcJ4Y', 'asdf3adc', 'kAJD342mkamc'];
+				var _nextSong = 'kAJD342mkamc';
+
+				Playlist.add(_songs, function(err, success) {
+					if(!err) {
+						Playlist.play(song, function(err, success) {
+							if(!err) {
+								Playlist.skip(function(err, success) {
+									if(!err) {
+										Playlist.state(function(err, state) {
+											if(state) {
+												assert.deepEqual(state.songs, _songs);
+												assert.equal(state.videoId, _nextSong);
+												done();
+											}
+										});
+									}
+								});
+							}
+						});
+					}
+				});
+			});
+			it('end of list: goes back to the start', function(done) {
+				var song = 'kAJD342mkamc';
+
+				var _songs = ['A2h2YrfcJ4Y', 'asdf3adc', 'kAJD342mkamc'];
+				var _nextSong = 'A2h2YrfcJ4Y';
+
+				Playlist.add(_songs, function(err, success) {
+					if(!err) {
+						Playlist.play(song, function(err, success) {
+							if(!err) {
+								Playlist.skip(function(err, success) {
+									if(!err) {
+										Playlist.state(function(err, state) {
+											if(state) {
+												assert.deepEqual(state.songs, _songs);
+												assert.equal(state.videoId, _nextSong);
+												done();
+											}
+										});
+									}
+								});
+							}
+						});
+					}
 				});
 			});
 		});
