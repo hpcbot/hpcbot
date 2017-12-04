@@ -33,7 +33,6 @@ class Player extends React.Component {
 
 
     this._onReady = this._onReady.bind(this);
-    this._onStateChange = this._onStateChange.bind(this);
     this._onChangeVideo = this._onChangeVideo.bind(this);
     this.updateMetadata = this.updateMetadata.bind(this);
   }
@@ -56,7 +55,6 @@ class Player extends React.Component {
                 opts={this.options}
                 onReady={this._onReady}
                 onChangeVideo={this._onChangeVideo}
-                onStateChange={this._onStateChange}
               />
               <p>Title: {this.state.title}</p>
               <p>Time: {this.state.minutes}:{this.state.seconds} ({this.state.progress})</p>
@@ -83,15 +81,6 @@ class Player extends React.Component {
     // Notify parent when the song ends
     console.log('end');
     // this.props.onToggle();
-  }
-
-  _onStateChange(event) {
-    // Detect if user clicked directly on player to play/pause
-    if(this.props.playing && event.data == 2) {
-      // Player was paused via clicking on the player
-      this.props.onToggle();
-    } else if(!this.props.playing && event.data == 1)
-      this.props.onToggle();
   }
 
   updateMetadata() {

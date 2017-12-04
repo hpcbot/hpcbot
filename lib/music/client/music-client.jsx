@@ -40,7 +40,7 @@ class MusicPlayer extends React.Component {
               <Player
                 videoId={this.state.videoId}
                 playing={this.state.playing}
-                onToggle={this.playPause} />
+              />
               <Controls
                 playing={this.state.playing}
                 onPlayPause={() => this.playPause()}
@@ -83,7 +83,6 @@ class MusicPlayer extends React.Component {
   }
 
   remove(song) {
-    console.log('got here' + song);
     socket.emit('removeSong', song);
   }
 }
