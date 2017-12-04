@@ -105,8 +105,19 @@ var remove = function(song, callback) {
 	// Output: error, success
 
 	if(song) {
-		db.get().lrem('playlist', 1, song, function(err, success) {
-			callback(err, success);
+		state(function(err, state) {
+			// Check if song is currently playing
+			if(state.videoId == song) {
+				skip(function(err, success) {
+					db.get().lrem('playlist', 1, song, function(err, success) {
+						callback(err, success);
+					});
+				});
+			} else {
+				db.get().lrem('playlist', 1, song, function(err, success) {
+					callback(err, success);
+				});					
+			}
 		});
 	} else {
 		callback('no song specified');

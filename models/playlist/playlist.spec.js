@@ -173,6 +173,26 @@ describe('Playlist', function() {
 					});
 				});
 			});
+			it('removing the currently selected video skips to the next song first', function(done) {
+				var videoId = 'asdf3adc';
+				var songs = ['A2h2YrfcJ4Y', 'asdf3adc', 'kAJD342mkamc'];
+
+				var _songs = ['A2h2YrfcJ4Y', 'kAJD342mkamc'];
+				var _videoId = 'kAJD342mkamc';
+
+				db.get().rpush('playlist', songs, function(err, data) {
+					Playlist.play(videoId, function(err, data) {
+						Playlist.remove(videoId, function(err, data) {
+							Playlist.state(function(err, state) {
+								assert.equal(err, null);
+								assert.equal(state.videoId, _videoId);
+								assert.deepEqual(state.songs, _songs);
+								done();
+							});
+						});
+					});
+				});
+			});
 		});
 		describe('skip', function() {
 			it('not at end: skips to next song', function(done) {
