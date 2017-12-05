@@ -22,7 +22,8 @@ class MusicPlayer extends React.Component {
         songs: [],
         metadata: [],
         muted: false,
-        timestamp: null
+        timestamp: null,
+        clients: []
     };
 
     this.playPause = this.playPause.bind(this);
@@ -51,6 +52,7 @@ class MusicPlayer extends React.Component {
                   muted={this.state.muted}
                   onEnd={this.skip}
                   onMuteUnmute={this.muteUnmute}
+                  clients={this.state.clients}
                 />
                 <Controls
                   playing={this.state.playing}

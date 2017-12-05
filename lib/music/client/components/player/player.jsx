@@ -6,6 +6,7 @@ import {render} from 'react-dom';
 import YouTube from 'react-youtube'
 
 import MuteButton from './mutebutton.jsx'
+import Clients from './clients.jsx'
 
 import css from './player.css'
 
@@ -76,10 +77,13 @@ class Player extends React.Component {
                 onStateChange={this._onStateChange}
                 />
               </div>
-              <div id="metadata" className="col c6">
+              <div id="metadata" className="col c5">
                 <h3>{this.state.title}</h3>
                 <p>{this.state.minutes}:{this.state.seconds} ({this.state.progress})</p>
                 <MuteButton muted={this.props.muted} onToggleMute={this.props.onMuteUnmute} />
+              </div>
+              <div id="clients" className="col c2">
+                <Clients clients={this.props.clients} />
               </div>
           </div>);
   }
