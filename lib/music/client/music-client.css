@@ -16,15 +16,26 @@ body {
   background: white;
 }
 
+/* --- Utility css --- */
+.center {
+  text-align: center;
+}
+
+.hidden {
+  display: none;
+}
+
 /* --- Button Styling ---*/
 .btn {
   color: white;
+  display:inline;
 }
 
 .btn-sm {
   color: white;
   text-decoration: none;
 }
+
 /* Fix to make youtube video non-interactable */
 iframe {
   pointer-events: none;

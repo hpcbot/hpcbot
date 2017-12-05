@@ -26,7 +26,7 @@ class Playlist extends React.Component {
       />
     );
 
-    return( <table class="table" id="playlist">
+    return( <table className="table" id="playlist">
               <tbody>
                 {this.songlist}
               </tbody>

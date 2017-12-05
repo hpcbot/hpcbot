@@ -1,0 +1,17 @@
+textarea, input[type=text] {
+  width: 500px;
+  max-width: 50%;
+  margin-right: 10px;
+}
+
+#addDialog {
+  margin-bottom: 10px;
+}
+
+form>* {
+  margin-bottom: 0px;
+}
+
+.msg {
+  padding: 10px;
+}
