@@ -129,9 +129,9 @@ describe('Songs', function() {
 			}
 			listStub.yields(null, _youtubeResponse);
 
-			Song.add(videoId, function(err, success) {
+			Song.add(videoId, function(err, metadata) {
 				assert.equal(err, null);
-				assert.equal(success, _success);
+				assert.deepEqual(metadata, _video);
 				// Refactor to song.get()
 				db.get().hgetall('song:' + videoId, function(err, data) {
 					assert.equal(data.title, _video.title);

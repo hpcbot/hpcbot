@@ -71,7 +71,7 @@ describe('Playlist', function() {
 				db.get().rpush('playlist', _playlist, function(err, data) {
 					Playlist.add(song, function(err, success) {
 						// Should return an error that item already exists
-						assert.equal(err, 'Song already exists');
+						assert.equal(err, 'That song already exists');
 						assert.equal(success, null);
 						// Make sure list was not modified
 						db.get().lrange('playlist', '0', '-1', function(err, data) {

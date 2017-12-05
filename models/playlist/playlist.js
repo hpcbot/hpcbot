@@ -54,7 +54,7 @@ var add = function(song, callback) {
 				});
 			}	else {
 				// Song already exists in Playlist
-				callback('Song already exists', null);
+				callback('That song already exists', null);
 			}
 		});
 	}

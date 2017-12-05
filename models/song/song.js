@@ -89,7 +89,7 @@ var add = function(videoId, callback) {
 						db.get().hmset('song:' + videoId, video, function(err, success) {
 							if(!err) {
 								// Successfully added the song
-								callback(null, true);
+								callback(null, video);
 							}	else {
 								callback(err, null);
 							}
