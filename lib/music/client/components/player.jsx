@@ -31,13 +31,17 @@ class Player extends React.Component {
             }
         };
 
-
     this._onReady = this._onReady.bind(this);
+    this._onStateChange = this._onStateChange.bind(this);
     this._onChangeVideo = this._onChangeVideo.bind(this);
     this.updateMetadata = this.updateMetadata.bind(this);
   }
 
   render() {
+    if(this.props.playing) {
+      // If we join a session that's already going, start playing on load
+      this.options.playerVars.autoplay = 1;
+    }
 
     // Handle play/pause changes from parent
     if(this.state.player) {
@@ -65,6 +69,7 @@ class Player extends React.Component {
                 opts={this.options}
                 onReady={this._onReady}
                 onChangeVideo={this._onChangeVideo}
+                onStateChange={this._onStateChange}
               />
               <p>Title: {this.state.title}</p>
               <p>Time: {this.state.minutes}:{this.state.seconds} ({this.state.progress})</p>
@@ -78,6 +83,14 @@ class Player extends React.Component {
 
     // Set a timer to poll the api for metadata changes
     setInterval(this.updateMetadata, 60);
+  }
+
+  _onStateChange(event) {
+    // Listen for video to end
+    if(event.data == YT.PlayerState.ENDED) {
+        this.props.onEnd();
+    }
+
   }
 
   _onChangeVideo(event) {

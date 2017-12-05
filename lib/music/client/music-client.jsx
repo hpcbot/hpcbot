@@ -43,6 +43,7 @@ class MusicPlayer extends React.Component {
                 videoId={this.state.videoId}
                 playing={this.state.playing}
                 muted={this.state.muted}
+                onEnd={this.skip}
               />
               <Controls
                 playing={this.state.playing}
