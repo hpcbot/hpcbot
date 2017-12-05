@@ -40,8 +40,6 @@ var add = function(song, callback) {
 	// Output: error, success
 
 	if(song) {
-  	song = validateInput(song);
-
 		// Check if song is already in the playlist
 		get(function(err, playlist) {
 			if(!playlist.includes(song)) {

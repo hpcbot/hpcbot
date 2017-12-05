@@ -14,7 +14,8 @@ class Player extends React.Component {
         duration: null,
         minutes: null,
         seconds: null,
-        progress: null
+        progress: null,
+        currentTime: null
     };
 
     this.options = {  // Options to initialize the youtube player
@@ -61,8 +62,6 @@ class Player extends React.Component {
        }
     }
 
-
-
     return(<div id='player'>
               <YouTube
                 videoId={this.props.videoId}
@@ -82,7 +81,7 @@ class Player extends React.Component {
     });
 
     // Set a timer to poll the api for metadata changes
-    setInterval(this.updateMetadata, 60);
+    setInterval(this.updateMetadata, 500);
   }
 
   _onStateChange(event) {
@@ -120,9 +119,18 @@ class Player extends React.Component {
         progress: this.parsePercentage(time, duration)
       })
     }
-  }
-  /* Metadata utility functions */
 
+    // // Send current time to server
+    // this.props.sendCurrentTime(time);
+    //
+    // // Report back with current time to sync w/ server
+    // if(time != this.props.currentTime) {
+    //   // Received new time from server
+    //   this.state.player.seekTo(this.props.currentTime(), true);
+    // }
+  }
+
+  /* Metadata utility functions */
   parseMinutes(time) {
     var minutes = Math.round(time/60);
     return(minutes);

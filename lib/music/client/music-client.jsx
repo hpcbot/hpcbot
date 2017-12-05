@@ -19,7 +19,8 @@ class MusicPlayer extends React.Component {
         videoId: null,
         songs: [],
         metadata: [],
-        muted: false
+        muted: false,
+        timestamp: null
     };
 
     this.playPause = this.playPause.bind(this);
@@ -69,7 +70,6 @@ class MusicPlayer extends React.Component {
   }
 
   playPause() {
-    console.log('got here');
     let playing = this.state.playing;
     socket.emit('playing', !playing);
   }
@@ -82,9 +82,11 @@ class MusicPlayer extends React.Component {
   trackChange(song) {
     socket.emit('playSong', song);  // Tell the server to update the current song
 
-    this.setState({
-      playing: true
-    });
+    // Tell the server to play the song if we click on a playlist
+    if(!this.state.playing) {
+      socket.emit('playing', !this.state.playing);
+    }
+
   }
 
   skip() {

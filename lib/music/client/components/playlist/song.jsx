@@ -20,6 +20,7 @@ class Song extends React.Component {
                  <img src={this.props.metadata.thumbnail} />
                  <a href="#" onClick={(song) => this.props.onTrackChange(song)}>{this.props.metadata.title}</a>
                </div>}
+            &nbsp; ({this.props.metadata.duration})
             &nbsp;<a href="#" onClick={(song) => this.props.onRemove(song)}>✖</a>
            </li>
          );
