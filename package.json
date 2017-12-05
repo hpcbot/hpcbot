@@ -35,7 +35,9 @@
     "chance": "1.0.8",
     "dotenv": "4.0.0",
     "extend": "^3.0.1",
+    "googleapis": "^23.0.0",
     "ioredis": "2.5.0",
+    "iso8601-duration": "^1.1.1",
     "later": "^1.2.0",
     "mixpanel": "0.7.0",
     "pug": "2.0.0-beta11",
@@ -46,7 +48,8 @@
     "tmi.js": "1.1.2",
     "twitch-overlay": "1.0.2",
     "vinyl-source-stream": "^1.1.0",
-    "webpack": "^3.8.1"
+    "webpack": "^3.8.1",
+    "youtube-api": "^2.0.9"
   },
   "license": "GPL-3.0",
   "devDependencies": {

@@ -18,6 +18,7 @@ class MusicPlayer extends React.Component {
         playing: false,
         videoId: null,
         songs: [],
+        metadata: [],
         muted: false
     };
 
@@ -56,6 +57,7 @@ class MusicPlayer extends React.Component {
                 playing={this.state.playing}
                 currentVideo={this.state.videoId}
                 songs={this.state.songs}
+                metadata={this.state.metadata}
                 onTrackChange={(song) => this.trackChange(song)}
                 onRemove={(song) => this.remove(song)} />
             </div>);

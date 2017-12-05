@@ -66,6 +66,10 @@ function validate(options) {
     _options.whitelist = options.whitelist;
   }
 
+  if(options.youtubeKey) {
+    _options.youtubeKey = options.youtubeKey;
+  }
+
   return(_options);
 }
 
