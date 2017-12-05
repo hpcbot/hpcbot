@@ -3,26 +3,21 @@
 import React from 'react';
 import {render} from 'react-dom';
 
+import css from './song.css'
+
 class Song extends React.Component {
   constructor(props) {
     super(props);
   }
 
   render() {
-    return(<li>
-             {this.props.selected &&
-               <b>
-                 <img src={this.props.metadata.thumbnail} />
-                 <a href="#" onClick={(song) => this.props.onTrackChange(song)}>{this.props.metadata.title}</a>
-               </b>}
-             {!this.props.selected &&
-               <div>
-                 <img src={this.props.metadata.thumbnail} />
-                 <a href="#" onClick={(song) => this.props.onTrackChange(song)}>{this.props.metadata.title}</a>
-               </div>}
-            &nbsp; ({this.props.metadata.duration})
-            &nbsp;<a href="#" onClick={(song) => this.props.onRemove(song)}>✖</a>
-           </li>
+    return(<tr className={"song " + (this.props.selected ? 'selected' : '')}>
+             <td className="center"><a href="#" onClick={(song) => this.props.onTrackChange(song)} className="btn-a btn-sm smooth" >▶</a></td>
+             <td className="center"><img src={this.props.metadata.thumbnail} /></td>
+             <td>{this.props.metadata.title}</td>
+             <td className="right">{this.props.metadata.duration}</td>
+             <td className="center"><a href="#" onClick={(song) => this.props.onRemove(song)} className="btn-c btn-sm smooth" >✖</a></td>
+          </tr>
          );
   }
 }

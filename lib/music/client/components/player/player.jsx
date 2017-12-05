@@ -5,6 +5,10 @@ import {render} from 'react-dom';
 
 import YouTube from 'react-youtube'
 
+import MuteButton from './mutebutton.jsx'
+
+import css from './player.css'
+
 class Player extends React.Component {
   constructor(props) {
     super(props);
@@ -62,16 +66,21 @@ class Player extends React.Component {
        }
     }
 
-    return(<div id='player'>
-              <YouTube
+    return(<div id="player" className="row">
+              <div id="youtube" className="col c3">
+                <YouTube
                 videoId={this.props.videoId}
                 opts={this.options}
                 onReady={this._onReady}
                 onChangeVideo={this._onChangeVideo}
                 onStateChange={this._onStateChange}
-              />
-              <p>Title: {this.state.title}</p>
-              <p>Time: {this.state.minutes}:{this.state.seconds} ({this.state.progress})</p>
+                />
+              </div>
+              <div id="metadata" className="col c6">
+                <h3>{this.state.title}</h3>
+                <p>{this.state.minutes}:{this.state.seconds} ({this.state.progress})</p>
+                <MuteButton muted={this.props.muted} onToggleMute={this.props.onMuteUnmute} />
+              </div>
           </div>);
   }
 

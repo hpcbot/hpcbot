@@ -5,7 +5,8 @@ import {render} from 'react-dom';
 
 import PlayButton from './playbutton.jsx'
 import AddButton from './addbutton.jsx'
-import MuteButton from './mutebutton.jsx'
+
+import css from './controls.css'
 
 class Controls extends React.Component {
   constructor(props) {
@@ -14,11 +15,12 @@ class Controls extends React.Component {
 
   render() {
     return(
-      <div className="controls">
-        <PlayButton playing={this.props.playing} onTogglePlay={this.props.onPlayPause} />
-        <button onClick={this.props.onSkip}>▶❚</button>
-        <AddButton onAdd={(song) => this.props.onAdd(song)} />
-        <MuteButton muted={this.props.muted} onToggleMute={this.props.onMuteUnmute} />
+      <div id="controls">
+          <PlayButton playing={this.props.playing} onTogglePlay={this.props.onPlayPause} />
+          <a onClick={this.props.onSkip} className="btn-sm btn-a smooth">▶❚</a>
+          <div id="playlistControls">
+            <AddButton onAdd={(song) => this.props.onAdd(song)} />
+          </div>
       </div>
     );
   }

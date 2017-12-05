@@ -19,11 +19,11 @@ class AddButton extends React.Component {
   render() {
     if(!this.state.adding) {
       // Do now show the 'add' dialog
-      return <button onClick={this.onToggle}>+ Add Song</button>
+      return <a onClick={this.onToggle} className="btn-sm btn-b smooth">+ Add Song</a>
     } else {
       // Show the add dialog
       return(<div className="addSong">
-               <button onClick={this.onToggle}>+ Add Song</button>
+               <a onClick={this.onToggle} className="btn-sm btn-b smooth">+ Add Song</a>
                <form onSubmit={this.handleSubmit}>
                  <div className="addDialog">
                    <input type="text" placeholder="Paste a youtube URL here" value={this.state.song} onChange={this.handleChange} />

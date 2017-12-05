@@ -6,10 +6,12 @@ import openSocket from 'socket.io-client';
 const socket = openSocket('http://localhost:5000'); // Connect to the server to get client updates
 
 // Components
-import Player from './components/player.jsx'
+import Nav from './components/nav/nav.jsx'
+import Player from './components/player/player.jsx'
 import Controls from './components/controls/controls.jsx'
 import Playlist from './components/playlist/playlist.jsx'
 
+import css from './music-client.css'
 
 class MusicPlayer extends React.Component {
   constructor(props) {
@@ -41,26 +43,29 @@ class MusicPlayer extends React.Component {
     // Playlist
     // * Tracks
     return( <div>
-              <Player
-                videoId={this.state.videoId}
-                playing={this.state.playing}
-                muted={this.state.muted}
-                onEnd={this.skip}
-              />
-              <Controls
-                playing={this.state.playing}
-                onPlayPause={this.playPause}
-                onSkip = {this.skip}
-                onAdd={(song) => this.add(song)}
-                muted={this.state.muted}
-                onMuteUnmute={this.muteUnmute}/>
-              <Playlist
-                playing={this.state.playing}
-                currentVideo={this.state.videoId}
-                songs={this.state.songs}
-                metadata={this.state.metadata}
-                onTrackChange={(song) => this.trackChange(song)}
-                onRemove={(song) => this.remove(song)} />
+              <Nav current="music" />
+              <div className="container">
+                <Player
+                  videoId={this.state.videoId}
+                  playing={this.state.playing}
+                  muted={this.state.muted}
+                  onEnd={this.skip}
+                  onMuteUnmute={this.muteUnmute}
+                />
+                <Controls
+                  playing={this.state.playing}
+                  onPlayPause={this.playPause}
+                  onSkip = {this.skip}
+                  onAdd={(song) => this.add(song)}
+                />
+                <Playlist
+                  playing={this.state.playing}
+                  currentVideo={this.state.videoId}
+                  songs={this.state.songs}
+                  metadata={this.state.metadata}
+                  onTrackChange={(song) => this.trackChange(song)}
+                  onRemove={(song) => this.remove(song)} />
+              </div>
             </div>);
   }
 

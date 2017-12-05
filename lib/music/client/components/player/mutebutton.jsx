@@ -10,9 +10,9 @@ class MuteButton extends React.Component {
 
   render() {
     if(!this.props.muted) {
-      return <button onClick={this.props.onToggleMute}>🔊</button>
+      return <a onClick={this.props.onToggleMute} className="btn btn-a smooth">🔊</a>
     } else {
-      return <button onClick={this.props.onToggleMute}>🔇</button>
+      return <a onClick={this.props.onToggleMute} className="btn btn-a smooth">🔇</a>
     }
   }
 }

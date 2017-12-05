@@ -1,10 +1,12 @@
 /* Playlist - a list of queued
  */
 
-import React from 'react';
-import {render} from 'react-dom';
+import React from 'react'
+import {render} from 'react-dom'
 
-import Song from './song.jsx';
+import Song from './song.jsx'
+
+import css from './playlist.css'
 
 class Playlist extends React.Component {
   constructor(props) {
@@ -24,9 +26,12 @@ class Playlist extends React.Component {
       />
     );
 
-    return(<ol id='playlist'>
-              {this.songlist}
-          </ol>);
+    return( <table class="table" id="playlist">
+              <tbody>
+                {this.songlist}
+              </tbody>
+            </table>
+          );
   }
 }
 

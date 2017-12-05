@@ -1,0 +1,14 @@
+/* Styling for Songs in playlists */
+
+tr.song.selected {
+  background: #dfd;
+  font-weight: bold;
+}
+
+td.center {
+  text-align: center;
+}
+
+td.right {
+  text-align: right;
+}
