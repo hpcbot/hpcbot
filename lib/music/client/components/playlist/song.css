@@ -1,5 +1,9 @@
 /* Styling for Songs in playlists */
 
+img.thumbnail {
+  width: 60px;
+  height: 45px;
+}
 tr.song.selected {
   background: #dfd;
   font-weight: bold;
