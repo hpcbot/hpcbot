@@ -45,6 +45,11 @@ a {
   cursor:pointer
 }
 
+/* --- Font Styling --- */
+h3 {
+  margin: 10px 0px 10px 0px;
+}
+
 /* Fix to make youtube video non-interactable */
 iframe {
   pointer-events: none;

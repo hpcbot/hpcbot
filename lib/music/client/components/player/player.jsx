@@ -5,6 +5,7 @@ import {render} from 'react-dom';
 
 import YouTube from 'react-youtube'
 
+import ScrubBar from './scrubbar.jsx'
 import Volume from './volume.jsx'
 import MuteButton from './mutebutton.jsx'
 import Clients from './clients.jsx'
@@ -18,8 +19,7 @@ class Player extends React.Component {
         player: null,
         title: null,
         duration: null,
-        minutes: null,
-        seconds: null,
+        timestamp: null,
         progress: null,
         muted: false,
         volume: 100
@@ -45,6 +45,11 @@ class Player extends React.Component {
     this.updateMetadata = this.updateMetadata.bind(this);
     this.onMuteUnmute = this.onMuteUnmute.bind(this);
     this.onVolumeChange = this.onVolumeChange.bind(this);
+
+    /* Scrubber events */
+    this.onScrub = this.onScrub.bind(this);
+    this.onScrubStart = this.onScrubStart.bind(this);
+    this.onScrubComplete = this.onScrubComplete.bind(this);
   }
 
   render() {
@@ -83,14 +88,41 @@ class Player extends React.Component {
               </div>
               <div id="metadata" className="col c5">
                 <h3>{this.state.title}</h3>
-                <p>{this.state.minutes}:{this.state.seconds} ({this.state.progress})</p>
-                <div className="left" title="Mute audio (only for your computer)"><MuteButton muted={this.state.muted} onToggleMute={this.onMuteUnmute} /></div>
-                <Volume muted={this.state.muted} value={this.state.volume} onChange={this.onVolumeChange} />
+                <ScrubBar
+                  playing={this.props.playing}
+                  onChangeStart={this.onScrubStart}
+                  onChange={this.onScrub}
+                  onChangeComplete={this.onScrubComplete}
+                  progress={this.state.progress}
+                  timestamp={this.state.timestamp}
+                  duration={this.state.duration}
+                />
+                <div className="volumeControls">
+                  <div className="left" title="Mute audio (only for your computer)">
+                    <MuteButton
+                      muted={this.state.muted}
+                      onToggleMute={this.onMuteUnmute}
+                    />
+                  </div>
+                  <Volume
+                    muted={this.state.muted}
+                    value={this.state.volume}
+                    onChange={this.onVolumeChange}
+                  />
+                </div>
               </div>
               <div id="clients" className="col c2">
                 <Clients clients={this.props.clients} />
               </div>
           </div>);
+  }
+
+  /* Create ref so parent can tell the player to seek */
+  componentDidMount() {
+    this.props.onRef(this)
+  }
+  componentWillUnmount() {
+    this.props.onRef(undefined)
   }
 
   _onReady(event) {
@@ -99,7 +131,7 @@ class Player extends React.Component {
     });
 
     // Set a timer to poll the api for metadata changes
-    setInterval(this.updateMetadata, 500);
+    this.poll = setInterval(this.updateMetadata, 500);
   }
 
   _onStateChange(event) {
@@ -126,9 +158,30 @@ class Player extends React.Component {
     this.setState({
       volume: value
     });
-    console.log(value);
+
     this.state.player.setVolume(value);
-    console.log(this.state.player.getVolume());
+  }
+
+  onScrubStart() {
+    clearInterval(this.poll);
+  }
+
+  onScrub(value) {
+    this.setState({
+      progress: value
+    });
+  }
+
+  onScrubComplete() {
+    var timeToSeek = this.state.player.getDuration() * this.state.progress / 100; // Convert percentage to seconds
+    this.seek(timeToSeek);
+    this.props.onSeekSend(timeToSeek); // Send event to server that we skipped ahead
+    this.poll = setInterval(this.updateMetadata, 500);
+
+  }
+
+  seek(time) {
+    this.state.player.seekTo(time);
   }
 
   updateMetadata() {
@@ -139,9 +192,8 @@ class Player extends React.Component {
     if(data && time && duration) {
       this.setState({
         title: data.title,
-        duration: data.duration,
-        minutes: this.parseMinutes(time),
-        seconds: this.parseSeconds(time),
+        duration: this.parseTimestamp(duration),
+        timestamp: this.parseTimestamp(time),
         progress: this.parsePercentage(time, duration)
       })
     }
@@ -157,29 +209,49 @@ class Player extends React.Component {
   }
 
   /* Metadata utility functions */
-  parseMinutes(time) {
-    var minutes = Math.round(time/60);
-    return(minutes);
+  parseTimestamp(time) {
+    var timestamp = "";
+
+    var hours, minutes, seconds;
+
+    if((time / 3600) > 1) {
+      // Parse hours
+      hours = Math.round(time/360);
+      hours = this.handleZeros(hours);
+    }
+
+    // Parse parse minutes
+    minutes = Math.round(time/60);
+    // minutes = this.handleZeros(minutes);
+
+    seconds = Math.round(time % 60);
+    seconds = this.handleZeros(seconds);
+
+    if(hours) {
+      timestamp += hours + ":";
+    }
+
+    timestamp += minutes + ":";
+    timestamp += seconds;
+
+    return(timestamp);
   }
 
-  parseSeconds(time) {
-    var seconds = Math.round(time % 60);
-
+  handleZeros(time) {
     // Fix some weirdness with the youtube timestamp
-		if(seconds == 60) {
+		if(time == 60) {
 			// For some reason 60 shows up on the seconds count
-			seconds = '00';
-		} else if(seconds >= 0 && seconds < 10) {
+			time = '00';
+		} else if(time >= 0 && time < 10) {
 			// Prepend zero
-			seconds = 0 + seconds.toString();
+			time = 0 + time.toString();
 		}
 
-		return seconds;
+		return time;
   }
 
   parsePercentage(time, duration) {
     var percentage = Math.round(time / duration * 100);
-    percentage = percentage.toString() + '%';
     return(percentage);
   }
 }

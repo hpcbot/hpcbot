@@ -14,10 +14,10 @@ class Volume extends React.Component {
   }
 
   render() {
-    return(<div className='slider-vertical left '>
+    return(<div className='volume left'>
             {this.props.muted && (    // Ugly hack to style the embedded volume bar when we mute
               <style>
-                {`.slider-vertical .rangeslider__fill {
+                {`.volume .rangeslider__fill {
                     background-color: #ef5350; }`
                 }
               </style>

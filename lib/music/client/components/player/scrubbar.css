@@ -1,0 +1,46 @@
+/* ScrubBar styling */
+
+.scrub {
+    width: 100%;
+    margin-bottom: 40px;
+    margin-top: 10px;
+}
+
+#scrubber {
+  width: 80%;
+}
+
+.rangeslider-horizontal {
+    height: 7px;
+    padding: 0px;
+    max-width: 100%;
+    background-color: #E8E8EE;
+}
+
+.scrub .rangeslider {
+  margin: 5px;
+}
+
+.scrub .rangeslider__fill {
+    background-color: #0ae;
+    width: 100%;
+    bottom: 0;
+}
+
+.scrub .rangeslider__handle {
+    width: 15px;
+    height: 15px;
+    left: -6px;
+    border-radius: 50%;
+    background-color: #fff;
+    box-shadow: 0 1px 1px #333;
+    outline: none;
+}
+
+.rangeslider, .rangeslider .rangeslider__fill {
+  box-shadow: none;
+}
+
+.rangeslider-horizontal .rangeslider__handle:after {
+  content: none;
+}

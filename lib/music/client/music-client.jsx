@@ -35,7 +35,12 @@ class MusicPlayer extends React.Component {
     this.add = this.add.bind(this);
     this.remove = this.remove.bind(this);
     this.updateState = this.updateState.bind(this);
-    socket.on('state', this.updateState); // Receive state updates from server
+    this.onSeekReceive = this.onSeekReceive.bind(this);
+
+    /* Handle updates from server */
+    socket.on('state', this.updateState);   // Receive state updates from server
+    socket.on('seek', this.onSeekReceive);  // Another user jumped timestamp forward
+
   }
 
   render () {
@@ -53,8 +58,11 @@ class MusicPlayer extends React.Component {
                   playing={this.state.playing}
                   muted={this.state.muted}
                   onEnd={this.end}
-                  // onMuteUnmute={this.muteUnmute}
+                  progress={this.state.progress}
+                  onSeekSend={this.onSeekSend}
+                  onSeekReceive={this.onSeekReceive}
                   clients={this.state.clients}
+                  onRef={ref => (this.player = ref)}
                 />
                 <Controls
                   playing={this.state.playing}
@@ -73,8 +81,18 @@ class MusicPlayer extends React.Component {
             </div>);
   }
 
+  onSeekSend(progress) {
+    console.log('got here: ' + progress);
+    socket.emit('seek', progress);
+  }
+
+  onSeekReceive(progress) {
+    console.log(this.player);
+    console.log('Received a seek: ' + progress);
+    this.player.seek(progress);
+  }
+
   updateState(state) {
-    console.log(state);
     this.setState(state);
   }
 
@@ -82,7 +100,6 @@ class MusicPlayer extends React.Component {
     let playing = this.state.playing;
     socket.emit('playing', !playing);
   }
-
 
   trackChange(song) {
     socket.emit('playSong', song);  // Tell the server to update the current song
