@@ -112,7 +112,7 @@ class MusicPlayer extends React.Component {
   }
 
   skip() {
-    socket.emit('skipSong');
+    socket.emit('skipSong', this.state.videoId);
   }
 
   end() {
