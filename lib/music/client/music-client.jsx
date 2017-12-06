@@ -1,9 +1,12 @@
 import React from 'react';
 import {render} from 'react-dom';
 
+// Detect hostname for socket.io to connect
+const hostname = window && window.location && window.location.hostname;
+
 // Libraries
 import openSocket from 'socket.io-client';
-const socket = openSocket('http://localhost:5000'); // Connect to the server to get client updates
+const socket = openSocket(hostname + ':5000'); // Connect to the server to get client updates
 
 // Components
 import Nav from './components/nav/nav.jsx'
