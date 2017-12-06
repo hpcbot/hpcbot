@@ -142,6 +142,11 @@ describe('Songs', function() {
 			});
 		});
 	});
+	describe('addList', function() {
+		it('returns a list of songs for a valid playlist', function(done) {
+				done();
+		})
+	});
 	describe('fetchMetadata', function() {
 		it('Gets metadata from youtube for a valid video ID', function(done) {
 			var videoId = 'YolcxelpLtU';

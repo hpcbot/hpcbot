@@ -13,12 +13,12 @@ class AddButton extends React.Component {
   render() {
       if(!this.props.adding) {
         return(<div id="addbutton">
-          <a href="#" onClick={this.props.onToggle} className="btn-sm btn-b smooth">+ Add Song</a>
+          <a onClick={this.props.onToggle} className="btn-sm btn-b smooth">+ Add Song</a>
         </div>);
       } else {
         // Add dialog is open, show a cancel button instead
         return(<div id="addbutton">
-          <a href="#" onClick={this.props.onToggle} className="btn-sm btn smooth">Cancel</a>
+          <a onClick={this.props.onToggle} className="btn-sm btn smooth">Cancel</a>
         </div>);
       }
     }

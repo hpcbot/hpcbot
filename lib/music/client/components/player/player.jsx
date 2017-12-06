@@ -80,7 +80,7 @@ class Player extends React.Component {
               <div id="metadata" className="col c5">
                 <h3>{this.state.title}</h3>
                 <p>{this.state.minutes}:{this.state.seconds} ({this.state.progress})</p>
-                <MuteButton muted={this.props.muted} onToggleMute={this.props.onMuteUnmute} />
+                <div title="Mute audio (only for your computer)"><MuteButton muted={this.props.muted} onToggleMute={this.props.onMuteUnmute} /></div>
               </div>
               <div id="clients" className="col c2">
                 <Clients clients={this.props.clients} />

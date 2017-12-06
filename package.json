@@ -10,7 +10,7 @@
   "scripts": {
     "start": "node .",
     "build": "./node_modules/.bin/webpack -d",
-    "test": "mocha lib/**/*.spec.js",
+    "test": "mocha lib/**/*.spec.js lib/**/**/*.spec.js models/**/*.spec.js --exit",
     "watch": "mocha -w lib/**/*.spec.js"
   },
   "engines": {

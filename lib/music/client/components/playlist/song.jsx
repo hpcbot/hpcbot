@@ -12,12 +12,12 @@ class Song extends React.Component {
 
   render() {
     return(<tr className={"song " + (this.props.selected ? 'selected' : '')}>
-             <td className="center"><a href="#" onClick={(song) => this.props.onTrackChange(song)} className="btn-a btn-sm smooth" >▶</a></td>
+             <td className="center" title="Play this song"><a onClick={(song) => this.props.onTrackChange(song)} className="btn-a btn-sm smooth" >▶</a></td>
              <td className="center">{this.props.index}</td>
              <td className="center"><img className="thumbnail" src={this.props.metadata.thumbnail} /></td>
              <td>{this.props.metadata.title}</td>
              <td className="right">{this.props.metadata.duration}</td>
-             <td className="center"><a href="#" onClick={(song) => this.props.onRemove(song)} className="btn-c btn-sm smooth" >✖</a></td>
+             <td className="center" title="Remove from list"><a onClick={(song) => this.props.onRemove(song)} className="btn-c btn-sm smooth">✖</a></td>
           </tr>
          );
   }

@@ -48,8 +48,8 @@ var get = function(videoId, callback) {
 
 // HACK - This might be really, really slow. Need to find a better/faster way.
 
-var list = function(videoIds, callback) {
-	// Get metadata for a specific song
+var getList = function(videoIds, callback) {
+	// Get metadata for a bunch of songs
 	// Input: [videoIds]
 	// Output: error, [{metadata}]
 
@@ -85,7 +85,7 @@ var add = function(videoId, callback) {
 				// Grab metadata from youtube
 				fetchMetadata(videoId, function(err, video) {
 					if(!err) {
-						// push song onto list
+						//  Save song metadata
 						db.get().hmset('song:' + videoId, video, function(err, success) {
 							if(!err) {
 								// Successfully added the song
@@ -108,6 +108,38 @@ var add = function(videoId, callback) {
 	}
 };
 
+var addList = function(listId, callback) {
+		// Add a playlist to the end of the playlist
+		// Input: youtube playlist ID
+		// Output: error, title, [song IDs]
+
+		let list = [];
+
+		if(listId) {
+			// Grab list details from youtube
+			youtube.playlistItems.list({
+				maxResults: 25,
+				auth: options.youtubeKey,
+				playlistId: listId,
+				part: 'snippet, contentDetails'
+			}, function(err, response) {
+				// Parse response
+				response.items.forEach(function(item) {
+					let video = parseMetadata(item.snippet, item.contentDetails);
+
+					db.get().hmset('song:' + item.contentDetails.videoId, video, function(err, success) {
+
+						list.push(item.contentDetails.videoId);
+
+						if(list.length == response.items.length) {
+							// Last item added, callback!
+							callback(null, list);
+						}
+					});
+			});
+		});
+	}
+}
 
 var fetchMetadata = function(videoId, callback) {
 	// Fetch song data from the Youtube data API so we can grab thumbnail, duration, etc
@@ -125,25 +157,7 @@ var fetchMetadata = function(videoId, callback) {
 			let details = response.items[0].contentDetails;
 
 			// Parse api output and construct video object
-			let video = {};
-			video.title = snippet.title;
-			video.thumbnail = snippet.thumbnails.default.url;
-
-			let duration = iso8601.parse(response.items[0].contentDetails.duration)
-			video.duration = '';
-
-			if(duration.hours) {
-				video.duration += duration.hours + ':';
-			}
-			if(duration.minutes) {
-				video.duration += duration.minutes + ':';
-			}
-			if(duration.seconds) {
-				if(duration.seconds < 10) {
-					video.duration += '0';
-				}
-				video.duration += duration.seconds;
-			}
+			let video = parseMetadata(snippet, details);
 
 			callback(null, video);
 
@@ -154,10 +168,40 @@ var fetchMetadata = function(videoId, callback) {
 	});
 }
 
+var parseMetadata = function(snippet, details) {
+	// Parse api output and construct video object
+	let video = {};
+	video.title = snippet.title;
+	video.thumbnail = snippet.thumbnails.default.url;
+
+	if(details.duration) {
+		// playlist items don't return a duration
+
+		let duration = iso8601.parse(details.duration)
+		video.duration = '';
+
+		if(duration.hours) {
+			video.duration += duration.hours + ':';
+		}
+		if(duration.minutes) {
+			video.duration += duration.minutes + ':';
+		}
+		if(duration.seconds) {
+			if(duration.seconds < 10) {
+				video.duration += '0';
+			}
+			video.duration += duration.seconds;
+		}
+	}
+
+	return(video);
+}
+
 module.exports = {
 	start: start,
 	add: add,
+	addList: addList,
 	get: get,
-	list: list,
+	getList: getList,
 	fetchMetadata: fetchMetadata
 };

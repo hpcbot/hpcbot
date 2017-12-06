@@ -9,11 +9,28 @@ db.connect('mode_staging');	// Do not remove this or you will wipe your data
 var EventEmitter = require('events');
 var eventbus = new EventEmitter;	// Temporary event bus to prevent events firing across files
 
-var Playlist = require('.');
-Playlist.start(db, eventbus);
+var youtube;	// Placeholder for youtube api object
+var listStub;
+
+var Playlist;
 
 describe('Playlist', function() {
 	beforeEach(function(done) {
+		this.sinon = sandbox = sinon.sandbox.create();
+
+		youtube = {
+			videos: {
+				list: function() {
+				}
+			}
+		};
+
+		// Stub out video list
+		listStub = this.sinon.stub(youtube.videos, 'list');
+
+		Playlist = require('.');
+		Playlist.start(db, {youtube: youtube, youtubeKey: ''});
+
 		// Wipe database before running tests. Note: Make _SURE_ you are on staging
 		db.get().flushdb(function(err) {
 			if(!err) {
@@ -248,23 +265,8 @@ describe('Playlist', function() {
 				});
 			});
 		});
-		describe('validateInput', function() {
-			it('passes a song ID through', function() {
-				var song = 'A2h2YrfcJ4Y'
-				var _song = 'A2h2YrfcJ4Y'
-
-				song = Playlist.validateInput(song);
-
-				assert.equal(song, _song);
-			});
-			it('removes the youtube URL from the start', function() {
-				var song = 'https://www.youtube.com/watch?v=VT2W3U8wYQg'
-				var _song = 'VT2W3U8wYQg'
-
-				song = Playlist.validateInput(song);
-
-				assert.equal(song, _song);
-			})
-		})
+	});
+	afterEach(function() {
+		sandbox.restore();
 	});
 });

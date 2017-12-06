@@ -25,7 +25,7 @@ body {
   display: none;
 }
 
-/* --- Button Styling ---*/
+/* --- Button Styling --- */
 .btn {
   color: white;
   display:inline;
@@ -34,6 +34,11 @@ body {
 .btn-sm {
   color: white;
   text-decoration: none;
+}
+
+/* --- Link Styling --- */
+a {
+  cursor:pointer
 }
 
 /* Fix to make youtube video non-interactable */

@@ -15,12 +15,9 @@
 				// hget current timestamp '0m32s' (for syncing across network)
 */
 
-
 var db;
 
 var start = function (_db) {
-	// Creates the playlist module
-
 	db = _db;
 };
 
@@ -36,7 +33,7 @@ var get = function(callback) {
 
 var add = function(song, callback) {
 	// Add a song to end of the playlist
-	// Input: song
+	// Input: song video ID
 	// Output: error, success
 
 	if(song) {
