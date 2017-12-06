@@ -30,7 +30,6 @@ class MusicPlayer extends React.Component {
     };
 
     this.playPause = this.playPause.bind(this);
-    this.muteUnmute = this.muteUnmute.bind(this);
     this.trackChange = this.trackChange.bind(this);
     this.skip = this.skip.bind(this);
     this.add = this.add.bind(this);
@@ -54,7 +53,7 @@ class MusicPlayer extends React.Component {
                   playing={this.state.playing}
                   muted={this.state.muted}
                   onEnd={this.end}
-                  onMuteUnmute={this.muteUnmute}
+                  // onMuteUnmute={this.muteUnmute}
                   clients={this.state.clients}
                 />
                 <Controls
@@ -84,10 +83,6 @@ class MusicPlayer extends React.Component {
     socket.emit('playing', !playing);
   }
 
-  muteUnmute() {
-    let muted = this.state.muted;
-    this.setState({muted: !muted});
-  }
 
   trackChange(song) {
     socket.emit('playSong', song);  // Tell the server to update the current song

@@ -5,6 +5,7 @@ import {render} from 'react-dom';
 
 import YouTube from 'react-youtube'
 
+import Volume from './volume.jsx'
 import MuteButton from './mutebutton.jsx'
 import Clients from './clients.jsx'
 
@@ -20,7 +21,8 @@ class Player extends React.Component {
         minutes: null,
         seconds: null,
         progress: null,
-        currentTime: null
+        muted: false,
+        volume: 100
     };
 
     this.options = {  // Options to initialize the youtube player
@@ -41,6 +43,8 @@ class Player extends React.Component {
     this._onStateChange = this._onStateChange.bind(this);
     this._onChangeVideo = this._onChangeVideo.bind(this);
     this.updateMetadata = this.updateMetadata.bind(this);
+    this.onMuteUnmute = this.onMuteUnmute.bind(this);
+    this.onVolumeChange = this.onVolumeChange.bind(this);
   }
 
   render() {
@@ -60,7 +64,7 @@ class Player extends React.Component {
        }
 
        // Mute/unmute
-       if(this.props.muted) {
+       if(this.state.muted) {
          this.state.player.mute();
        } else {
          this.state.player.unMute();
@@ -80,7 +84,8 @@ class Player extends React.Component {
               <div id="metadata" className="col c5">
                 <h3>{this.state.title}</h3>
                 <p>{this.state.minutes}:{this.state.seconds} ({this.state.progress})</p>
-                <div title="Mute audio (only for your computer)"><MuteButton muted={this.props.muted} onToggleMute={this.props.onMuteUnmute} /></div>
+                <div className="left" title="Mute audio (only for your computer)"><MuteButton muted={this.state.muted} onToggleMute={this.onMuteUnmute} /></div>
+                <Volume muted={this.state.muted} value={this.state.volume} onChange={this.onVolumeChange} />
               </div>
               <div id="clients" className="col c2">
                 <Clients clients={this.props.clients} />
@@ -106,16 +111,24 @@ class Player extends React.Component {
   }
 
   _onChangeVideo(event) {
-    console.log('changing video');
     this.setState({
       title: this.state.player.getVideoData().title
     });
     this.state.player.playvideo();
   }
 
-  _onEnd(event) {
-    // Notify parent when the song ends
-    console.log('end');
+  onMuteUnmute() {
+    let muted = this.state.muted;
+    this.setState({muted: !muted});
+  }
+
+  onVolumeChange(value) {
+    this.setState({
+      volume: value
+    });
+    console.log(value);
+    this.state.player.setVolume(value);
+    console.log(this.state.player.getVolume());
   }
 
   updateMetadata() {

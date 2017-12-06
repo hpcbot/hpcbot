@@ -21,6 +21,10 @@ body {
   text-align: center;
 }
 
+.left {
+  float: left;
+}
+
 .hidden {
   display: none;
 }
