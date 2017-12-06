@@ -66,7 +66,9 @@ var getList = function(videoIds, callback) {
 						callback(null, songs);
 					}
 				} else {
-					callback(err, null);
+
+						console.log(err);
+						callback("Error retrieving song", null);
 				}
 			});
 		});
@@ -91,11 +93,13 @@ var add = function(videoId, callback) {
 								// Successfully added the song
 								callback(null, video);
 							}	else {
-								callback(err, null);
+								console.log(err);
+								callback("Error adding song", null);
 							}
 						});
 					} else {
-						callback(err, null);
+						console.log(err);
+						callback("Error adding song", null);
 					}
 				});
 			// }	else {
@@ -163,7 +167,9 @@ var fetchMetadata = function(videoId, callback) {
 
 			// Send confirmation message to chat
 		} else {
-			callback(err, null);
+			console.log(err);
+			callback("Error retrieving song details", null);
+
 		}
 	});
 }

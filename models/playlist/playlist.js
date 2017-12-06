@@ -46,7 +46,8 @@ var add = function(song, callback) {
 						// Successfully added the song
 						callback(null, true);
 					}	else {
-						callback(err, null);
+						console.log(err);
+						callback("Error adding song", null);
 					}
 				});
 			}	else {
