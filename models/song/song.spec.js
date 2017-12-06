@@ -65,7 +65,7 @@ describe('Songs', function() {
 			});
 		});
 	});
-	describe('list', function() {
+	describe('getList', function() {
 		it('Returns a list of song metadata if an array is passed in', function(done) {
 			var songs = ['kajdsklfja', 'aksdljfklajf', 'jaksdjfklaj'];
 
@@ -86,7 +86,7 @@ describe('Songs', function() {
 			db.get().hmset('song:' + songs[0], _songs[0], function(err, success) {
 				db.get().hmset('song:' + songs[1], _songs[1], function(err, success) {
 					db.get().hmset('song:' + songs[2], _songs[2], function(err, success) {
-						Song.list(songs, function(err, metadata) {
+						Song.getList(songs, function(err, metadata) {
 							assert.equal(err, null);
 							assert.deepEqual(metadata, _songs);
 							done();

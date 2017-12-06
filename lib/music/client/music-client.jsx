@@ -53,7 +53,7 @@ class MusicPlayer extends React.Component {
                   videoId={this.state.videoId}
                   playing={this.state.playing}
                   muted={this.state.muted}
-                  onEnd={this.skip}
+                  onEnd={this.end}
                   onMuteUnmute={this.muteUnmute}
                   clients={this.state.clients}
                 />
@@ -101,6 +101,10 @@ class MusicPlayer extends React.Component {
 
   skip() {
     socket.emit('skipSong');
+  }
+
+  end() {
+    socket.emit('endSong');
   }
 
   add(song) {

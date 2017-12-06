@@ -5,7 +5,7 @@
 		play(song) - Selects a specific song
 		add(song)	- Adds a song to the list
 		delete(song) - Removes a song from the list
-		skip() - Skips the currently selected song
+		next() - nexts the currently selected song
 
 		Data model:
 			Playlist:
@@ -104,7 +104,7 @@ var remove = function(song, callback) {
 		state(function(err, state) {
 			// Check if song is currently playing
 			if(state.videoId == song) {
-				skip(function(err, success) {
+				next(function(err, success) {
 					db.get().lrem('playlist', 1, song, function(err, success) {
 						callback(err, success);
 					});
@@ -119,9 +119,9 @@ var remove = function(song, callback) {
 		callback('no song specified');
 	}
 }
-// skip
-var skip = function(callback) {
-	// Skip the currently playing song
+// next
+var next = function(callback) {
+	// next the currently playing song
 	// Input: (none)
 	// Output: error, success
 
@@ -160,5 +160,5 @@ module.exports = {
 	get: get,
 	play: play,
 	state: state,
-	skip: skip
+	next: next
 };

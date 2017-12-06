@@ -190,7 +190,7 @@ describe('Playlist', function() {
 					});
 				});
 			});
-			it('removing the currently selected video skips to the next song first', function(done) {
+			it('removing the currently selected video nexts to the next song first', function(done) {
 				var videoId = 'asdf3adc';
 				var songs = ['A2h2YrfcJ4Y', 'asdf3adc', 'kAJD342mkamc'];
 
@@ -211,8 +211,8 @@ describe('Playlist', function() {
 				});
 			});
 		});
-		describe('skip', function() {
-			it('not at end: skips to next song', function(done) {
+		describe('next', function() {
+			it('not at end: nexts to next song', function(done) {
 				var song = 'asdf3adc';
 
 				var _songs = ['A2h2YrfcJ4Y', 'asdf3adc', 'kAJD342mkamc'];
@@ -222,7 +222,7 @@ describe('Playlist', function() {
 					if(!err) {
 						Playlist.play(song, function(err, success) {
 							if(!err) {
-								Playlist.skip(function(err, success) {
+								Playlist.next(function(err, success) {
 									if(!err) {
 										Playlist.state(function(err, state) {
 											if(state) {
@@ -248,7 +248,7 @@ describe('Playlist', function() {
 					if(!err) {
 						Playlist.play(song, function(err, success) {
 							if(!err) {
-								Playlist.skip(function(err, success) {
+								Playlist.next(function(err, success) {
 									if(!err) {
 										Playlist.state(function(err, state) {
 											if(state) {
