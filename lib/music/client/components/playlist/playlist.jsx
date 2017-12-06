@@ -19,6 +19,7 @@ class Playlist extends React.Component {
       <Song
         key={song}
         song={song}
+        index={index+1}
         metadata={this.props.metadata[index]}
         selected={song == this.props.currentVideo}
         onTrackChange={() => this.props.onTrackChange(song)}

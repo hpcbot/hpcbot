@@ -22,7 +22,7 @@ class AddDialog extends React.Component {
       <form onSubmit={this.handleSubmit}>
         <div className="center">
           <input type="text" placeholder="Paste a youtube URL here" value={this.state.song} onChange={this.handleChange} autoFocus={this.props.adding} className="smooth" />
-          <button className="btn-a btn-sm smooth" type="submit">Add</button>
+          <button className="btn-b btn-sm smooth" type="submit">Save</button>
           <a onClick={this.props.onCancel} className="btn btn-sm smooth">Cancel</a>
         </div>
       </form>
