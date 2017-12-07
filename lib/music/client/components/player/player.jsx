@@ -42,6 +42,7 @@ class Player extends React.Component {
     this._onReady = this._onReady.bind(this);
     this._onStateChange = this._onStateChange.bind(this);
     this._onChangeVideo = this._onChangeVideo.bind(this);
+    this._onError = this._onError.bind(this);
     this.updateMetadata = this.updateMetadata.bind(this);
     this.onMuteUnmute = this.onMuteUnmute.bind(this);
     this.onVolumeChange = this.onVolumeChange.bind(this);
@@ -84,6 +85,7 @@ class Player extends React.Component {
                 onReady={this._onReady}
                 onChangeVideo={this._onChangeVideo}
                 onStateChange={this._onStateChange}
+                onError={this._onError}
                 />
               </div>
               <div id="metadata" className="col c5">
@@ -126,6 +128,7 @@ class Player extends React.Component {
   }
 
   _onReady(event) {
+    // console.log(event.data);
     this.setState({
       player: event.target,   // Keep track of the player so we can access it
     });
@@ -135,6 +138,7 @@ class Player extends React.Component {
   }
 
   _onStateChange(event) {
+    console.log(event.data);
     // Listen for video to end
     if(event.data == YT.PlayerState.ENDED) {
         this.props.onEnd();
@@ -147,6 +151,13 @@ class Player extends React.Component {
       title: this.state.player.getVideoData().title
     });
     this.state.player.playvideo();
+  }
+
+  _onError(error) {
+    if(error.data == 150) {
+        // Video not available in this region, next!
+        this.props.onError(this.props.videoId);
+    }
   }
 
   onMuteUnmute() {

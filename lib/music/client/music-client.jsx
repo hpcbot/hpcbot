@@ -58,6 +58,7 @@ class MusicPlayer extends React.Component {
                   playing={this.state.playing}
                   muted={this.state.muted}
                   onEnd={this.end}
+                  onError={this.skip}
                   progress={this.state.progress}
                   onSeekSend={this.onSeekSend}
                   onSeekReceive={this.onSeekReceive}
