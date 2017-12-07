@@ -1,0 +1,33 @@
+/* Volume styling */
+
+.rangeslider-vertical {
+    height: 60px;
+    margin: -8px auto 5px auto;
+    max-width: 5px;
+    background-color: transparent;
+}
+
+.muted {
+    background-color: #ef5350;
+}
+
+.volume .rangeslider__fill {
+    background-color: #0ae;
+    width: 100%;
+    bottom: 0;
+}
+
+.volume .rangeslider__handle {
+    width: 15px;
+    height: 15px;
+    left: -6px;
+    border-radius: 50%;
+    background-color: #fff;
+    box-shadow: 0 1px 1px #333;
+    outline: none;
+}
+
+.volume-value {
+  width: 30px;
+  font-size: 13px
+}

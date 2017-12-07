@@ -1,0 +1,18 @@
+/* Styling for Songs in playlists */
+
+img.thumbnail {
+  width: 60px;
+  height: 45px;
+}
+tr.song.selected {
+  background: #dfd;
+  font-weight: bold;
+}
+
+td.center {
+  text-align: center;
+}
+
+td.right {
+  text-align: right;
+}

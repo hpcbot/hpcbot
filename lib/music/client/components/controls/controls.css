@@ -1,0 +1,14 @@
+
+/* Player Controls Styling */
+
+.btn-sm {
+  margin-right: 10px;
+}
+
+#controls {
+  background: #F5E1DA;
+  padding-left: 10px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin-bottom: 10px;
+}

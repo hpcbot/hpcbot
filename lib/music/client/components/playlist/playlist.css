@@ -1,0 +1,9 @@
+/* Styling for playlist */
+
+table {
+  border-collapse:collapse;
+}
+
+.table td {
+  padding: 2px;
+}

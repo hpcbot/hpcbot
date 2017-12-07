@@ -1,0 +1,56 @@
+/* Custom css for music client */
+
+/* Color Scheme: http://www.colourlovers.com/palette/4542201/Electric_Eye
+Dark Green: #476269
+Green: #40A798
+Green highlight: #4AC2B0
+
+White-ish bg: #F1F1F1
+Pink highlight: #F5E1DA
+
+ */
+
+/* --- Main page styling --- */
+body {
+  color: black;
+  background: white;
+}
+
+/* --- Utility css --- */
+.center {
+  text-align: center;
+}
+
+.left {
+  float: left;
+}
+
+.hidden {
+  display: none;
+}
+
+/* --- Button Styling --- */
+.btn {
+  color: white;
+  display:inline;
+}
+
+.btn-sm {
+  color: white;
+  text-decoration: none;
+}
+
+/* --- Link Styling --- */
+a {
+  cursor:pointer
+}
+
+/* --- Font Styling --- */
+h3 {
+  margin: 10px 0px 10px 0px;
+}
+
+/* Fix to make youtube video non-interactable */
+iframe {
+  pointer-events: none;
+}
