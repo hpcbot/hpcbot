@@ -40,7 +40,6 @@ class MusicPlayer extends React.Component {
     /* Handle updates from server */
     socket.on('state', this.updateState);   // Receive state updates from server
     socket.on('seek', this.onSeekReceive);  // Another user jumped timestamp forward
-
   }
 
   render () {
@@ -83,18 +82,16 @@ class MusicPlayer extends React.Component {
   }
 
   onSeekSend(progress) {
-    console.log('got here: ' + progress);
     socket.emit('seek', progress);
   }
 
   onSeekReceive(progress) {
-    console.log(this.player);
-    console.log('Received a seek: ' + progress);
     this.player.seek(progress);
   }
 
   updateState(state) {
     this.setState(state);
+    console.log(this.state);
   }
 
   playPause() {

@@ -49,7 +49,6 @@
     "socket.io-client": "^2.0.4",
     "tmi.js": "1.1.2",
     "twitch-overlay": "1.0.2",
-    "vinyl-source-stream": "^1.1.0",
     "webpack": "^3.8.1",
     "youtube-api": "^2.0.9"
   },
