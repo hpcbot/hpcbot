@@ -36,11 +36,11 @@ class MusicPlayer extends React.Component {
     this.remove = this.remove.bind(this);
     this.updateState = this.updateState.bind(this);
     this.onSeekReceive = this.onSeekReceive.bind(this);
+    this.reorder = this.reorder.bind(this);
 
     /* Handle updates from server */
     socket.on('state', this.updateState);   // Receive state updates from server
     socket.on('seek', this.onSeekReceive);  // Another user jumped timestamp forward
-
   }
 
   render () {
@@ -68,8 +68,9 @@ class MusicPlayer extends React.Component {
                 <Controls
                   playing={this.state.playing}
                   onPlayPause={this.playPause}
-                  onSkip = {this.skip}
+                  onSkip={this.skip}
                   onAdd={(song) => this.add(song)}
+                  onShuffle={this.shuffle}
                 />
                 <Playlist
                   playing={this.state.playing}
@@ -77,19 +78,17 @@ class MusicPlayer extends React.Component {
                   songs={this.state.songs}
                   metadata={this.state.metadata}
                   onTrackChange={(song) => this.trackChange(song)}
-                  onRemove={(song) => this.remove(song)} />
+                  onRemove={(song) => this.remove(song)}
+                  onReorder={(start, end) => this.reorder(start, end)}/>
               </div>
             </div>);
   }
 
   onSeekSend(progress) {
-    console.log('got here: ' + progress);
     socket.emit('seek', progress);
   }
 
   onSeekReceive(progress) {
-    console.log(this.player);
-    console.log('Received a seek: ' + progress);
     this.player.seek(progress);
   }
 
@@ -116,6 +115,10 @@ class MusicPlayer extends React.Component {
     socket.emit('skipSong', this.state.videoId);
   }
 
+  shuffle() {
+    socket.emit('shuffle');
+  }
+
   end() {
     socket.emit('endSong');
   }
@@ -128,6 +131,14 @@ class MusicPlayer extends React.Component {
 
   remove(song) {
     socket.emit('removeSong', song);
+  }
+
+  reorder(start, end) {
+    // html uses 1-based index vs. 0-based indez
+    start = start-1;
+    end = end-1;
+    
+    socket.emit('reorder', start, end);
   }
 }
 

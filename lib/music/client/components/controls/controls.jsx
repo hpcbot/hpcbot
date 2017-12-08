@@ -3,9 +3,9 @@
 import React from 'react';
 import {render} from 'react-dom';
 
-import PlayButton from './playbutton.jsx'
-import AddButton from './addbutton.jsx'
-import AddDialog from './adddialog.jsx'
+import PlayButton from './buttons/playbutton.jsx'
+import AddButton from './buttons/addbutton.jsx'
+import AddDialog from './buttons/adddialog.jsx'
 
 import css from './controls.css'
 
@@ -26,6 +26,7 @@ class Controls extends React.Component {
             <div id="controls">
                 <PlayButton playing={this.props.playing} onTogglePlay={this.props.onPlayPause} />
                 <a onClick={this.props.onSkip} className="btn-sm btn-a smooth">▶❚</a>
+                <a onClick={this.props.onShuffle} className="btn-sm btn-a smooth"><img src="images/shuffle.png" className="icon" /></a>
                 <AddButton adding={this.state.adding} onToggle={this.onToggle} />
             </div>
             <AddDialog adding={this.state.adding} onAdd={this.onAdd} onCancel={this.onToggle} />

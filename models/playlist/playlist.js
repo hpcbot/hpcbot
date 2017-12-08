@@ -16,9 +16,11 @@
 */
 
 var db;
+var chance;
 
-var start = function (_db) {
+var start = function (_db, _chance) {
 	db = _db;
+	chance = _chance;	// Random number generator for shufflin'
 };
 
 var get = function(callback) {
@@ -119,9 +121,10 @@ var remove = function(song, callback) {
 		callback('no song specified');
 	}
 }
+
 // next
 var next = function(callback) {
-	// next the currently playing song
+	// jump to the next song in the list
 	// Input: (none)
 	// Output: error, success
 
@@ -151,6 +154,61 @@ var next = function(callback) {
 	});
 }
 
+var shuffle = function(callback) {
+	// shuffle/randomize the playlist
+
+	// Get current list
+	state(function(err, _state) {
+		if(!err) {
+			// Shuffle list
+			var _songs = _state.songs;
+			var songs = chance.shuffle(_songs);
+
+			// Randomize video id
+			var newCurrent = chance.integer({min: 0, max: songs.length});
+			var videoId = songs[newCurrent];
+
+			// Clear existing playlist
+			db.get().ltrim('playlist', -1, 0, function(err, success) {
+				if(!err) {
+					// Insert new list into DB
+					db.get().rpush('playlist', songs, function(err, success) {
+						if(!err) {
+							// Insert new video id into DB
+							play(videoId, function(err, success) {
+								if(!err) {
+									callback(null, success);
+								}
+							});
+						}
+					});
+				}
+			})
+		}
+	})
+}
+
+var reorder = function(start, end, callback) {
+	// swap the position of two songs without pausing playback
+
+	get(function(err, songs) {
+		var startSong = songs[start];
+		var endSong = songs[end];
+
+		console.log(startSong);
+		console.log(endSong);
+
+		db.get().lset('playlist', end, startSong, function(err, success) {
+			if(!err) {
+				db.get().lset('playlist', start, endSong, function(err, success){
+					if(!err) {
+						callback(null, true);
+					}
+				})
+			}
+		})
+	})
+}
 
 
 module.exports = {
@@ -160,5 +218,7 @@ module.exports = {
 	get: get,
 	play: play,
 	state: state,
-	next: next
+	next: next,
+	shuffle: shuffle,
+	reorder: reorder
 };

@@ -32,7 +32,7 @@
     "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
-    "chance": "^1.0.8",
+    "chance": "^1.0.12",
     "dotenv": "4.0.0",
     "extend": "^3.0.1",
     "googleapis": "^23.0.0",
@@ -49,7 +49,6 @@
     "socket.io-client": "^2.0.4",
     "tmi.js": "1.1.2",
     "twitch-overlay": "1.0.2",
-    "vinyl-source-stream": "^1.1.0",
     "webpack": "^3.8.1",
     "youtube-api": "^2.0.9"
   },

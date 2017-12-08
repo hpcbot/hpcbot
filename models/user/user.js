@@ -1,7 +1,7 @@
 /* user.js - Users in our channel */
 
-var Chance = require('chance');
-chance = new Chance();
+var chance = require('chance').Chance();
+
 
 var db;
 var eventbus;
