@@ -23,6 +23,11 @@ tr.dragOver td {
   padding-top: 50px;
 }
 
+tr.dragOver td:last-of-type {
+  /* drop target styling for last item in list */
+  padding-bottom: 50px;
+}
+
 .song.grabbing {
   background: #add8e6;
 }

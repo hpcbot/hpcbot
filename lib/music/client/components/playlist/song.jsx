@@ -54,13 +54,17 @@ class Song extends React.Component {
   #2 - Drag (Enter/Leave or End)
   #3 - Drop ()*/
 
-  grab() {
+  grab(event) {
     // User clicked to grab something
-    this.setState({
-      grabbing: true
-    });
 
-    this.props.onGrab(this.props.index);
+    // Only listen for left clicks
+    if(event.button == 0) {
+      this.setState({
+        grabbing: true
+      });
+
+      this.props.onGrab(this.props.index);
+    }
   }
 
   release() {
