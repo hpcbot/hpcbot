@@ -67,8 +67,9 @@ class MusicPlayer extends React.Component {
                 <Controls
                   playing={this.state.playing}
                   onPlayPause={this.playPause}
-                  onSkip = {this.skip}
+                  onSkip={this.skip}
                   onAdd={(song) => this.add(song)}
+                  onShuffle={this.shuffle}
                 />
                 <Playlist
                   playing={this.state.playing}
@@ -91,7 +92,6 @@ class MusicPlayer extends React.Component {
 
   updateState(state) {
     this.setState(state);
-    console.log(this.state);
   }
 
   playPause() {
@@ -111,6 +111,10 @@ class MusicPlayer extends React.Component {
 
   skip() {
     socket.emit('skipSong', this.state.videoId);
+  }
+
+  shuffle() {
+    socket.emit('shuffle');
   }
 
   end() {

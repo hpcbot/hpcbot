@@ -9,8 +9,9 @@ db.connect('mode_staging');	// Do not remove this or you will wipe your data
 var EventEmitter = require('events');
 var eventbus = new EventEmitter;	// Temporary event bus to prevent events firing across files
 
-var youtube;	// Placeholder for youtube api object
-var listStub;
+var chance;
+var intStub;
+var shuffStub;
 
 var Playlist;
 
@@ -18,18 +19,19 @@ describe('Playlist', function() {
 	beforeEach(function(done) {
 		this.sinon = sandbox = sinon.sandbox.create();
 
-		youtube = {
-			videos: {
-				list: function() {
-				}
+		chance = {
+			integer: function(){
+			},
+			shuffle: function(){
 			}
 		};
 
-		// Stub out video list
-		listStub = this.sinon.stub(youtube.videos, 'list');
+		// Stub out random number generation
+		intStub = this.sinon.stub(chance, 'integer');
+		shufStub = this.sinon.stub(chance, 'shuffle');
 
 		Playlist = require('.');
-		Playlist.start(db, {youtube: youtube, youtubeKey: ''});
+		Playlist.start(db, chance);
 
 		// Wipe database before running tests. Note: Make _SURE_ you are on staging
 		db.get().flushdb(function(err) {
@@ -263,6 +265,40 @@ describe('Playlist', function() {
 						});
 					}
 				});
+			});
+		});
+		describe('shuffle', function() {
+			it('shuffles a list and updates the currently playing track', function(done) {
+				var videoId = 'v';
+				var _songs = ['q', 'v', 'd']
+
+
+				var _shuffleResponse = ['v', 'd', 'q'];	// Randomized tracks
+				var _integerResponse = 2;	// Play the second song in the list
+
+				shufStub.returns(_shuffleResponse);
+				intStub.returns(_integerResponse);
+
+				Playlist.add(_songs, function(err, success) {
+					if(!err) {
+						Playlist.play(videoId, function(err, success) {
+							if(!err) {
+								Playlist.shuffle(function(err, success) {
+									if(!err) {
+										Playlist.state(function(err, state) {
+											if(!err) {
+												assert.deepEqual(state.songs, _shuffleResponse);
+												assert.equal(state.videoId, _shuffleResponse[_integerResponse]);
+												done();
+											}
+										});
+									}
+								});
+							}
+						})
+					}
+				})
+
 			});
 		});
 	});
