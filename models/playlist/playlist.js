@@ -48,7 +48,6 @@ var add = function(song, callback) {
 						// Successfully added the song
 						callback(null, true);
 					}	else {
-						console.log(err);
 						callback("Error adding song", null);
 					}
 				});
@@ -194,9 +193,6 @@ var reorder = function(start, end, callback) {
 	get(function(err, songs) {
 		var startSong = songs[start];
 		var endSong = songs[end];
-
-		console.log(startSong);
-		console.log(endSong);
 
 		db.get().lset('playlist', end, startSong, function(err, success) {
 			if(!err) {
