@@ -11,6 +11,12 @@ import css from './playlist.css'
 class Playlist extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      songGrabbed: null
+    }
+
+    this.onGrab = this.onGrab.bind(this)
   }
 
   render() {
@@ -24,6 +30,9 @@ class Playlist extends React.Component {
         selected={song == this.props.currentVideo}
         onTrackChange={() => this.props.onTrackChange(song)}
         onRemove={() => this.props.onRemove(song)}
+        onGrab={(start) => this.onGrab(start)}
+        onDrop={(end) => this.onDrop(end)}
+        // onReorder={() => this.props.onReorder(start, end)}
       />
     );
 
@@ -33,6 +42,15 @@ class Playlist extends React.Component {
               </tbody>
             </table>
           );
+  }
+
+  onGrab(index) {
+    this.setState({
+      songGrabbed: index
+    });
+  }
+  onDrop(end) {
+    this.props.onReorder(this.state.songGrabbed, end);
   }
 }
 

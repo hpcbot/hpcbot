@@ -184,13 +184,30 @@ var shuffle = function(callback) {
 					});
 				}
 			})
-
 		}
 	})
+}
 
+var reorder = function(start, end, callback) {
+	// swap the position of two songs without pausing playback
 
+	get(function(err, songs) {
+		var startSong = songs[start];
+		var endSong = songs[end];
 
+		console.log(startSong);
+		console.log(endSong);
 
+		db.get().lset('playlist', end, startSong, function(err, success) {
+			if(!err) {
+				db.get().lset('playlist', start, endSong, function(err, success){
+					if(!err) {
+						callback(null, true);
+					}
+				})
+			}
+		})
+	})
 }
 
 
@@ -202,5 +219,6 @@ module.exports = {
 	play: play,
 	state: state,
 	next: next,
-	shuffle: shuffle
+	shuffle: shuffle,
+	reorder: reorder
 };

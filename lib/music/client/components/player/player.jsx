@@ -138,7 +138,6 @@ class Player extends React.Component {
   }
 
   _onStateChange(event) {
-    console.log(event.data);
     // Listen for video to end
     if(event.data == YT.PlayerState.ENDED) {
         this.props.onEnd();

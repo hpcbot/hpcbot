@@ -16,3 +16,24 @@ td.center {
 td.right {
   text-align: right;
 }
+
+/* Drag/drop styling */
+tr.dragOver td {
+  /* drop target styling */
+  padding-top: 50px;
+}
+
+.song.grabbing {
+  background: #add8e6;
+}
+
+.songTitle {
+  cursor: -webkit-grab;
+  cursor: -moz-grab;
+}
+
+.songTitle.grabbing {
+    cursor: grabbing;
+    cursor: -moz-grabbing;
+    cursor: -webkit-grabbing;
+}

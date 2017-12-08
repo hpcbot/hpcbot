@@ -295,12 +295,40 @@ describe('Playlist', function() {
 									}
 								});
 							}
-						})
+						});
 					}
-				})
-
+				});
 			});
 		});
+		describe('reorder', function(start, end) {
+			// Swaps the order of two songs in the playlist
+			// Input: start (#), end (#)
+			// Output: error, success
+			it('swaps the position for two songs in a list', function(done) {
+				var start = 2;
+				var end = 0;
+				var songs = ['12341', '5555', '7777'];
+
+				var _videoId = '12341';
+				var _songs = ['7777', '5555', '12341'];
+
+				Playlist.add(songs, function(err, success) {
+					if(!err) {
+						Playlist.play(_videoId, function(err, success) {
+							Playlist.reorder(start, end, function(err, success) {
+								if(!err) {
+									Playlist.state(function(err, state) {
+										assert.equal(state.videoId, _videoId);
+										assert.deepEqual(state.songs, _songs);
+										done();
+									})
+								}
+							});
+						});
+					}
+				});
+			});
+		})
 	});
 	afterEach(function() {
 		sandbox.restore();

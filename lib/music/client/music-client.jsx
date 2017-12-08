@@ -36,6 +36,7 @@ class MusicPlayer extends React.Component {
     this.remove = this.remove.bind(this);
     this.updateState = this.updateState.bind(this);
     this.onSeekReceive = this.onSeekReceive.bind(this);
+    this.reorder = this.reorder.bind(this);
 
     /* Handle updates from server */
     socket.on('state', this.updateState);   // Receive state updates from server
@@ -77,7 +78,8 @@ class MusicPlayer extends React.Component {
                   songs={this.state.songs}
                   metadata={this.state.metadata}
                   onTrackChange={(song) => this.trackChange(song)}
-                  onRemove={(song) => this.remove(song)} />
+                  onRemove={(song) => this.remove(song)}
+                  onReorder={(start, end) => this.reorder(start, end)}/>
               </div>
             </div>);
   }
@@ -129,6 +131,14 @@ class MusicPlayer extends React.Component {
 
   remove(song) {
     socket.emit('removeSong', song);
+  }
+
+  reorder(start, end) {
+    // html uses 1-based index vs. 0-based indez
+    start = start-1;
+    end = end-1;
+    
+    socket.emit('reorder', start, end);
   }
 }
 
