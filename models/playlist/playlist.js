@@ -206,6 +206,37 @@ var reorder = function(start, end, callback) {
 	})
 }
 
+var addAfter = function(song, afterSong, callback) {
+	// add a song after another song (for user requests)
+	state(function(err, state) {
+		if(!err) {
+			// Check if song already exists in the list
+			if(!state.songs.includes(song)) {
+				if(!state.songs.includes(afterSong)) {
+					// Last request is no longer in the list, add it after the currently playing song
+					afterSong = state.videoId;
+				}
+
+				db.get().linsert('playlist', 'AFTER', afterSong, song, function(err, success) {
+					if(!err) {
+						callback(null, success);
+					} else {
+						callback('Could not add song', null);
+					}
+				});
+			} else {
+				callback('Song already exists', null);
+			}
+		}
+	});
+
+	// Check if afterSong exists in the list
+	// If so
+		// Insert AFTER afterSong
+	// Else
+		// Insert after currentSong
+}
+
 
 module.exports = {
 	start: start,
@@ -216,5 +247,6 @@ module.exports = {
 	state: state,
 	next: next,
 	shuffle: shuffle,
-	reorder: reorder
+	reorder: reorder,
+	addAfter: addAfter
 };

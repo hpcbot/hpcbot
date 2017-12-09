@@ -300,7 +300,7 @@ describe('Playlist', function() {
 				});
 			});
 		});
-		describe('reorder', function(start, end) {
+		describe('reorder', function() {
 			// Swaps the order of two songs in the playlist
 			// Input: start (#), end (#)
 			// Output: error, success
@@ -319,6 +319,61 @@ describe('Playlist', function() {
 								if(!err) {
 									Playlist.state(function(err, state) {
 										assert.equal(state.videoId, _videoId);
+										assert.deepEqual(state.songs, _songs);
+										done();
+									})
+								}
+							});
+						});
+					}
+				});
+			});
+		})
+		describe('addAfter', function() {
+			// Adds after an existing item
+			// Input: videoId, after_videoId
+			// Output: error, success
+			it('Song exists in list: Adds after a song that exists', function(done) {
+				var songs = ['12341', '5555', '7777'];
+				var videoId = '12341';
+
+				var newVideoId = '5151';
+				var afterId = '5555';
+
+				var _songs = ['12341', '5555', '5151', '7777'];
+
+				Playlist.add(songs, function(err, success) {
+					if(!err) {
+						Playlist.play(videoId, function(err, success) {
+							Playlist.addAfter(newVideoId, afterId, function(err, success) {
+								if(!err) {
+									Playlist.state(function(err, state) {
+										assert.equal(state.videoId, videoId);
+										assert.deepEqual(state.songs, _songs);
+										done();
+									})
+								}
+							});
+						});
+					}
+				});
+			});
+			it('Song doesn\'t exist in list Adds after currently playing song', function(done) {
+				var songs = ['12341', '5555', '7777'];
+				var videoId = '12341';
+
+				var newVideoId = '5151';
+				var afterId = '3849';
+
+				var _songs = ['12341', '5151', '5555', '7777'];
+
+				Playlist.add(songs, function(err, success) {
+					if(!err) {
+						Playlist.play(videoId, function(err, success) {
+							Playlist.addAfter(newVideoId, afterId, function(err, success) {
+								if(!err) {
+									Playlist.state(function(err, state) {
+										assert.equal(state.videoId, videoId);
 										assert.deepEqual(state.songs, _songs);
 										done();
 									})
