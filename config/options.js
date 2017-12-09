@@ -70,6 +70,14 @@ function validate(options) {
     _options.youtubeKey = options.youtubeKey;
   }
 
+  if(options.twitchClientID) {
+    _options.twitchClientID = options.twitchClientID;
+  }
+
+  if(options.twitchSecret) {
+    _options.twitchSecret = options.twitchSecret;
+  }
+
   return(_options);
 }
 

@@ -8,7 +8,7 @@ import YouTube from 'react-youtube'
 import ScrubBar from './scrubbar.jsx'
 import Volume from './volume.jsx'
 import MuteButton from './mutebutton.jsx'
-import Clients from './clients.jsx'
+import Clients from './clients/clients.jsx'
 
 import css from './player.css'
 

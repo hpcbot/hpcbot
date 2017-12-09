@@ -1,6 +1,6 @@
 {
   "name": "hpc-bot",
-  "version": "0.7.4",
+  "version": "0.7.5",
   "description": "Twitch Bot for the Harry Potter Clan",
   "keywords": [
     "hpc",
@@ -33,7 +33,11 @@
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "chance": "^1.0.12",
+    "cookie-parser": "^1.4.3",
+    "cookie-session": "^2.0.0-beta.3",
     "dotenv": "4.0.0",
+    "express-session": "^1.15.6",
+    "express-socket.io-session": "^1.3.2",
     "extend": "^3.0.1",
     "googleapis": "^23.0.0",
     "ioredis": "2.5.0",
@@ -41,6 +45,8 @@
     "js-video-url-parser": "^0.2.4",
     "later": "^1.2.0",
     "mixpanel": "0.7.0",
+    "passport": "^0.4.0",
+    "passport-twitch": "^1.0.3",
     "pug": "2.0.0-beta11",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",

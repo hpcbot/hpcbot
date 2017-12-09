@@ -137,7 +137,7 @@ class MusicPlayer extends React.Component {
     // html uses 1-based index vs. 0-based indez
     start = start-1;
     end = end-1;
-    
+
     socket.emit('reorder', start, end);
   }
 }

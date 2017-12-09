@@ -14,7 +14,7 @@ class Nav extends React.Component {
     return(
       <nav className="nav">
         <div className="container">
-          <img id="logo" src="/images/dumbledore.png"/>
+          <img id="logo" src="/music/images/dumbledore.png"/>
           <a className="pagename current" href="#">Music</a>
           <a href="#">Overlays</a>
         </div>
