@@ -5,7 +5,7 @@ Twitch bot for the Harry Potter Clan
 
 ## Commands
 `!sortinghat` - Place the sorting hat on your head and find out what House you belong to
-`!rules` - 
+`!rules` -
 
 
 # Contributing
@@ -45,3 +45,10 @@ You can run tests to verify that everything is working with the command `npm tes
 If you plan to submit pull requests, please ensure that the request includes proper test coverage of your feature.
 
 
+## Building the app
+
+Because we use React, our app requires a step to build your client side changes into a bundle.js file.
+
+To build for **Development**, use `npm run dev`. This will watch your client side js files and re-build a debug-friendly react bundle whenever you change them.
+
+To build for **Production**, use `npm run build`. This will build a single bundle.js file that is production-ready (and smaller!) but will not watch changes.

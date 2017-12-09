@@ -66,6 +66,7 @@ function validate(options) {
     _options.whitelist = options.whitelist;
   }
 
+  // Music bot options
   if(options.youtubeKey) {
     _options.youtubeKey = options.youtubeKey;
   }
@@ -76,6 +77,10 @@ function validate(options) {
 
   if(options.twitchSecret) {
     _options.twitchSecret = options.twitchSecret;
+  }
+
+  if(options.hostname) {
+    _options.hostname = options.hostname;
   }
 
   return(_options);

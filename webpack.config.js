@@ -23,8 +23,7 @@ var config = {
         loader: 'style-loader!css-loader'
       }
     ]
-  },
-  watch: true
+  }
 };
 
 module.exports = config;

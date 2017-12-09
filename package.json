@@ -1,6 +1,6 @@
 {
   "name": "hpc-bot",
-  "version": "0.7.5",
+  "version": "0.7.6",
   "description": "Twitch Bot for the Harry Potter Clan",
   "keywords": [
     "hpc",
@@ -9,7 +9,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node .",
-    "build": "./node_modules/.bin/webpack -d",
+    "build": "./node_modules/.bin/webpack",
+    "dev": "./node_modules/.bin/webpack -d -w",
     "test": "mocha lib/**/*.spec.js lib/**/**/*.spec.js models/**/*.spec.js --exit",
     "watch": "mocha -w lib/**/*.spec.js"
   },
