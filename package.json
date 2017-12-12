@@ -55,7 +55,7 @@
     "react-youtube": "^7.5.0",
     "socket.io-client": "^2.0.4",
     "tmi.js": "1.1.2",
-    "twitch-overlay": "1.2.2",
+    "twitch-overlay": "1.2.3",
     "webpack": "^3.8.1",
     "youtube-api": "^2.0.9"
   },
