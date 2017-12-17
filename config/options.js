@@ -38,7 +38,7 @@ function validate(options) {
   // Example: asfdkjkl14jadfa
   if(!options.clientID) {
   	console.log("ERROR: No Twitch clientID supplied");
-  	console.log("Make sure you register a client id for your bot here: https://www.twitch.tv/settings/connections");
+  	console.log("Make sure you register a client id for your bot here: https://dev.twitch.tv/dashboard/apps/create");
   	process.exit(1);
   }
 
