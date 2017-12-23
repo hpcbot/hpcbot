@@ -38,7 +38,7 @@ var add = function(song, callback) {
 	// Input: song video ID
 	// Output: error, success
 
-	if(song) {
+	if(song && song.length != 0) {
 		// Check if song is already in the playlist
 		get(function(err, playlist) {
 			if(!playlist.includes(song)) {
@@ -210,31 +210,30 @@ var addAfter = function(song, afterSong, callback) {
 	// add a song after another song (for user requests)
 	state(function(err, state) {
 		if(!err) {
-			// Check if song already exists in the list
-			if(!state.songs.includes(song)) {
-				if(!state.songs.includes(afterSong)) {
-					// Last request is no longer in the list, add it after the currently playing song
-					afterSong = state.videoId;
-				}
-
-				db.get().linsert('playlist', 'AFTER', afterSong, song, function(err, success) {
-					if(!err) {
-						callback(null, success);
-					} else {
-						callback('Could not add song', null);
+			// Check that song isn't empty
+			if(song && song.length != 0) {
+				// Check if song already exists in the list
+				if(!state.songs.includes(song)) {
+					if(!state.songs.includes(afterSong)) {
+						// Last request is no longer in the list, add it after the currently playing song
+						afterSong = state.videoId;
 					}
-				});
+
+					db.get().linsert('playlist', 'AFTER', afterSong, song, function(err, success) {
+						if(!err) {
+							callback(null, success);
+						} else {
+							callback('Could not add song', null);
+						}
+					});
+				} else {
+					callback('Song already exists', null);
+				}
 			} else {
-				callback('Song already exists', null);
+				callback('Song is empty', null);
 			}
 		}
 	});
-
-	// Check if afterSong exists in the list
-	// If so
-		// Insert AFTER afterSong
-	// Else
-		// Insert after currentSong
 }
 
 

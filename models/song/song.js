@@ -128,19 +128,24 @@ var addList = function(listId, callback) {
 				part: 'snippet, contentDetails'
 			}, function(err, response) {
 				// Parse response
-				response.items.forEach(function(item) {
-					let video = parseMetadata(item.snippet, item.contentDetails);
+				if(!err) {
+					response.items.forEach(function(item) {
+						let video = parseMetadata(item.snippet, item.contentDetails);
 
-					db.get().hmset('song:' + item.contentDetails.videoId, video, function(err, success) {
+						db.get().hmset('song:' + item.contentDetails.videoId, video, function(err, success) {
 
-						list.push(item.contentDetails.videoId);
+							list.push(item.contentDetails.videoId);
 
-						if(list.length == response.items.length) {
-							// Last item added, callback!
-							callback(null, list);
-						}
-					});
-			});
+							if(list.length == response.items.length) {
+								// Last item added, callback!
+								callback(null, list);
+							}
+						});
+				});
+			} else {
+				console.log(err);
+				callback(err, null);
+			}
 		});
 	}
 }
