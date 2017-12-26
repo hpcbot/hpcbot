@@ -91,6 +91,7 @@ var add = function(videoId, callback) {
 						db.get().hmset('song:' + videoId, video, function(err, success) {
 							if(!err) {
 								// Successfully added the song
+								eventbus.emit('log:info', 'song:add', {videoId: videoId, video: video });
 								callback(null, video);
 							}	else {
 								console.log(err);
@@ -138,6 +139,7 @@ var addList = function(listId, callback) {
 
 							if(list.length == response.items.length) {
 								// Last item added, callback!
+								eventbus.emit('log:info', 'song:addList', {list: list });
 								callback(null, list);
 							}
 						});

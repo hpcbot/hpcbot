@@ -18,6 +18,7 @@ var give = function(username, amount, callback) {
 
 	if(amount >= 0) {
 		add(username, amount, function(err, data) {
+			eventbus.emit('log:info', 'resource:give', {username: username, amount: amount });
 			callback(err, data);
 		});
 	}
@@ -34,6 +35,7 @@ var take = function(username, amount, callback) {
 	if(amount >= 0) {
 		var adjustedAmount = -amount;
 		add(username, adjustedAmount, function(err, data) {
+			eventbus.emit('log:info', 'team:take', {username: usernme, amount: adjustedAmount });
 			callback(err, data);
 		});
 	}
@@ -46,7 +48,7 @@ var get = function(username, callback) {
 	// Check the user's current resource amount
 	// Input: username
 	// Output: error, amount user has to spend
-	
+
 	if(username) {
 		db.get().hget('user:' + username, 'resource', function(err, data) {
 			if(err || data) {

@@ -46,6 +46,7 @@ var add = function(house, amount, callback) {
 					// Bump the house's score
 					db.get().hincrby('cup', house, amount, function(err, data) {
 						if(!err) {
+							eventbus.emit('log:info', 'team:add', {house: house, amount: amount });
 							callback(null, data);
 						}
 						else {
@@ -81,6 +82,7 @@ var remove = function(house, amount, callback) {
 					// Bump the house's score
 					db.get().hincrby('cup', house, -amount, function(err, data) {
 						if(!err) {
+							eventbus.emit('log:info', 'team:add', {house: house, amount: -amount });
 							callback(null, data);
 						}
 						else {
@@ -119,6 +121,7 @@ var reset = function(callback) {
 		'Slytherin', 0, function(err, data) {
 		if(!err) {
 			// Callback that the cup has begun!
+			eventbus.emit('log:info', 'team:reset', {data: data });
 			callback(null, true);
 		}
 		else {

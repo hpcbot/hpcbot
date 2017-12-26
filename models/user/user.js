@@ -52,6 +52,7 @@ var setHouse = function setHouse(username, callback) {
 							distinct_id: username,
 							house: house
 						});
+						eventbus.emit('log:info', 'user:setHouse', {username: username, house: house })
 						eventbus.emit('mixpanel:people:set', username, {'house': house});
 
 						callback(err, house);
@@ -127,6 +128,9 @@ var create = function create(username, callback) {
 											uid: uid,
 											house: 'muggle'
 										});
+
+										eventbus.emit('log:info', 'user:create', {username: username, uid: uid, house:
+										'muggle' });
 										callback(err, username);	// Return username if successful
 									}
 									else {
