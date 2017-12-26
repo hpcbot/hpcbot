@@ -83,7 +83,16 @@ function validate(options) {
     _options.hostname = options.hostname;
   }
 
+  if(options.logglyToken) {
+    _options.logglyToken = options.logglyToken;
+  }
+
+  if(options.logglySubdomain) {
+    _options.logglySubdomain = options.logglySubdomain;
+  }
+
   return(_options);
+  console.log(_options);
 }
 
 module.exports = {validate: validate};
