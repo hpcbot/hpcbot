@@ -34,6 +34,7 @@ class MusicPlayer extends React.Component {
     this.skip = this.skip.bind(this);
     this.add = this.add.bind(this);
     this.remove = this.remove.bind(this);
+    this.end = this.end.bind(this);
     this.updateState = this.updateState.bind(this);
     this.onSeekReceive = this.onSeekReceive.bind(this);
     this.reorder = this.reorder.bind(this);
@@ -120,7 +121,7 @@ class MusicPlayer extends React.Component {
   }
 
   end() {
-    socket.emit('endSong');
+    socket.emit('endSong', this.state.videoId);
   }
 
   add(song) {

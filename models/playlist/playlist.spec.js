@@ -6,9 +6,6 @@ var sinon = require('sinon');
 var db = require('../../lib/db');
 db.connect('mode_staging');	// Do not remove this or you will wipe your data
 
-var EventEmitter = require('events');
-var eventbus = new EventEmitter;	// Temporary event bus to prevent events firing across files
-
 var chance;
 var intStub;
 var shuffStub;
@@ -31,7 +28,7 @@ describe('Playlist', function() {
 		shufStub = this.sinon.stub(chance, 'shuffle');
 
 		Playlist = require('.');
-		Playlist.start(db, eventbus, chance);
+		Playlist.start(db, chance);
 
 		// Wipe database before running tests. Note: Make _SURE_ you are on staging
 		db.get().flushdb(function(err) {

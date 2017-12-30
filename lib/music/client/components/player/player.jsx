@@ -22,7 +22,7 @@ class Player extends React.Component {
         timestamp: null,
         progress: null,
         muted: false,
-        volume: 100
+        volume: 100,
     };
 
     this.options = {  // Options to initialize the youtube player
@@ -35,7 +35,8 @@ class Player extends React.Component {
               iv_load_policy: 3,
               modestbranding: 1,
               rel: 1,
-              showinfo: 0
+              showinfo: 0,
+              loop: 0
             }
         };
 
@@ -142,7 +143,6 @@ class Player extends React.Component {
     if(event.data == YT.PlayerState.ENDED) {
         this.props.onEnd();
     }
-
   }
 
   _onChangeVideo(event) {

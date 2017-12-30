@@ -6,9 +6,6 @@ var sinon = require('sinon');
 var db = require('../../lib/db');
 db.connect('mode_staging');	// Do not remove this or you will wipe your data
 
-var EventEmitter = require('events');
-var eventbus = new EventEmitter;	// Temporary event bus to prevent events firing across files
-
 var youtube;	// Placeholder for youtube api object
 var listStub;
 
@@ -29,7 +26,7 @@ describe('Songs', function() {
 		listStub = this.sinon.stub(youtube.videos, 'list');
 
 		Song = require('.');
-		Song.start(db, eventbus, {youtube: youtube, youtubeKey: ''});
+		Song.start(db, {youtube: youtube, youtubeKey: ''});
 
 		// Wipe database before running tests. Note: Make _SURE_ you are on staging
 		db.get().flushdb(function(err) {

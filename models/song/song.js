@@ -17,20 +17,18 @@ var iso8601 = require('iso8601-duration');  // Youtube returns duration in a fun
 var youtube;		// Object to reference youtube api
 
 var db;
-var eventbus;
 
 let options = {
 	youtube: null,		// Function we use to access the youtube API
 	youtubeKey: null	// Required to authenticate via youtube. Get one at https://developers.google.com
 };
 
-var start = function (_db, _eventbus, _options) {
+var start = function (_db, _options) {
 	// Options for pulling song metadata
 	options = extend(options, _options);    // Copy _options into options, overwriting defaults
 	youtube = options.youtube;
 
 	db = _db;
-	eventbus = _eventbus;
 };
 
 var get = function(videoId, callback) {
@@ -67,7 +65,6 @@ var getList = function(videoIds, callback) {
 						callback(null, songs);
 					}
 				} else {
-
 						console.log(err);
 						callback("Error retrieving song", null);
 				}
@@ -92,7 +89,6 @@ var add = function(videoId, callback) {
 						db.get().hmset('song:' + videoId, video, function(err, success) {
 							if(!err) {
 								// Successfully added the song
-								eventbus.emit('log:info', 'song:add', {videoId: videoId, video: video });
 								callback(null, video);
 							}	else {
 								console.log(err);
@@ -140,7 +136,6 @@ var addList = function(listId, callback) {
 
 							if(list.length == response.items.length) {
 								// Last item added, callback!
-								eventbus.emit('log:info', 'song:addList', {list: list });
 								callback(null, list);
 							}
 						});
