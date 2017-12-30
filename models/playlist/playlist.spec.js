@@ -31,7 +31,7 @@ describe('Playlist', function() {
 		shufStub = this.sinon.stub(chance, 'shuffle');
 
 		Playlist = require('.');
-		Playlist.start(db, chance);
+		Playlist.start(db, eventbus, chance);
 
 		// Wipe database before running tests. Note: Make _SURE_ you are on staging
 		db.get().flushdb(function(err) {

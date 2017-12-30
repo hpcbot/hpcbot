@@ -17,19 +17,20 @@ var iso8601 = require('iso8601-duration');  // Youtube returns duration in a fun
 var youtube;		// Object to reference youtube api
 
 var db;
+var eventbus;
 
 let options = {
 	youtube: null,		// Function we use to access the youtube API
 	youtubeKey: null	// Required to authenticate via youtube. Get one at https://developers.google.com
 };
 
-var start = function (_db, _options) {
+var start = function (_db, _eventbus, _options) {
 	// Options for pulling song metadata
 	options = extend(options, _options);    // Copy _options into options, overwriting defaults
-
 	youtube = options.youtube;
 
 	db = _db;
+	eventbus = _eventbus;
 };
 
 var get = function(videoId, callback) {

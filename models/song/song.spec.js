@@ -29,7 +29,7 @@ describe('Songs', function() {
 		listStub = this.sinon.stub(youtube.videos, 'list');
 
 		Song = require('.');
-		Song.start(db, {youtube: youtube, youtubeKey: ''});
+		Song.start(db, eventbus, {youtube: youtube, youtubeKey: ''});
 
 		// Wipe database before running tests. Note: Make _SURE_ you are on staging
 		db.get().flushdb(function(err) {

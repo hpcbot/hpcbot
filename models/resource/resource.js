@@ -35,7 +35,7 @@ var take = function(username, amount, callback) {
 	if(amount >= 0) {
 		var adjustedAmount = -amount;
 		add(username, adjustedAmount, function(err, data) {
-			eventbus.emit('log:info', 'team:take', {username: usernme, amount: adjustedAmount });
+			eventbus.emit('log:info', 'team:take', {username: username, amount: adjustedAmount });
 			callback(err, data);
 		});
 	}

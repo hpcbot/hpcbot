@@ -17,9 +17,11 @@
 
 var db;
 var chance;
+let eventbus
 
-var start = function (_db, _chance) {
+var start = function (_db, _eventbus, _chance) {
 	db = _db;
+	eventbus = _eventbus
 	chance = _chance;	// Random number generator for shufflin'
 };
 
@@ -46,6 +48,7 @@ var add = function(song, callback) {
 				db.get().rpush('playlist', song, function(err, success) {
 					if(!err) {
 						// Successfully added the song
+						eventbus.emit('log:info', 'playlist:add', {song: song})
 						callback(null, true);
 					}	else {
 						callback("Error adding song", null);
@@ -69,6 +72,7 @@ var play = function(song, callback) {
 
 	if(song) {
 		db.get().hset('current', 'song', song, function(err, success) {
+			eventbus.emit('log:info', 'playlist:play', {song: song})
 			callback(err, success);
 		});
 	} else {
@@ -107,11 +111,13 @@ var remove = function(song, callback) {
 			if(state.videoId == song) {
 				next(function(err, success) {
 					db.get().lrem('playlist', 1, song, function(err, success) {
+						eventbus.emit('log:info', 'playlist:remove', {song: song, position: success, current: true})
 						callback(err, success);
 					});
 				});
 			} else {
 				db.get().lrem('playlist', 1, song, function(err, success) {
+					eventbus.emit('log:info', 'playlist:remove', {song: song, position: success, current: false})
 					callback(err, success);
 				});
 			}
@@ -147,6 +153,7 @@ var next = function(callback) {
 
 		play(nextVideo, function(err, success) {
 			if(!err) {
+				eventbus.emit('log:info', 'playlist:next', {current: current, index: index, nextVideo: nextVideo})
 				callback(null, true);
 			}
 		});
@@ -176,6 +183,7 @@ var shuffle = function(callback) {
 							// Insert new video id into DB
 							play(videoId, function(err, success) {
 								if(!err) {
+									eventbus.emit('log:info', 'playlist:shuffle');
 									callback(null, success);
 								}
 							});
@@ -198,6 +206,7 @@ var reorder = function(start, end, callback) {
 			if(!err) {
 				db.get().lset('playlist', start, endSong, function(err, success){
 					if(!err) {
+						eventbus.emit('log:info', 'playlist:reorder', {startSong: startSong, endSong: endSong})
 						callback(null, true);
 					}
 				})
@@ -221,6 +230,7 @@ var addAfter = function(song, afterSong, callback) {
 
 					db.get().linsert('playlist', 'AFTER', afterSong, song, function(err, success) {
 						if(!err) {
+							eventbus.emit('log:info', 'playlist:addAfter', {song: song, afterSong: afterSong})
 							callback(null, success);
 						} else {
 							callback('Could not add song', null);
