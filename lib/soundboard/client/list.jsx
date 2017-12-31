@@ -24,6 +24,7 @@ class List extends React.Component {
         return(<Event
                 key={index}
                 name={item.name}
+                list={this.props.title}
                 event={item.event}
                 parameters={item.parameters}
                 click={this.props.click}
@@ -31,8 +32,8 @@ class List extends React.Component {
       }
     })
 
-    return(<fieldset className="border">
-              <legend className="title">{this.props.title}</legend>
+    return(<fieldset className={(this.props.header ? "header border" : "subgroup")}>
+              <legend>{this.props.title}</legend>
               {this.items}
           </fieldset>)
   }

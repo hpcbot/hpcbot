@@ -29,6 +29,7 @@ class Soundboard extends React.Component {
         return(<List
         key={index}
         title={list.title}
+        header={true}  // We know this is a first level list (used for styling purposes)
         items={list.items}
         list={list.list}  // In case another list is nested
         click={this.onClick}

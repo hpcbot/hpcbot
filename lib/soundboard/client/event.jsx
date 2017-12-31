@@ -13,7 +13,8 @@ class Event extends React.Component {
   render() {
     return(<button
             id={this.props.event}
-            onClick={this.onClick}>
+            onClick={this.onClick}
+            className={this.props.list.replace(/[^A-Z0-9]+/ig, "_").toLowerCase() /* Remove whitespace + special chars */}>
               {this.props.name}
            </button>)
   }
