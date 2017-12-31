@@ -11,16 +11,29 @@ class List extends React.Component {
   }
 
   render() {
-    this.events = this.props.items.map((event, index) =>
-    <Event
-    key={index}
-    name={event.name}
-    event={event.event}
-    />)
+    this.items = this.props.items.map((item, index) => {
+      // Some lists may contain other lists
+      if(item.items) {
+        return(<List
+                key={index}
+                title={item.title}
+                items={item.items}
+                click={this.props.click}
+          />)
+      } else {
+        return(<Event
+                key={index}
+                name={item.name}
+                event={item.event}
+                parameters={item.parameters}
+                click={this.props.click}
+          />)
+      }
+    })
 
     return(<fieldset className="border">
               <legend className="title">{this.props.title}</legend>
-              {this.events}
+              {this.items}
           </fieldset>)
   }
 }

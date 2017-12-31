@@ -2,7 +2,6 @@ import React from 'react'
 import {render} from 'react-dom'
 
 import List from './list.jsx'
-import SubGroup from './subgroup.jsx'
 
 // Detect hostname for socket.io to connect
 const hostname = window && window.location && window.location.hostname;
@@ -27,30 +26,23 @@ class Soundboard extends React.Component {
 
   render() {
     this.lists = this.state.lists.map((list, index) =>  {
-      console.log(list.subgroup)
-      if(list.subgroup) {
-        // Recursive list yo :X
-        return(<SubGroup
-          key={index}
-          title={list.title}
-          subgroup={list.subgroup}
-        />)
-      } else {
         return(<List
         key={index}
         title={list.title}
         items={list.items}
+        list={list.list}  // In case another list is nested
+        click={this.onClick}
       />)
-      }
-    })
-
-    console.log(this.lists)
+      })
     return(<div id="lists">{this.lists}</div>)
   }
 
   updateState(state) {
     this.setState(state);
-    console.log(this.state)
+  }
+
+  onClick(event, parameters) {
+    socket.emit('soundboard', event, parameters)
   }
 }
 

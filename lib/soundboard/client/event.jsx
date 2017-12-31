@@ -6,13 +6,23 @@ import {render} from 'react-dom'
 class Event extends React.Component {
   constructor(props) {
     super(props)
+
+    this.onClick = this.onClick.bind(this)
   }
 
   render() {
-    return(<button id={this.props.event}>
+    return(<button
+            id={this.props.event}
+            onClick={this.onClick}>
               {this.props.name}
            </button>)
   }
+
+  onClick(e) {
+    e.preventDefault();
+    this.props.click(this.props.event, this.props.parameters)
+  }
+
 }
 
 export default Event
