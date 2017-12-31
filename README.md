@@ -1,11 +1,20 @@
 # hpc-bot
-Twitch bot for the Harry Potter Clan
+A Twitch Bot to quickly build custom commands, overlays, and other ways to make your stream incredibly interactive.
+
+# Overview
+
+hpc-bot was started because the existing bots out there didn't allow a high amount of customization and logic. We wanted to make html5 games that our viewers could play with us during downtime and add more options than just voting and betting.
+
+**Key Features**
+* `chat` Chat bot with interactive chat and whisper commands (e.g. !music)
+* `overlays` Trigger custom overlays (video, html, audio, etc) that play on your stream
+* `music` Listen to music sync'd with your fellow streamers and take viewer requests
+* `resources` Users can earn points and spend them on items/consumables that affect the stream
+* `soundboard` Trigger events and overlays from your browser
+* `teams` Users can join a team and compete against other teams for challenges
+* `utils` A bunch of useful utilities to run your stream: Random number
 
 # Usage
-
-## Commands
-`!sortinghat` - Place the sorting hat on your head and find out what House you belong to
-`!rules` -
 
 
 # Contributing
