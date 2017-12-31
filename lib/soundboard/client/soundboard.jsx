@@ -1,7 +1,8 @@
 import React from 'react'
 import {render} from 'react-dom'
 
-import List from './list.jsx'
+import Nav from 'hpc-bot-nav'
+import List from './components/list.jsx'
 
 // Detect hostname for socket.io to connect
 const hostname = window && window.location && window.location.hostname;
@@ -35,7 +36,10 @@ class Soundboard extends React.Component {
         click={this.onClick}
       />)
       })
-    return(<div id="lists">{this.lists}</div>)
+    return(<div>
+            <Nav current="soundboard" />
+            <div id="lists">{this.lists}</div>
+          </div>)
   }
 
   updateState(state) {

@@ -9,7 +9,7 @@ import openSocket from 'socket.io-client';
 const socket = openSocket(hostname + ':5000'); // Connect to the server to get client updates
 
 // Components
-import Nav from './components/nav/nav.jsx'
+import Nav from 'hpc-bot-nav'
 import Player from './components/player/player.jsx'
 import Controls from './components/controls/controls.jsx'
 import Playlist from './components/playlist/playlist.jsx'
