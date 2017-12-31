@@ -48,7 +48,8 @@ function validate(options) {
   		password: options.oauth
   	},
   	channels: [options.channel],
-  	clientID: options.clientID
+  	clientID: options.clientID,
+    secret: options.secret
   };
 
   if(options.mixpanel) {
@@ -69,14 +70,6 @@ function validate(options) {
   // Music bot options
   if(options.youtubeKey) {
     _options.youtubeKey = options.youtubeKey;
-  }
-
-  if(options.twitchClientID) {
-    _options.twitchClientID = options.twitchClientID;
-  }
-
-  if(options.twitchSecret) {
-    _options.twitchSecret = options.twitchSecret;
   }
 
   if(options.hostname) {
