@@ -43,7 +43,7 @@ class MusicPlayer extends React.Component {
     socket.on('seek', this.onSeekReceive);  // Another user jumped timestamp forward
   }
 
-  render () {
+  render() {
     // Controls
     //   Skip button
     // Youtube video
