@@ -38,7 +38,7 @@ class Soundboard extends React.Component {
       })
     return(<div>
             <Nav current="soundboard" />
-            <div id="lists">{this.lists}</div>
+            <div className="container" id="lists">{this.lists}</div>
           </div>)
   }
 
