@@ -3,9 +3,11 @@ html(lang="en")
 	head
 		script(src='/socket.io/socket.io.js')
 		link(href='/music/css/min.css' rel='stylesheet' type='text/css')
-		title HPC.Jukebox
-	body
-		#music
+		title HPC.Soundboard
+	body(bgcolor=transparent)
+		#soundboard
 	
 		// Load react client-side app
-		script(src='/music/js/bundle.js')
+		script(src='/soundboard/js/bundle.js')
+		style(type='text/css')
+			| !{css}

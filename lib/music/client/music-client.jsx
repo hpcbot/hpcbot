@@ -9,7 +9,7 @@ import openSocket from 'socket.io-client';
 const socket = openSocket(hostname + ':5000'); // Connect to the server to get client updates
 
 // Components
-import Nav from './components/nav/nav.jsx'
+import Nav from 'hpc-bot-nav'
 import Player from './components/player/player.jsx'
 import Controls from './components/controls/controls.jsx'
 import Playlist from './components/playlist/playlist.jsx'
@@ -40,11 +40,11 @@ class MusicPlayer extends React.Component {
     this.reorder = this.reorder.bind(this);
 
     /* Handle updates from server */
-    socket.on('state', this.updateState);   // Receive state updates from server
+    socket.on('music:state', this.updateState);   // Receive state updates from server
     socket.on('seek', this.onSeekReceive);  // Another user jumped timestamp forward
   }
 
-  render () {
+  render() {
     // Controls
     //   Skip button
     // Youtube video
