@@ -40,7 +40,7 @@ class MusicPlayer extends React.Component {
     this.reorder = this.reorder.bind(this);
 
     /* Handle updates from server */
-    socket.on('state', this.updateState);   // Receive state updates from server
+    socket.on('music:state', this.updateState);   // Receive state updates from server
     socket.on('seek', this.onSeekReceive);  // Another user jumped timestamp forward
   }
 
