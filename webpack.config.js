@@ -1,21 +1,31 @@
 var webpack = require('webpack');
 var path = require('path');
 
-var BUILD_DIR = path.resolve(__dirname, 'lib/music/static/js');
-var APP_DIR = path.resolve(__dirname, 'lib/music/client');
+let music = {
+  APP_DIR: path.resolve(__dirname, 'lib/music/client/'),
+  APP_FILE: path.resolve(__dirname, 'lib/music/client/music-client.jsx')
+}
+
+let soundboard = {
+  APP_DIR: path.resolve(__dirname, 'lib/soundboard/client/'),
+  APP_FILE: path.resolve(__dirname, 'lib/soundboard/client/soundboard.jsx')
+}
 
 var config = {
   devtool: 'source-map',
-  entry: APP_DIR + '/music-client.jsx',
+  entry: {
+    'lib/music/static/js/bundle.js': music.APP_FILE,
+    'lib/soundboard/static/js/bundle.js': soundboard.APP_FILE
+  },
   output: {
-    path: BUILD_DIR,
-    filename: 'bundle.js'
+    path: path.resolve('./'),
+    filename: '[name]'
   },
   module: {
     loaders: [
       {
         test: /\.js?/,
-        include: APP_DIR,
+        exclude: /node_modules/,
         loader: 'babel-loader'
       },
       {
