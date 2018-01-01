@@ -37,6 +37,8 @@ First, you need to create a Twitch account and App for your bot: https://blog.tw
 hpc-bot requires a few parameters to be configured up front to work with the database and external services. These parameters are passed in via the `options` object when you start the bot.
 
 Here are the parameters that `options` accepts:
+
+
 | Parameter    | Required | Example | Description |
 | --------     | :------: | ------- | ----------- |
 | **username** | yes  | hpc.dumbledore | Your bot's Twitch Username (required) |
