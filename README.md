@@ -37,6 +37,7 @@ First, you need to create a Twitch account and App for your bot: https://blog.tw
 hpc-bot requires a few parameters to be configured up front to work with the database and external services. These parameters are passed in via the `options` object when you start the bot.
 
 Here are the parameters that `options` accepts:
+
 | Parameter    | Required | Example | Description |
 | --------     | :------: | ------- | ----------- |
 | **username** | yes  | hpc.dumbledore | Your bot's Twitch Username (required) |
@@ -46,10 +47,10 @@ Here are the parameters that `options` accepts:
 | **secret**   | yes  | 1lkjklmasd0c0a  | Your Twitch app Secret - https://blog.twitch.tv/client-id-required-for-kraken-api-calls-afbb8e95f843 |
 | **eventbus** | no   | `new EventEmitter()`` | The eventemitter object that the bot uses to call/listen for events |
 | **whitelist** | no  | [ 'bdickason', 'larry_manalo' ] | An array of twitch usernames that have access to the web interface and whitelisted commands |
-| **youtubeKey** | no | k12jlkjasdjamc | Your Youtube API key to load music videos |
+| **youtubeKey** | no | k12jlkjasdjamc | Your Youtube API key to load music videos (Required for Jukebox)|
 | **hostname** | no | harrypotterclan.com | Necessary for testing/deploying the music feature |
-| **logglyToken** | no | akjsdklfjakljf | Your Loggly token if you want to log events for debugging purposes |
-| **logglySubdomain** | no | bdickason | Your Loggly subdomain if you want to log events for debugging purposes |
+| **logglyToken** | no | akjsdklfjakljf | Your Loggly token if you want to log events for debugging purposes (Required for Logging) |
+| **logglySubdomain** | no | bdickason | Your Loggly subdomain if you want to log events for debugging purposes (Required for Logging) |
 | **mixpanel** | no   | akjflj232jk1a   | Your Mixpanel ID to save analytics |
 
 Phew! Hope you got that all setup right :D There should be errors along the way if something goes wrong to help you debug when you run the app.
