@@ -1,5 +1,5 @@
 {
-  "name": "hpc-bot",
+  "name": "hpcbot",
   "version": "0.9.0",
   "description": "Twitch Bot for the Harry Potter Clan",
   "keywords": [
@@ -26,7 +26,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/bdickason/hpc-bot.git"
+    "url": "git://github.com/hpcbot/hpcbot.git"
   },
   "dependencies": {
     "babel-core": "^6.26.0",

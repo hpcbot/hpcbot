@@ -85,7 +85,6 @@ function validate(options) {
   }
 
   return(_options);
-  console.log(_options);
 }
 
 module.exports = {validate: validate};
