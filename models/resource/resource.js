@@ -27,6 +27,41 @@ var give = function(username, amount, callback) {
 	}
 };
 
+let giveMany = (users, amount, callback) => {
+	// Give resources to a group of users
+	// Input: [users], amount (positive or negative)
+	// Output: error, number of users affected
+	if(users && Array.isArray(users) && users.length > 0) {
+		if(amount) {
+			if(!isNaN(amount)) {
+				let count = 0	// Get number of users
+
+				users.forEach((user) => {
+					// Set key for user's resource
+					add(user, amount, (err, data) => {
+						count++
+						if(!err) {
+							if(count == users.length) {
+								callback(null, count)
+							}
+						} else {
+							if(count == users.length) {
+								callback(err, null)
+							}
+						}
+					})
+				})
+			} else {
+				callback('amount must be a number', null);
+			}
+		} else {
+			callback('no amount provided', null);
+		}
+	} else {
+		callback('no users provided', null);
+	}
+}
+
 var take = function(username, amount, callback) {
 	// Take resource from a user
 	// Input: username, amount
@@ -103,9 +138,12 @@ var add = function(username, amount, callback) {
 	}
 };
 
+
+
 module.exports = {
-	start: start,
-	give: give,
-	take: take,
-	get: get
+	start,
+	give,
+	giveMany,
+	take,
+	get
 };

@@ -223,4 +223,86 @@ describe('Resource', function() {
 			});
 		});
 	});
+	describe('giveMany() give resources to many users at once', () => {
+		var users = ['bdickason', 'larry_manalo'];
+
+		beforeEach('Setup up two dummy users with 10 resources', (done) => {
+			// Setup a dummy user with 10 resources
+			Resource.give(users[0], 15, (err, data) => {
+				Resource.give(users[1], 15, (err, data) => {
+					if(!err) {
+						done()
+					}
+				})
+			})
+		});
+
+		it('gives resources to both users' , (done) => {
+			var amount = 10;
+
+			var _data = 2;
+			var _amount = 25;
+
+
+			Resource.giveMany(users, amount, (err, data) => {
+				// Verify that final sum is returned
+				assert.equal(data, 2);
+				db.get().hget('user:' + users[0], 'resource', (err, first) => {
+					console.log(first)
+					assert.equal(first, _amount)
+					db.get().hget('user:' + users[1], 'resource', (err, second) => {
+						console.log(second)
+						assert.equal(second, _amount)
+						done()
+					})
+				})
+			});
+		});
+		it('gives resources to one user and a 3rd that doesn\'t exist yet' , (done) => {
+			var amount = 10
+			let newUsers = ['bdickason', 'teamalea']
+
+			var _data = 2
+			var _first = 25
+			let _second = 10
+
+			Resource.giveMany(newUsers, amount, (err, data) => {
+				// Verify that final sum is returned
+				assert.equal(data, 2);
+
+				db.get().hget('user:' + newUsers[0], 'resource', (err, first) => {
+					assert.equal(first, _first)
+
+					db.get().hget('user:' + newUsers[1], 'resource', (err, second) => {
+						assert.equal(second, _second)
+						done()
+					})
+				})
+			});
+		});
+		it('Throws an error if there are no users passed in' , function(done) {
+			var newUsers = [];
+
+			let _amount = null
+			var _err = 'no users provided'
+
+			Resource.giveMany(newUsers, 2, (err, data) => {
+				assert.equal(data, _amount)
+				assert.equal(err, _err)
+				done()
+			})
+		})
+		it('Throws an error if no amount is passed in' , function(done) {
+			let amount = null
+
+			let _amount = null
+			var _err = 'no amount provided'
+
+			Resource.giveMany(users, amount, (err, data) => {
+				assert.equal(data, _amount)
+				assert.equal(err, _err)
+				done()
+			})
+		})
+	});
 });
