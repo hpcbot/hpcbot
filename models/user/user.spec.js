@@ -63,6 +63,80 @@ describe('Users', function() {
 			});
 		});
 	});
+	describe('getHouseMembers', () => {
+		beforeEach((done) => {
+			// Add a few users to houses
+			db.get().sadd('Gryffindor', 'bdickason', (err, success) => {
+				db.get().sadd('Gryffindor', 'teamalea', (err, success) => {
+					db.get().sadd('Slytherin', 'larry_manalo', (err, success) => {
+						if(!err) {
+							done()
+						}
+					})
+				})
+			})
+		})
+		it('Returns all members of a house with multiple members', function(done) {
+			var house = 'Gryffindor';
+
+			var _err = null;
+			var _users = ['teamalea','bdickason'];
+
+			User.getHouseMembers(house, (err, users) => {
+				assert.equal(err, _err);
+				assert.deepEqual(users, _users);
+				done();
+			});
+		});
+		it('Returns all members of a house with a single member', function(done) {
+			var house = 'Slytherin';
+
+			var _err = null;
+			var _users = ['larry_manalo'];
+
+			User.getHouseMembers(house, (err, users) => {
+				assert.equal(err, _err);
+				assert.deepEqual(users, _users);
+				done();
+			});
+		});
+		it('Returns nothing for a house with no members', function(done) {
+			var house = 'Ravenclaw';
+
+			var _err = null;
+			var _users = [];
+
+			User.getHouseMembers(house, (err, users) => {
+				assert.equal(err, _err);
+				assert.deepEqual(users, _users);
+				done();
+			});
+		});
+		it('Errors if no house is provided', function(done) {
+			var house = null;
+
+			var _err = 'no house provided';
+			var _users = null;
+
+			User.getHouseMembers(house, (err, users) => {
+				assert.equal(err, _err);
+				assert.equal(users, _users);
+				done();
+			});
+		});
+		it('Errors if a full house name is not provided', function(done) {
+			var house = 'g';
+
+			var _err = 'please provide a valid full house name';
+			var _users = null;
+
+			User.getHouseMembers(house, (err, users) => {
+				assert.equal(err, _err);
+				assert.equal(users, _users);
+				done();
+			});
+		});
+	});
 	describe('setHouse', function() {
 		it('sets a random house for an existing user', function(done) {
 			var username = 'bdickason';

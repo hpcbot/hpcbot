@@ -72,6 +72,28 @@ var setHouse = function setHouse(username, callback) {
 	}
 };
 
+let getHouseMembers = (house, callback) => {
+	// Returns a list of all members of a given house
+	// Input: house abbreviation (g, r, h, s)
+	// Output: error, [users]
+
+	if(house && typeof(house) == 'string') {
+		if(house == 'Gryffindor' || house == 'Ravenclaw' || house == 'Hufflepuff' || house == 'Slytherin') {
+			db.get().smembers(house, (err, users) => {
+				if(!err) {
+					callback(null, users)
+				} else {
+					callback(err, null)
+				}
+			})
+		} else {
+			callback('please provide a valid full house name', null)
+		}
+	} else {
+		callback('no house provided', null)
+	}
+}
+
 
 var exists = function exists(username, callback) {
 	// Returns whether or not a user exists already
@@ -280,6 +302,7 @@ var sanitize = function sanitize(username) {
 module.exports = {
 	start: start,
 	getHouse: getHouse,
+	getHouseMembers,
 	setHouse: setHouse,
 	exists: exists,
 	create: create,
