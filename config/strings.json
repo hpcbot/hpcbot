@@ -72,7 +72,9 @@
 		"error_no_params": "Usage: !add h 5",
 		"error_no_points": "Usage: !add h 5",
 		"error_bad_points": "You can only award 5 or 10 points at a time.",
-		"error_bad_house": "Please enter the first letter of a house (g/h/r/s)."
+		"error_bad_house": "Please enter the first letter of a house (g/h/r/s).",
+		"no_value": "Please specify the amount of goblin gold to reward.",
+		"no_house": "Please specify the house to award goblin gold to."
 	},
 	"gold": {
 		"gave": "You have accrued ",

@@ -79,7 +79,7 @@ let getHouseMembers = (house, callback) => {
 
 	if(house && typeof(house) == 'string') {
 		if(house == 'Gryffindor' || house == 'Ravenclaw' || house == 'Hufflepuff' || house == 'Slytherin') {
-			db.get().smembers(house, (err, users) => {
+			db.get().smembers(`houses:${house}`, (err, users) => {
 				if(!err) {
 					callback(null, users)
 				} else {

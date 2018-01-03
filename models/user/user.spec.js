@@ -66,9 +66,9 @@ describe('Users', function() {
 	describe('getHouseMembers', () => {
 		beforeEach((done) => {
 			// Add a few users to houses
-			db.get().sadd('Gryffindor', 'bdickason', (err, success) => {
-				db.get().sadd('Gryffindor', 'teamalea', (err, success) => {
-					db.get().sadd('Slytherin', 'larry_manalo', (err, success) => {
+			db.get().sadd('houses:Gryffindor', 'bdickason', (err, success) => {
+				db.get().sadd('houses:Gryffindor', 'teamalea', (err, success) => {
+					db.get().sadd('houses:Slytherin', 'larry_manalo', (err, success) => {
 						if(!err) {
 							done()
 						}
