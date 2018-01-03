@@ -38,7 +38,6 @@ hpc-bot requires a few parameters to be configured up front to work with the dat
 
 Here are the parameters that `options` accepts:
 
-
 | Parameter    | Required | Example | Description |
 | --------     | :------: | ------- | ----------- |
 | **username** | yes  | hpc.dumbledore | Your bot's Twitch Username (required) |
