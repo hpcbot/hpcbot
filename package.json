@@ -1,6 +1,6 @@
 {
   "name": "hpcbot",
-  "version": "0.9.3",
+  "version": "0.9.4",
   "description": "Twitch Bot for the Harry Potter Clan",
   "keywords": [
     "hpc",
@@ -49,6 +49,7 @@
     "mixpanel": "0.7.0",
     "passport": "^0.4.0",
     "passport-twitch": "^1.0.3",
+    "passport-twitch-new": "0.0.1",
     "pug": "2.0.0-beta11",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
