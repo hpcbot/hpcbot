@@ -50,7 +50,7 @@
     "passport": "^0.4.0",
     "passport-twitch": "^1.0.3",
     "passport-twitch-new": "0.0.1",
-    "pug": "2.0.0-beta11",
+    "pug": "3.0.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-rangeslider": "^2.2.0",
